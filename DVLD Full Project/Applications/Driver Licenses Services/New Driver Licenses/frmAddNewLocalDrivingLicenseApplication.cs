@@ -66,22 +66,19 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
             if (clsApplicationsBusinessLayer.isApplicationsExists(clsGlobalSettings.Applications.ApplicantPersonID, clsGlobalSettings.Applications.ApplicationTypeID,
                 clsGlobalSettings.Applications.ApplicationStatus))
             {
-                //save applicatio to database
-                if (clsGlobalSettings.Applications.Save())
-                {
-                    MessageBox.Show("Application Saved");
-                }
-                else
-                {
-                    MessageBox.Show("Application not Saved");
-                }
+                MessageBox.Show("Person Already have same License type application");
+                return;
+            }
+
+            //save applicatio to database
+            if (clsGlobalSettings.Applications.Save())
+            {
+                MessageBox.Show("Application Saved");
             }
             else
             {
-                MessageBox.Show("Person Already have same License type application");
+                MessageBox.Show("Application not Saved");
             }
-
-
         }
 
         //buttons
