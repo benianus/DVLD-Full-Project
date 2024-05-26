@@ -54,13 +54,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         }
         private void _SaveLocalDrivingLicenseApplication()
         {
-            clsGlobalSettings.Applications.ApplicantPersonID = clsGlobalSettings.Person.PersonId;
-            clsGlobalSettings.Applications.ApplicationDate = Convert.ToDateTime(lblApplicationDate.Text);
-            clsGlobalSettings.Applications.ApplicationTypeID = cbLicsenseClass.SelectedIndex;
-            clsGlobalSettings.Applications.ApplicationStatus = 1;
-            clsGlobalSettings.Applications.LastStatusDate = DateTime.Now;
-            clsGlobalSettings.Applications.PaidFees = 15;
-            clsGlobalSettings.Applications.CreatedByUserID = clsGlobalSettings.User.UserID;
+            _GetApplicationObjectInfos();
 
             //check if person already have the appliction in the same license class
             if (clsApplicationsBusinessLayer.isApplicationsExists(clsGlobalSettings.Applications.ApplicantPersonID, clsGlobalSettings.Applications.ApplicationTypeID,
@@ -69,8 +63,12 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                 MessageBox.Show("Person Already have same License type application");
                 return;
             }
-
             //save applicatio to database
+            _SaveApplication();
+        }
+
+        private static void _SaveApplication()
+        {
             if (clsGlobalSettings.Applications.Save())
             {
                 MessageBox.Show("Application Saved");
@@ -79,6 +77,17 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
             {
                 MessageBox.Show("Application not Saved");
             }
+        }
+
+        private void _GetApplicationObjectInfos()
+        {
+            clsGlobalSettings.Applications.ApplicantPersonID = clsGlobalSettings.Person.PersonId;
+            clsGlobalSettings.Applications.ApplicationDate = Convert.ToDateTime(lblApplicationDate.Text);
+            clsGlobalSettings.Applications.ApplicationTypeID = cbLicsenseClass.SelectedIndex + 1;
+            clsGlobalSettings.Applications.ApplicationStatus = 1;
+            clsGlobalSettings.Applications.LastStatusDate = DateTime.Now;
+            clsGlobalSettings.Applications.PaidFees = 15;
+            clsGlobalSettings.Applications.CreatedByUserID = clsGlobalSettings.User.UserID;
         }
 
         //buttons

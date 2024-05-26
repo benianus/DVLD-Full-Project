@@ -13,7 +13,8 @@ namespace clsDataLayer
         {
             bool isApplicationExists = false;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = "select * from Applications where ApplicationStatus = @ApplicationStatus ;";
+            string query = "select * from Applications where ApplicationStatus = @ApplicationStatus and ApplicantPersonID = @ApplicantPersonID " +
+                "and ApplicationTypeID = @ApplicationTypeID;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ApplicationPersonID", ApplicationPersonID);
             command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);   
@@ -22,10 +23,8 @@ namespace clsDataLayer
             try
             {
                 connection.Open();
-
                 SqlDataReader reader = command.ExecuteReader();
-
-                isApplicationExists = reader.HasRows;
+                isApplicationExists = reader.Read();
             }
             catch (Exception)
             {
