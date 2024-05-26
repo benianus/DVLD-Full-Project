@@ -13,7 +13,7 @@ namespace clsDataLayer
         {
             bool isApplicationExists = false;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = "select * from Applications where ApplicationStatus = @ApplicationStatus and ApplicantPersonID = @ApplicantPersonID and ApplicationTypeID = @ApplicationTypeID;";
+            string query = "select * from Applications where ApplicationStatus = @ApplicationStatus ;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ApplicationPersonID", ApplicationPersonID);
             command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);   
