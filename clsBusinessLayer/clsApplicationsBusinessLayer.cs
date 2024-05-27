@@ -45,11 +45,10 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
-        public static bool isApplicationsExists(int ApplicationPersonID, int ApplicationTypeID, byte ApplicationStatus)
+        public static bool CancelApplication(byte selectedApplication)
         {
-            return clsApplicationsDataLayer.isApplicationExists(ApplicationPersonID, ApplicationTypeID, ApplicationStatus);
+            return clsApplicationsDataLayer.CancelApplication(selectedApplication);
         }
-
         public bool _AddNewApplication()
         {
             this.ApplicationID = clsApplicationsDataLayer.AddNewApplication(this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID, this.ApplicationStatus
@@ -64,7 +63,7 @@ namespace clsBusinessLayer
         }
         public bool Save()
         {
-            switch (clsGlobalSettings.Mode)
+            switch (clsGlobalSettings.Mode )
             {
                 case clsGlobalSettings.enMode.AddNew:
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
@@ -72,7 +71,7 @@ namespace clsBusinessLayer
                 case clsGlobalSettings.enMode.Update:
                     return _UpdateApplication();
             }
-            return false;
+            return _AddNewApplication();
         }
     }
 }
