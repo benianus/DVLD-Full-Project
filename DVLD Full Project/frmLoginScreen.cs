@@ -35,8 +35,10 @@ namespace DVLD_Full_Project
         }
         private void _CheckIfsUserExists(string Username, string Password)
         {
+            //check if user exist in database
             if (clsUserBusinessLayer.isUserExist(Username, Password))
             {
+                //check if the Active
                 if (!clsUserBusinessLayer.isUserActive(Username, Password))
                 {
                     MessageBox.Show("User exist, but it's not Active, Please contact Support");

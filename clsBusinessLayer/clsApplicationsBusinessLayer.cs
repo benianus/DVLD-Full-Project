@@ -1,6 +1,7 @@
 ﻿using clsDataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,11 +46,14 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
-        public static bool isApplicationsExists(int ApplicationPersonID, int ApplicationTypeID, byte ApplicationStatus)
+        public static DataTable GetApplicationInfos(int LDLApplication)
         {
-            return clsApplicationsDataLayer.isApplicationExists(ApplicationPersonID, ApplicationTypeID, ApplicationStatus);
+            return clsApplicationsDataLayer.GetApplicationInfos(LDLApplication);
         }
-
+        public static bool CancelApplication(byte selectedApplication)
+        {
+            return clsApplicationsDataLayer.CancelApplication(selectedApplication);
+        }
         public bool _AddNewApplication()
         {
             this.ApplicationID = clsApplicationsDataLayer.AddNewApplication(this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID, this.ApplicationStatus
@@ -64,7 +68,7 @@ namespace clsBusinessLayer
         }
         public bool Save()
         {
-            switch (clsGlobalSettings.Mode)
+            switch (clsGlobalSettings.Mode )
             {
                 case clsGlobalSettings.enMode.AddNew:
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
@@ -72,7 +76,7 @@ namespace clsBusinessLayer
                 case clsGlobalSettings.enMode.Update:
                     return _UpdateApplication();
             }
-            return false;
+            return _AddNewApplication();
         }
     }
 }

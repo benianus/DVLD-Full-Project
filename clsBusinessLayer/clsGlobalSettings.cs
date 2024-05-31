@@ -16,8 +16,8 @@ namespace clsBusinessLayer
         public enum enApplicationStatus
         {
             New = 1,
-            Completed = 2,
-            Cancelled = 3
+            Cancelled = 2,
+            Completed = 3
         }
 
         public static clsUserBusinessLayer User;
@@ -28,18 +28,24 @@ namespace clsBusinessLayer
         public static clsApplicationsBusinessLayer Applications;
         public static clsLicenseClassesBusinessLayer LicenseClasses;
         public static clsLicensesBusinessLayer Licenses;
-
+        public static clsTestAppointementsBusinessLayer TestAppointements;
+        public static clsTestsBusinessLayer Tests;
+        public static clsDriversBusinessLayer Drivers;
 
         public static int TestTypeID;
+        public static int TestAppointementID;
+        public static int TestID;
         public static int ApplicationID;
+        public static int ApplicationTypeID;
+        public static int LocalDrivingLicenseApplicationID;
         public static int PersonID;
         public static int UserID;
-        public static int LocalDrivingLicenseApplicationID;
         public static int LicenseClassID;
         public static int LicenseID;
-        public static int ApplicationTypeID;
+        public static int DriverID;
 
         public static enMode Mode;
+        public static enApplicationStatus Status;
         
     }
 }

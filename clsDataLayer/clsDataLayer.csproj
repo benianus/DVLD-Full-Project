@@ -45,11 +45,14 @@
   <ItemGroup>
     <Compile Include="clsApplicationsDataLayer.cs" />
     <Compile Include="clsApplicationsTypesDataLayer.cs" />
+    <Compile Include="clsDriversDataLayer.cs" />
     <Compile Include="clsLicenseClassesDataLayer.cs" />
     <Compile Include="clsLicensesDataLayer.cs" />
     <Compile Include="clsLocalDriverLicenseApplicationDataLayer.cs" />
     <Compile Include="clsPeopleDataLayer.cs" />
     <Compile Include="clsDataSettings.cs" />
+    <Compile Include="clsTestAppointementsDataLayer.cs" />
+    <Compile Include="clsTestsDataLayer.cs" />
     <Compile Include="clsTestTypesDataLayer.cs" />
     <Compile Include="clsUserDataLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

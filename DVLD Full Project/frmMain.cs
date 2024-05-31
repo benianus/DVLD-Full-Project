@@ -61,7 +61,7 @@ namespace DVLD_Full_Project
         }
         private void _showAddNewLocalDrivingLicenseApplicationForm()
         {
-            frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplicaton = new frmAddNewLocalDrivingLicenseApplication();
+            frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplicaton = new frmAddNewLocalDrivingLicenseApplication(-1);
             AddNewLocalDrivingLicenseApplicaton.ShowDialog();
         }
         private void _ShowManageLocalLicenseDrivingApplications()
@@ -69,6 +69,8 @@ namespace DVLD_Full_Project
             frmLocalDrivingLicenseApplications ManageLDLApplications = new frmLocalDrivingLicenseApplications();    
             ManageLDLApplications.ShowDialog();
         }
+
+
         //Buttons
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -82,32 +84,26 @@ namespace DVLD_Full_Project
         {
             _LoadManageUsersForm();
         }
-
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowChangePasswordForm();
         }
-
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowCurrentUserInfoForm();
         }
-
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowManageApplicationTypesForm();
         }
-
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _showManageTestTypesForm();
         }
-
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _showAddNewLocalDrivingLicenseApplicationForm();
         }
-
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowManageLocalLicenseDrivingApplications();

@@ -30,14 +30,58 @@ namespace clsBusinessLayer
         public int ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
 
+        public static int GetHowMuchTestsPassed()
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.GetHowMuchTestsPassed(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+        }
         public static DataTable GetLicenseClasses()
         {
             return clsLocalDriverLicenseApplicationDataLayer.GetLicenseClasses();
+        }
+        public static DataTable GetDrivingLicenseApplicationInfo(int LDLApplication)
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.GetDrivingLicenseApplicationnInfo(LDLApplication);
         }
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
             return clsLocalDriverLicenseApplicationDataLayer.GetAllLocalDrivingLicenseApplications();
         }
+        public static DataTable FilterLocalDrivingLicenseApplicationBy(string Filter, string Condition)
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.FilterLocalDrivingLicenseApplicationBy(Filter, Condition);
+        }
+        public static bool isLocalApplcationNew(string NationalNo, string ClassName, string Status = "New")
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.isLocalApplcationNew(NationalNo, ClassName, Status);
+        }
+        public static bool isLocalApplcationCompleted(string NationalNo, string ClassName, string Status = "Completed")
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.isLocalApplcationCompleted(NationalNo, ClassName, Status);
+        }
+        private bool _AddNewLocalDrivingLicenseApplication()
+        {
+            this.LocalDrivingLicenseApplicationID = clsLocalDriverLicenseApplicationDataLayer.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID);
 
+            return this.LocalDrivingLicenseApplicationID > 0;
+        }
+
+        private bool _UpdateLocalDrivingLicenseApplication()
+        {
+            return true;
+        }
+        
+
+        public bool Save()
+        {
+            switch (clsGlobalSettings.Mode)
+            {
+                case clsGlobalSettings.enMode.AddNew:
+                    clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+                    return _AddNewLocalDrivingLicenseApplication();
+                case clsGlobalSettings.enMode.Update:
+                    return _UpdateLocalDrivingLicenseApplication();
+            }
+            return false;
+        }
     }
 }
