@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="clsApplicationsBusinessLayer.cs" />
     <Compile Include="clsApplicationsTypesBusinessLayer.cs" />
+    <Compile Include="clsDriversBusinessLayer.cs" />
     <Compile Include="clsGlobalSettings.cs" />
     <Compile Include="clsLicenseClassesBusinessLayer.cs" />
     <Compile Include="clsLicensesBusinessLayer.cs" />
     <Compile Include="clsLocalDriverLicenseApplicationBusinessLayer.cs" />
+    <Compile Include="clsTestAppointementsBusinessLayer.cs" />
+    <Compile Include="clsTestsBusinessLayer.cs" />
     <Compile Include="clsTestTypesBusinessLayer.cs" />
     <Compile Include="clsUserBusinessLayer.cs" />
     <Compile Include="clsPeopleBusinessLayer.cs" />

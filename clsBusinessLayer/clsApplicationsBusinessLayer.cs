@@ -1,6 +1,7 @@
 ﻿using clsDataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,10 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static DataTable GetApplicationInfos(int LDLApplication)
+        {
+            return clsApplicationsDataLayer.GetApplicationInfos(LDLApplication);
+        }
         public static bool CancelApplication(byte selectedApplication)
         {
             return clsApplicationsDataLayer.CancelApplication(selectedApplication);

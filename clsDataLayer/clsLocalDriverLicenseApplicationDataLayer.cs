@@ -39,6 +39,34 @@ namespace clsDataLayer
 
             return ClassesTitlesTable;
         }
+        public static int GetHowMuchTestsPassed(int LocalDriverLicenseApplication)
+        {
+            int PassedTestCount = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select PassedTestCount from LocalDrivingLicenseApplications_View where LocalDrivingLicenseApplicationID  = @LocalDriverLicenseApplication;" +
+                "Select SCOPE_IDENTITY();";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDriverLicenseApplication", LocalDriverLicenseApplication);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int valueRetrieved))
+                {
+                    PassedTestCount = valueRetrieved;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { connection.Close(); }
+
+            return PassedTestCount;
+        }
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
             DataTable dt = new DataTable();
@@ -65,6 +93,37 @@ namespace clsDataLayer
             finally { Connection.Close(); }
 
             return dt;
+        }
+        public static DataTable GetDrivingLicenseApplicationnInfo(int LDLApplication)
+        {
+            DataTable LocalDrivingLicenseApplicationTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from LocalDrivingLicenseApplications_View where LocalDrivingLicenseApplicationID = @LDLApplication";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplication", LDLApplication);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    LocalDrivingLicenseApplicationTable.Load(reader);
+                }
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return LocalDrivingLicenseApplicationTable;
         }
         public static DataTable FilterLocalDrivingLicenseApplicationBy(string Filter, string Condition)
         {

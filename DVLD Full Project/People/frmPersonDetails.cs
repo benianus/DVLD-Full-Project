@@ -15,10 +15,6 @@ namespace DVLD_Full_Project
     {
         public delegate void EventRefreshDataTable();
         public event EventRefreshDataTable RefreshManagePeopleData;
-        //Properties
-
-        //private int _PersonID;
-        //public int PersonID { get { return _PersonID; } }
 
         //Constructors
         public frmPersonDetails()
@@ -49,7 +45,7 @@ namespace DVLD_Full_Project
         }
         private void _Close()
         {
-            RefreshManagePeopleData.Invoke();
+            RefreshManagePeopleData?.Invoke();
             this.Close();
         }
 
@@ -57,7 +53,6 @@ namespace DVLD_Full_Project
         private void btnClose_Click(object sender, EventArgs e)
         {
             _Close();
-            
         }
 
        

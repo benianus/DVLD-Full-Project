@@ -11,7 +11,32 @@ namespace clsDataLayer
 {
     public class clsApplicationsDataLayer
     {
-        
+        public static DataTable GetApplicationInfos(int LDLApplication)
+        {
+            DataTable ApplicationTable = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from Applications_view where LocalDrivingLicenseApplicationID = @LDLApplication;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplication", LDLApplication);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    ApplicationTable.Load(reader);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { connection.Close(); } 
+
+            return ApplicationTable;
+        }
         public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate,
             decimal PaidFees, int CreatedByUserID)
         {

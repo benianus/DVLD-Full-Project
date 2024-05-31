@@ -22,6 +22,8 @@ namespace DVLD_Full_Project
         public event eventSendPersonToAddNewUser SendPersonToAddNewUser;
         public event eventSendPersonToAddNewUser SendPersonToAddNewUserUpdate;
         public event eventSendPersonToAddNewUser ChangeFilterAndFillSearchBox;
+
+        
         public frmAddEditPerson()
         {
             InitializeComponent();
@@ -78,7 +80,6 @@ namespace DVLD_Full_Project
             _SendBackToPersonDetails?.Invoke();
             SendPersonToAddNewUserUpdate?.Invoke();
             ChangeFilterAndFillSearchBox?.Invoke();
-            
             this.Close();
         }
 
