@@ -39,7 +39,7 @@ namespace clsDataLayer
 
             return ClassesTitlesTable;
         }
-        public static int GetHowMuchTestsPassed(int LocalDriverLicenseApplication)
+        public static int GetHowMuchTestsPassed(int LDLApplication)
         {
             int PassedTestCount = 0;
 
@@ -47,7 +47,7 @@ namespace clsDataLayer
             string query = "select PassedTestCount from LocalDrivingLicenseApplications_View where LocalDrivingLicenseApplicationID  = @LocalDriverLicenseApplication;" +
                 "Select SCOPE_IDENTITY();";
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@LocalDriverLicenseApplication", LocalDriverLicenseApplication);
+            command.Parameters.AddWithValue("@LocalDriverLicenseApplication", LDLApplication);
 
             try
             {

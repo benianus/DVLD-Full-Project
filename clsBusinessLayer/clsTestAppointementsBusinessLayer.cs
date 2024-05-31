@@ -1,4 +1,5 @@
-﻿using System;
+﻿using clsDataLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,9 @@ namespace clsBusinessLayer
         public int CreatedByUserID { get; set; }    
         public bool IsLocked { get; set; }
 
-
+        public static bool isPersonHasTestAppointment(int LDLApplcication)
+        {
+            return clsTestAppointementsDataLayer.isPersonHasTestAppointment(LDLApplcication);
+        }
     }
 }

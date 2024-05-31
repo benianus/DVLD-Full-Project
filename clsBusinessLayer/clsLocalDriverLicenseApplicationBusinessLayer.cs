@@ -30,9 +30,9 @@ namespace clsBusinessLayer
         public int ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
 
-        public static int GetHowMuchTestsPassed()
+        public static int GetHowMuchTestsPassed(int LDLApplication)
         {
-            return clsLocalDriverLicenseApplicationDataLayer.GetHowMuchTestsPassed(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            return clsLocalDriverLicenseApplicationDataLayer.GetHowMuchTestsPassed(LDLApplication);
         }
         public static DataTable GetLicenseClasses()
         {

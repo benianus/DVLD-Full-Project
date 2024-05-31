@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddAppointment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,21 +109,22 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Appointments:";
             // 
-            // button1
+            // btnAddAppointment
             // 
-            this.button1.Location = new System.Drawing.Point(669, 438);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Add Appointment";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Location = new System.Drawing.Point(669, 438);
+            this.btnAddAppointment.Name = "btnAddAppointment";
+            this.btnAddAppointment.Size = new System.Drawing.Size(103, 23);
+            this.btnAddAppointment.TabIndex = 14;
+            this.btnAddAppointment.Text = "Add Appointment";
+            this.btnAddAppointment.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
             // 
             // frmTestAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 666);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddAppointment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblRecordsNumber);
@@ -148,6 +149,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddAppointment;
     }
 }
