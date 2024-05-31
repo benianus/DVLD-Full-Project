@@ -119,7 +119,8 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
 
         private void _LoadLDLApplicationsMenuStrip()
         {
-            if (_HowMuchTestsPassed() == 0)
+            int PassedTestCount = _HowMuchTestsPassed();
+            if (PassedTestCount == 0)
             {
                 tsmSechduleVisionTest.Enabled = true;
                 tsmSechduleWrittenTest.Enabled = false;
@@ -127,7 +128,7 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
                 tsmIssueDrivingLicenseFirstTime.Enabled = false;
                 tsmShowLicense.Enabled = false;
             }
-            else if (_HowMuchTestsPassed() == 1)
+            else if (PassedTestCount == 1)
             {
                 tsmSechduleVisionTest.Enabled = true;
                 tsmSechduleWrittenTest.Enabled = true;
@@ -135,7 +136,15 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
                 tsmIssueDrivingLicenseFirstTime.Enabled = false;
                 tsmShowLicense.Enabled = false;
             }
-            else if (_HowMuchTestsPassed() == 2)
+            else if (PassedTestCount == 2)
+            {
+                tsmSechduleVisionTest.Enabled = true;
+                tsmSechduleWrittenTest.Enabled = true;
+                tsmSechduleStreetTest.Enabled = true;
+                tsmIssueDrivingLicenseFirstTime.Enabled = false;
+                tsmShowLicense.Enabled = false;
+            }
+            else
             {
                 tsmSechduleVisionTest.Enabled = true;
                 tsmSechduleWrittenTest.Enabled = true;
@@ -145,10 +154,10 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
             }
 
         }
-
         private int _HowMuchTestsPassed()
         {
-            int PasseTestCount = clsLocalDriverLicenseApplicationBusinessLayer.GetHowMuchTestsPassed();
+            clsGlobalSettings.LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
+            int PasseTestCount = clsLocalDriverLicenseApplicationBusinessLayer.GetHowMuchTestsPassed(clsGlobalSettings.LocalDrivingLicenseApplicationID);
             return PasseTestCount;
         }
 
@@ -185,21 +194,18 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
             string Condition = txtFilterBy.Text;
             _FilterLocalLicenseApplicationsBy(Filter, Condition);
         }
-
         private void cbStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             string Filter = "Status";
             string Condition = cbStatusFilter.SelectedItem.ToString();
             _FilterLocalLicenseApplicationsBy(Filter, Condition);
         }
-
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             byte selectedApplication = Convert.ToByte(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
             _CancelLocalDrivingLicenseApplication(selectedApplication);
             
         }
-
         private void sechdulteVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowTestAppointmentsForm();

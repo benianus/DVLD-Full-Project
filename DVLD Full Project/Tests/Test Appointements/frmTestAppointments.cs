@@ -23,11 +23,37 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         {
             this.Close();
         }
+        private void _ShowSechduleTestAppointmentForm()
+        {
+            frmSechduleTest sechduleTest = new frmSechduleTest();
+            sechduleTest.ShowDialog();
+        }
+        private bool isPersonHasTestAppointment(int LDLApplcication)
+        {
+            return clsTestAppointementsBusinessLayer.isPersonHasTestAppointment(LDLApplcication);
+        }
+        private void _CheckIfTestAppointementExisits()
+        {
+            if (isPersonHasTestAppointment(clsGlobalSettings.LocalDrivingLicenseApplicationID))
+            {
+                MessageBox.Show("Person Already has test appointement");
+            }
+            else
+            {
+                _ShowSechduleTestAppointmentForm();
+            }
+        }
 
         //button
         private void btnClose_Click(object sender, EventArgs e)
         {
             _CloseTestAppointementsForm();
         }
+        private void btnAddAppointment_Click(object sender, EventArgs e)
+        {
+            _CheckIfTestAppointementExisits();
+        }
+
+        
     }
 }
