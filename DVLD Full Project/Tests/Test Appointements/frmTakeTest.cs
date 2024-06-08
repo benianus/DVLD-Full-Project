@@ -11,18 +11,18 @@ using System.Windows.Forms;
 
 namespace DVLD_Full_Project.Tests.Test_Appointements
 {
-    public partial class frmSechduleTest : Form
+    public partial class frmTakeTest : Form
     {
         public delegate void eventRefreshTestAppointmentData(int LDLApplicationID);
         public event eventRefreshTestAppointmentData RefreshTestAppointmentData;
 
         public delegate void eventRowsCounter();
         public event eventRowsCounter RowsCounter;
-        public frmSechduleTest()
+        public frmTakeTest()
         {
             InitializeComponent();
         }
-        public frmSechduleTest(int TestAppointmentID)
+        public frmTakeTest(int TestAppointmentID)
         {
             InitializeComponent();
             clsGlobalSettings.TestAppointementID = TestAppointmentID;
@@ -35,12 +35,11 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
             }
         }
-        //Functions
-        private void _CloseSechduleTestForm()
+        private void _CloseTakeTestForm()
         {
-            this.Close();   
+            this.Close();
         }
-        private void _LoadScheduleTestForm()
+        private void _LoadTakeTestForm()
         {
             //vision test
             if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.AddNew)
@@ -59,14 +58,8 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblDClass.Text = ucTestAppointments.ApplicationInfo.ClassName;
             lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
             lblTrial.Text = "0";
-            dtpDate.Value = clsGlobalSettings.TestAppointements.AppointmentDate;
+            lblDate.Text = clsGlobalSettings.TestAppointements.AppointmentDate.ToString();
             lblFees.Text = _GetTestTypeFees("Vision Test");
-            gbRetakeTestInfo.Enabled = false;
-
-            //retake test
-            lblRetakeFees.Text = "0";
-            lblTotalFees.Text = clsApplicationsTypesBusinessLayer.GetApplicationTypeFees("Retake Test").ToString();
-            lblTestAppID.Text = "N/A";
         }
         private void ifModeAddNew()
         {
@@ -76,36 +69,29 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblDClass.Text = ucTestAppointments.ApplicationInfo.ClassName;
             lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
             lblTrial.Text = "0";
-            dtpDate.Value = DateTime.Now;
+            lblDate.Text = clsGlobalSettings.TestAppointements.AppointmentDate.ToString();
             lblFees.Text = _GetTestTypeFees("Vision Test");
-            gbRetakeTestInfo.Enabled = false;
-
-            //retake test
-            lblRetakeFees.Text = "0";
-            lblTotalFees.Text = clsApplicationsTypesBusinessLayer.GetApplicationTypeFees("Retake Test").ToString();
-            lblTestAppID.Text = "N/A";
+            
         }
 
         private string _GetTestTypeFees(string TestTypeTitle)
         {
             return clsTestTypesBusinessLayer._GetTestTypeFees(TestTypeTitle);
         }
-        private void _SaveTestAppointment()
+        private void _SaveTest()
         {
-            clsGlobalSettings.TestAppointements.TestTypeID = 1;
-            clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
-            clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
-            clsGlobalSettings.TestAppointements.PaidFees = Convert.ToDecimal(lblFees.Text);
-            clsGlobalSettings.TestAppointements.CreatedByUserID = clsGlobalSettings.User.UserID;
-            clsGlobalSettings.TestAppointements.IsLocked = false;
 
+            clsGlobalSettings.Tests.TestAppointmentID = clsGlobalSettings.TestAppointements.TestAppointmentID;
+            clsGlobalSettings.Tests.TestResult = _getTestResult();
+            clsGlobalSettings.Tests.Notes = txtNotes.Text;
+            clsGlobalSettings.Tests.CreatedByUserID = clsGlobalSettings.TestAppointements.CreatedByUserID;
             if (clsGlobalSettings.TestAppointements.Save())
             {
                 if (MessageBox.Show("Test appointment saved") == DialogResult.OK)
                 {
                     RefreshTestAppointmentData?.Invoke(clsGlobalSettings.TestAppointements.TestAppointmentID);
                     RowsCounter?.Invoke();
-                    this.Close();   
+                    this.Close();
                 }
             }
             else
@@ -113,24 +99,34 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 MessageBox.Show("Test appointment not saved");
             }
         }
+        private bool _getTestResult()
+        {
+            if (rbPass.Checked)
+            {
+                return true;
+            }
+            else if (rbFail.Checked)
+            {
+                return false;
+            }
+            return false;
+        }
 
+        //buttons
 
-        //Buttons
+        private void frmTakeTest_Load(object sender, EventArgs e)
+        {
+            _LoadTakeTestForm();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
-            _CloseSechduleTestForm();
+            _CloseTakeTestForm();
         }
-        private void frmSechduleTest_Load(object sender, EventArgs e)
-        {
-            if (!DesignMode)
-            {
-                _LoadScheduleTestForm();
-            }
-        }
-
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _SaveTestAppointment();
+            _SaveTest();
         }
     }
 }

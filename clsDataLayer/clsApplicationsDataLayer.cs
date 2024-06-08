@@ -11,6 +11,27 @@ namespace clsDataLayer
 {
     public class clsApplicationsDataLayer
     {
+        public static bool FindApplication(int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate, ref int ApplicationTypeID, ref byte ApplicationStatus,
+                ref decimal PaidFees, ref int CreatedByUserID )
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from applications where applicationID = @ApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
         public static DataTable GetApplicationInfos(int LDLApplication)
         {
             DataTable ApplicationTable = new DataTable();

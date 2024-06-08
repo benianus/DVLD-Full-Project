@@ -11,6 +11,34 @@ namespace clsDataLayer
 {
     public static class clsTestTypesDataLayer
     {
+        public static string _GetTestTypeFees(string TestTypeTitle)
+        {
+            decimal TestTypeFees = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from TestTypes where TestTypeTitle = @TestTypeTitle;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read()) 
+                {
+                    TestTypeFees = (decimal)reader["TestTypeFees"];
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { connection.Close(); }
+
+            return TestTypeFees.ToString();
+        }
         public static DataTable GetAllTestTypes()
         {
             DataTable dt = new DataTable();

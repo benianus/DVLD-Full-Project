@@ -113,6 +113,10 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         private void _ShowTestAppointmentsForm()
         {
             int LDLApplications = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
+
+            //fill the test appointment ID related to this person
+            clsGlobalSettings.TestAppointementID = clsTestAppointementsBusinessLayer.GetTestAppointmentID(LDLApplications);
+
             frmTestAppointments testAppointments = new frmTestAppointments(LDLApplications);
             testAppointments.ShowDialog();
         }
@@ -120,39 +124,37 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         private void _LoadLDLApplicationsMenuStrip()
         {
             int PassedTestCount = _HowMuchTestsPassed();
-            if (PassedTestCount == 0)
+            switch (PassedTestCount)
             {
-                tsmSechduleVisionTest.Enabled = true;
-                tsmSechduleWrittenTest.Enabled = false;
-                tsmSechduleStreetTest.Enabled = false;
-                tsmIssueDrivingLicenseFirstTime.Enabled = false;
-                tsmShowLicense.Enabled = false;
+                case 0:
+                    tsmSechduleVisionTest.Enabled = true;
+                    tsmSechduleWrittenTest.Enabled = false;
+                    tsmSechduleStreetTest.Enabled = false;
+                    tsmIssueDrivingLicenseFirstTime.Enabled = false;
+                    tsmShowLicense.Enabled = false;
+                    break;
+                case 1:
+                    tsmSechduleVisionTest.Enabled = false;
+                    tsmSechduleWrittenTest.Enabled = true;
+                    tsmSechduleStreetTest.Enabled = false;
+                    tsmIssueDrivingLicenseFirstTime.Enabled = false;
+                    tsmShowLicense.Enabled = false;
+                    break;
+                case 2:
+                    tsmSechduleVisionTest.Enabled = false;
+                    tsmSechduleWrittenTest.Enabled = false;
+                    tsmSechduleStreetTest.Enabled = true;
+                    tsmIssueDrivingLicenseFirstTime.Enabled = false;
+                    tsmShowLicense.Enabled = false;
+                    break;
+                default:
+                    tsmSechduleVisionTest.Enabled = false;
+                    tsmSechduleWrittenTest.Enabled = false;
+                    tsmSechduleStreetTest.Enabled = false;
+                    tsmIssueDrivingLicenseFirstTime.Enabled = true;
+                    tsmShowLicense.Enabled = false;
+                    break;
             }
-            else if (PassedTestCount == 1)
-            {
-                tsmSechduleVisionTest.Enabled = true;
-                tsmSechduleWrittenTest.Enabled = true;
-                tsmSechduleStreetTest.Enabled = false;
-                tsmIssueDrivingLicenseFirstTime.Enabled = false;
-                tsmShowLicense.Enabled = false;
-            }
-            else if (PassedTestCount == 2)
-            {
-                tsmSechduleVisionTest.Enabled = true;
-                tsmSechduleWrittenTest.Enabled = true;
-                tsmSechduleStreetTest.Enabled = true;
-                tsmIssueDrivingLicenseFirstTime.Enabled = false;
-                tsmShowLicense.Enabled = false;
-            }
-            else
-            {
-                tsmSechduleVisionTest.Enabled = true;
-                tsmSechduleWrittenTest.Enabled = true;
-                tsmSechduleStreetTest.Enabled = true;
-                tsmIssueDrivingLicenseFirstTime.Enabled = false;
-                tsmShowLicense.Enabled = false;
-            }
-
         }
         private int _HowMuchTestsPassed()
         {

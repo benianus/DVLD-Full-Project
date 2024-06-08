@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,43 +18,69 @@ namespace DVLD_Full_Project
         {
             InitializeComponent();
         }
-        
+        public struct stApplicationInfo
+        {
+            public string LocalDrivingLicenseApplicationID;
+            public string ApplicationID;
+            public string ApplicationStatus;
+            public string PaidFees;
+            public string ApplicationTypeTitle;
+            public string ClassName;
+            public string FullName;
+            public string ApplicationDate;
+            public string LastDateStatus;
+            public string PassedTestCount;
+            public string Username;
+            public string ApplicantPersonID;
+        }
+
+        public static stApplicationInfo ApplicationInfo;
         //functions
         private void _LoadUcTestAppointementsUserControl()
         {
+            //get the application information
+            ApplicationInfo = _GetAppInfos();
+
             //driving License Application Info
-            lblDLAppID.Text = clsGlobalSettings.LocalDrivingLicenseApplicationID.ToString();
-            lblAppliedForLicense.Text = _GetDrivingLicenseApplicationInfos("ClassName");
-            lblPassedTests.Text = _GetDrivingLicenseApplicationInfos("PassedTestCount") +"/3";
+            lblDLAppID.Text = ApplicationInfo.LocalDrivingLicenseApplicationID;
+            lblAppliedForLicense.Text = ApplicationInfo.ClassName;
+            lblPassedTests.Text = ApplicationInfo.PassedTestCount +"/3";
 
             //Application Basic info
-            lblApplicationID.Text = _GetApplicationInfos("ApplicationID");
-            lblStatus.Text = _GetApplicationInfos("ApplicationStatus");
-            lblFees.Text = _GetApplicationInfos("PaidFees");
-            lblApplicationType.Text = _GetApplicationInfos("ApplicationTypeTitle");
-            lblApplicantName.Text = _GetApplicationInfos("FullName");
-            lblDate.Text = _GetApplicationInfos("ApplicationDate");
-            lblStatusDate.Text = _GetApplicationInfos("LastStatusDate");
-            lblCreatedBy.Text = _GetApplicationInfos("UserName");
+            lblApplicationID.Text = ApplicationInfo.ApplicationID;
+            lblStatus.Text = ApplicationInfo.ApplicationStatus;
+            lblFees.Text = ApplicationInfo.PaidFees;
+            lblApplicationType.Text = ApplicationInfo.ApplicationTypeTitle;
+            lblApplicantName.Text = ApplicationInfo.FullName;
+            lblDate.Text = ApplicationInfo.ApplicationDate;
+            lblStatusDate.Text = ApplicationInfo.LastDateStatus;
+            lblCreatedBy.Text = ApplicationInfo.Username;
         }
-        private string _GetApplicationInfos(string ColumnName)
+        private stApplicationInfo _GetAppInfos()
         {
-            DataTable ApplicationsTable = clsApplicationsBusinessLayer.GetApplicationInfos(clsGlobalSettings.LocalDrivingLicenseApplicationID);
-            DataRow ApplicationRow = ApplicationsTable.Rows[0];
-
-            return ApplicationRow[ColumnName].ToString();   
-        }
-        private string _GetDrivingLicenseApplicationInfos(string ColumnName)
-        {
+            ApplicationInfo = new stApplicationInfo();
             DataTable LocalDriverLicenseApplicationsTable = clsLocalDriverLicenseApplicationBusinessLayer.GetDrivingLicenseApplicationInfo(clsGlobalSettings.LocalDrivingLicenseApplicationID);
             DataRow dr = LocalDriverLicenseApplicationsTable.Rows[0];
 
-            return dr[ColumnName].ToString();
+            ApplicationInfo.LocalDrivingLicenseApplicationID = dr[0].ToString();
+            ApplicationInfo.ApplicationID = dr[1].ToString();
+            ApplicationInfo.ApplicationStatus = dr[2].ToString();
+            ApplicationInfo.PaidFees = dr[3].ToString();
+            ApplicationInfo.ApplicationTypeTitle = dr[4].ToString();
+            ApplicationInfo.ClassName = dr[5].ToString();
+            ApplicationInfo.FullName = dr[6].ToString();
+            ApplicationInfo.ApplicationDate = dr[7].ToString();
+            ApplicationInfo.LastDateStatus = dr[8].ToString();
+            ApplicationInfo.PassedTestCount = dr[9].ToString();
+            ApplicationInfo.Username = dr[10].ToString();
+            ApplicationInfo.ApplicantPersonID = dr[11].ToString();
+
+            return ApplicationInfo;
         }
         private void _ShowPersonDetailsForm()
         {
             //get the personId 
-            int Person = Convert.ToInt32(_GetApplicationInfos("ApplicantPersonID"));
+            int Person = Convert.ToInt32(ApplicationInfo.ApplicantPersonID);
             frmPersonDetails PersonDetails = new frmPersonDetails(Person);
             PersonDetails.ShowDialog();
         }

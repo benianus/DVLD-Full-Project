@@ -99,7 +99,7 @@ namespace clsDataLayer
             DataTable LocalDrivingLicenseApplicationTable = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = "select * from LocalDrivingLicenseApplications_View where LocalDrivingLicenseApplicationID = @LDLApplication";
+            string query = "select * from Applications_View where LocalDrivingLicenseApplicationID = @LDLApplication";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LDLApplication", LDLApplication);
