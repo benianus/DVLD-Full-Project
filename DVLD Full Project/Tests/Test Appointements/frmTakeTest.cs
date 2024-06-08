@@ -47,8 +47,12 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 ifModeAddNew();
                 return;
             }
-
+            
+            //Find test appointment and put in an object
             clsGlobalSettings.TestAppointements = clsTestAppointementsBusinessLayer.FindTestAppointment(clsGlobalSettings.TestAppointementID);
+
+            //Find test using test appointment
+            clsGlobalSettings.Tests = new clsTestsBusinessLayer();
             ifModeUpdate();
         }
 
@@ -60,6 +64,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblTrial.Text = "0";
             lblDate.Text = clsGlobalSettings.TestAppointements.AppointmentDate.ToString();
             lblFees.Text = _GetTestTypeFees("Vision Test");
+            lblTestID.Text = "N/A";
         }
         private void ifModeAddNew()
         {
@@ -71,7 +76,6 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblTrial.Text = "0";
             lblDate.Text = clsGlobalSettings.TestAppointements.AppointmentDate.ToString();
             lblFees.Text = _GetTestTypeFees("Vision Test");
-            
         }
 
         private string _GetTestTypeFees(string TestTypeTitle)
@@ -80,11 +84,14 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         }
         private void _SaveTest()
         {
-
-            clsGlobalSettings.Tests.TestAppointmentID = clsGlobalSettings.TestAppointements.TestAppointmentID;
+            //
+            clsGlobalSettings.Tests.TestAppointmentID = clsGlobalSettings.TestAppointementID;
             clsGlobalSettings.Tests.TestResult = _getTestResult();
             clsGlobalSettings.Tests.Notes = txtNotes.Text;
             clsGlobalSettings.Tests.CreatedByUserID = clsGlobalSettings.TestAppointements.CreatedByUserID;
+
+            clsGlobalSettings.TestAppointements.IsLocked = true;
+
             if (clsGlobalSettings.TestAppointements.Save())
             {
                 if (MessageBox.Show("Test appointment saved") == DialogResult.OK)

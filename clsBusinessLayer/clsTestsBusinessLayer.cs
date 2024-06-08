@@ -1,5 +1,7 @@
-﻿using System;
+﻿using clsDataLayer;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,21 @@ namespace clsBusinessLayer
         public string Notes { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static clsTestsBusinessLayer FindTest(int TestAppointmentID)
+        {
+            int TestID = 0;
+            bool TestResult = false;
+            string Notes = string.Empty;
+            int CreatedByUserID = 0;
 
+            if (clsTestsDataLayer.FindTest(ref TestID, TestAppointmentID, ref TestResult, ref Notes, ref CreatedByUserID))
+            {
+                return new clsTestsBusinessLayer(TestID, TestAppointmentID, TestResult, Notes, CreatedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

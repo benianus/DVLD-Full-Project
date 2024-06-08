@@ -79,7 +79,8 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         }
         private void _ShowTakeTestForm()
         {
-            frmTakeTest TakeTest = new frmTakeTest();
+            int TestAppointmentID = Convert.ToInt32(dgvTestAppointments.CurrentRow.Cells[0].Value);  
+            frmTakeTest TakeTest = new frmTakeTest(TestAppointmentID);
             TakeTest.RefreshTestAppointmentData += _refreshTestAppointmentsData;
             TakeTest.RowsCounter += _rowsCounter;
             TakeTest.ShowDialog();
