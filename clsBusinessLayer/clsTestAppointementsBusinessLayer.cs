@@ -13,7 +13,7 @@ namespace clsBusinessLayer
     public class clsTestAppointementsBusinessLayer
     {
         public clsTestAppointementsBusinessLayer(int testAppointmentID, int testTypeID, int localDrivingLicenseApplicationID, DateTime appointmentDate, 
-            decimal paidFees, int createdByUserID, bool isLocked)
+            decimal paidFees, int createdByUserID, bool isLocked, int retakeTestApplicationID)
         {
             TestAppointmentID = testAppointmentID;
             TestTypeID = testTypeID;
@@ -22,6 +22,7 @@ namespace clsBusinessLayer
             PaidFees = paidFees;
             CreatedByUserID = createdByUserID;
             IsLocked = isLocked;
+            RetakeTestApplicationID = retakeTestApplicationID;
 
             clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
         }
@@ -37,6 +38,39 @@ namespace clsBusinessLayer
 
             clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
         }
+        public int TestAppointmentID { get; set; }
+        public int TestTypeID { get; set; }
+        public int LocalDrivingLicenseApplicationID { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public decimal PaidFees { get; set; }
+        public int CreatedByUserID { get; set; }
+        public bool IsLocked { get; set; }
+        public int RetakeTestApplicationID { get; set; }
+
+        public static bool isPersonPassTestAppointment(int LDLApplicationID)
+        {
+            return clsTestAppointementsDataLayer.isPersonPassTestAppointment(LDLApplicationID);
+        }
+        public static bool isTestAppointmentLinkedToRetakeTestApplicationType(int TestAppointmentID)
+        {
+            return clsTestAppointementsDataLayer.isTestAppointmentLinkedToRetakeTestApplicationType(TestAppointmentID);
+        }
+        public static bool isTestAppointmentLockedAndTestFailed(int TestAppointmentID)
+        {
+            return clsTestAppointementsDataLayer.isTestAppointmentLockedAndTestFailed(TestAppointmentID);
+        }
+        public static bool isPersonFailInTheTest(int LocalDrivingLicenseApplicationID)
+        {
+            return clsTestAppointementsDataLayer.isPersonFailInTheTest(LocalDrivingLicenseApplicationID);
+        }
+        public static int _GetTestTrialNumber(string LocalDrivingLicenseApplicationID)
+        {
+            return clsTestAppointementsDataLayer._GetTestTrialNumber(LocalDrivingLicenseApplicationID);
+        }
+        public static bool isTestAppointmentLocked(int testAppointmentID)
+        {
+            return clsTestAppointementsDataLayer.isTestAppointmentLocked(testAppointmentID);
+        }
         public static clsTestAppointementsBusinessLayer FindTestAppointment(int TestAppointmentID)
         {
             int TestTypeID = 0;
@@ -45,11 +79,13 @@ namespace clsBusinessLayer
             decimal PaidFees = 0;
             int CreatedByUserID = 0;
             bool IsLocked = false;
+            int RetakeTestApplicationID = 0;
 
             if (clsTestAppointementsDataLayer.FindTestAppointment(TestAppointmentID, ref TestTypeID, ref LocalDrivingLicenseApplicationID, ref AppointmentDate, ref PaidFees,
-                ref CreatedByUserID, ref IsLocked))
+                ref CreatedByUserID, ref IsLocked, ref RetakeTestApplicationID))
             {
-                return new clsTestAppointementsBusinessLayer(TestAppointmentID, TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked);
+                return new clsTestAppointementsBusinessLayer(TestAppointmentID, TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID,
+                    IsLocked, RetakeTestApplicationID);
             }
             else
             {
@@ -68,14 +104,11 @@ namespace clsBusinessLayer
         {
             return clsTestAppointementsDataLayer.GetTestAppointmentByID(TestAppointmentID);
         }
-        public int TestAppointmentID { get; set; }
-        public int TestTypeID { get; set; }
-        public int LocalDrivingLicenseApplicationID { get; set; }
-        public DateTime AppointmentDate { get; set; }
-        public decimal PaidFees { get; set; }
-        public int CreatedByUserID { get; set; }    
-        public bool IsLocked { get; set; }
-       
+        public static DataTable GetTestAppointmentByLDLApplicationID(int LDLApplicationID)
+        {
+            return clsTestAppointementsDataLayer.GetTestAppointmentByLDLApplicationID(LDLApplicationID);
+        }
+        
         public static bool isPersonHasTestAppointment(int LDLApplcication)
         {
             return clsTestAppointementsDataLayer.isPersonHasTestAppointment(LDLApplcication);
@@ -83,14 +116,14 @@ namespace clsBusinessLayer
         private bool _AddNewTestAppointment()
         {
             this.TestAppointmentID = clsTestAppointementsDataLayer.AddNewTestAppointment(this.TestTypeID, this.LocalDrivingLicenseApplicationID, this.AppointmentDate,
-                this.PaidFees, this.CreatedByUserID, this.IsLocked);
+                this.PaidFees, this.CreatedByUserID, this.IsLocked, this.RetakeTestApplicationID);
 
             return this.TestAppointmentID > 0;
         }
         private bool _UpdateTestAppointment()
         {
             return clsTestAppointementsDataLayer.UpdateTestAppointment(this.TestAppointmentID, this.TestTypeID, this.LocalDrivingLicenseApplicationID, this.AppointmentDate,
-                this.PaidFees, this.CreatedByUserID, this.IsLocked); 
+                this.PaidFees, this.CreatedByUserID, this.IsLocked, this.RetakeTestApplicationID); 
         }
         public bool Save()
         {

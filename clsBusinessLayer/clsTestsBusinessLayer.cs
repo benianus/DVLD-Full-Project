@@ -17,6 +17,8 @@ namespace clsBusinessLayer
             TestResult = testResult;
             Notes = notes;
             CreatedByUserID = createdByUserID;
+
+            clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
         }
         public clsTestsBusinessLayer()
         {
@@ -25,6 +27,8 @@ namespace clsBusinessLayer
             this.TestResult = false;
             this.Notes = string.Empty;
             this.CreatedByUserID = 0;
+
+            clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
         }
         public int TestID { get; set; }
         public int TestAppointmentID { get; set; }
@@ -47,6 +51,23 @@ namespace clsBusinessLayer
             {
                 return null;
             }
+        }
+        public bool AddNewTest()
+        {
+            this.TestID = clsTestsDataLayer.AddNewTest(this.TestAppointmentID, this.TestResult, this.Notes, this.CreatedByUserID);
+            return this.TestID > 0;
+        }
+        public bool Save()
+        {
+            switch(clsGlobalSettings.Mode)
+            {
+                case clsGlobalSettings.enMode.AddNew:
+                    clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+                    return AddNewTest();
+                
+            }
+            
+            return false;
         }
     }
 }

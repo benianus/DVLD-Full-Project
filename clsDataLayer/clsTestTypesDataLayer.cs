@@ -37,7 +37,7 @@ namespace clsDataLayer
             }
             finally { connection.Close(); }
 
-            return TestTypeFees.ToString();
+            return (Convert.ToInt32(TestTypeFees)).ToString();
         }
         public static DataTable GetAllTestTypes()
         {

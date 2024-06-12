@@ -13,7 +13,7 @@ namespace clsDataLayer
         {
             bool isFound = false;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = "SELECT * FROM Tests WHERE TestAppointmentID = @TestAppointment;";
+            string query = "SELECT * FROM Tests WHERE TestAppointmentID = @TestAppointmentID;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TestID", TestID);
             command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
@@ -33,7 +33,14 @@ namespace clsDataLayer
                     TestID = (int)reader["TestID"];
                     TestAppointmentID = (int)reader["TestAppointmentID"];
                     TestResult = (bool)reader["TestResult"];
-                    Notes = (string)reader["Notes"];
+                    if (reader["Notes"] == System.DBNull.Value)
+                    {
+                        Notes = string.Empty;
+                    }
+                    else
+                    {
+                        Notes = (string)reader["Notes"];
+                    }
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                 }
             }
@@ -46,6 +53,44 @@ namespace clsDataLayer
 
 
             return isFound; 
+        }
+        public static int AddNewTest(int TestAppointmentID, bool TestResult, string Notes, int CreatedByUserID)
+        {
+            int TestID = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "Insert into Tests (TestAppointmentID, TestResult, Notes, CreatedByUserID) values (@TestAppointmentID, @TestResult, @Notes, @CreatedByUserID);" +
+                "Select SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@TestResult", TestResult);
+            if (Notes == string.Empty)
+            {
+                command.Parameters.AddWithValue("@Notes", System.DBNull.Value);
+
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@Notes", Notes);
+            }
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int InsertedID))
+                {
+                    TestID = InsertedID;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { connection.Close(); }
+
+            return TestID;
         }
     }
 }

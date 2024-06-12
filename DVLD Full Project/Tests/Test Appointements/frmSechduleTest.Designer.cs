@@ -51,12 +51,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.LblTestType = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.gbTestType.SuspendLayout();
             this.gbRetakeTestInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbTestType
             // 
+            this.gbTestType.Controls.Add(this.lblWarningMessage);
             this.gbTestType.Controls.Add(this.btnSave);
             this.gbTestType.Controls.Add(this.gbRetakeTestInfo);
             this.gbTestType.Controls.Add(this.dtpDate);
@@ -283,6 +285,9 @@
             // 
             // LblTestType
             // 
+            this.LblTestType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTestType.AutoSize = true;
             this.LblTestType.Font = new System.Drawing.Font("Poppins Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTestType.Location = new System.Drawing.Point(155, 30);
@@ -290,6 +295,7 @@
             this.LblTestType.Size = new System.Drawing.Size(219, 48);
             this.LblTestType.TabIndex = 3;
             this.LblTestType.Text = "Schedule Test";
+            this.LblTestType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnClose
             // 
@@ -300,6 +306,21 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblWarningMessage
+            // 
+            this.lblWarningMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblWarningMessage.AutoSize = true;
+            this.lblWarningMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWarningMessage.Location = new System.Drawing.Point(183, 68);
+            this.lblWarningMessage.Name = "lblWarningMessage";
+            this.lblWarningMessage.Size = new System.Drawing.Size(162, 20);
+            this.lblWarningMessage.TabIndex = 20;
+            this.lblWarningMessage.Text = "Warning Message!!";
+            this.lblWarningMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblWarningMessage.Visible = false;
             // 
             // frmSechduleTest
             // 
@@ -344,5 +365,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblWarningMessage;
     }
 }

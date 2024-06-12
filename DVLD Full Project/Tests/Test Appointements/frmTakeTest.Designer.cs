@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.gbTestType = new System.Windows.Forms.GroupBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTestID = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.lblFees = new System.Windows.Forms.Label();
             this.lblTrial = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -42,15 +44,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LblTestType = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblTestID = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.rbPass = new System.Windows.Forms.RadioButton();
             this.rbFail = new System.Windows.Forms.RadioButton();
-            this.lblDate = new System.Windows.Forms.Label();
             this.gbTestType.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,15 +78,35 @@
             this.gbTestType.TabStop = false;
             this.gbTestType.Text = "Vision  Test";
             // 
-            // btnSave
+            // lblDate
             // 
-            this.btnSave.Location = new System.Drawing.Point(444, 544);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 37);
-            this.btnSave.TabIndex = 19;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(145, 250);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(27, 20);
+            this.lblDate.TabIndex = 20;
+            this.lblDate.Text = "??";
+            // 
+            // lblTestID
+            // 
+            this.lblTestID.AutoSize = true;
+            this.lblTestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTestID.Location = new System.Drawing.Point(145, 324);
+            this.lblTestID.Name = "lblTestID";
+            this.lblTestID.Size = new System.Drawing.Size(111, 20);
+            this.lblTestID.TabIndex = 19;
+            this.lblTestID.Text = "Not Taken Yet";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(49, 324);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Test ID:";
             // 
             // lblFees
             // 
@@ -208,6 +228,16 @@
             this.LblTestType.TabIndex = 3;
             this.LblTestType.Text = "Take Test";
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(444, 544);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 37);
+            this.btnSave.TabIndex = 19;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(354, 544);
@@ -217,26 +247,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(49, 324);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 20);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Test ID:";
-            // 
-            // lblTestID
-            // 
-            this.lblTestID.AutoSize = true;
-            this.lblTestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTestID.Location = new System.Drawing.Point(145, 324);
-            this.lblTestID.Name = "lblTestID";
-            this.lblTestID.Size = new System.Drawing.Size(35, 20);
-            this.lblTestID.TabIndex = 19;
-            this.lblTestID.Text = "N/A";
             // 
             // label9
             // 
@@ -289,16 +299,6 @@
             this.rbFail.TabIndex = 26;
             this.rbFail.Text = "Fail";
             this.rbFail.UseVisualStyleBackColor = true;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(145, 250);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(27, 20);
-            this.lblDate.TabIndex = 20;
-            this.lblDate.Text = "??";
             // 
             // frmTakeTest
             // 

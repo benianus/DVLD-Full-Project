@@ -65,7 +65,7 @@ namespace DVLD_Full_Project
             ApplicationInfo.LocalDrivingLicenseApplicationID = dr[0].ToString();
             ApplicationInfo.ApplicationID = dr[1].ToString();
             ApplicationInfo.ApplicationStatus = dr[2].ToString();
-            ApplicationInfo.PaidFees = dr[3].ToString();
+            ApplicationInfo.PaidFees = (Convert.ToInt32(dr[3])).ToString();
             ApplicationInfo.ApplicationTypeTitle = dr[4].ToString();
             ApplicationInfo.ClassName = dr[5].ToString();
             ApplicationInfo.FullName = dr[6].ToString();
