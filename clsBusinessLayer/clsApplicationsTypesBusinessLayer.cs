@@ -23,7 +23,7 @@ namespace clsBusinessLayer
         {
             return clsApplicationsTypesDataLayer.GetAllApplicationTypes();
         }
-        public static int GetApplicationTypeFees(string ApplicatonTypeTitle)
+        public static int _GetApplicationTypeFees(string ApplicatonTypeTitle)
         {
             return clsApplicationsTypesDataLayer.GetApplicationTypeFees(ApplicatonTypeTitle);
         }

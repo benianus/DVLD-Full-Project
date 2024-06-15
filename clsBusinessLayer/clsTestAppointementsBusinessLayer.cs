@@ -35,7 +35,7 @@ namespace clsBusinessLayer
             PaidFees = 0;
             CreatedByUserID = 0;
             IsLocked = false;
-
+            RetakeTestApplicationID = 0;
             clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
         }
         public int TestAppointmentID { get; set; }

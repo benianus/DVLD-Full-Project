@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbTestType = new System.Windows.Forms.GroupBox();
+            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbRetakeTestInfo = new System.Windows.Forms.GroupBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.LblTestType = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.gbTestType.SuspendLayout();
             this.gbRetakeTestInfo.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +80,21 @@
             this.gbTestType.TabIndex = 3;
             this.gbTestType.TabStop = false;
             this.gbTestType.Text = "Vision  Test";
+            // 
+            // lblWarningMessage
+            // 
+            this.lblWarningMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblWarningMessage.AutoSize = true;
+            this.lblWarningMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWarningMessage.Location = new System.Drawing.Point(20, 68);
+            this.lblWarningMessage.Name = "lblWarningMessage";
+            this.lblWarningMessage.Size = new System.Drawing.Size(162, 20);
+            this.lblWarningMessage.TabIndex = 20;
+            this.lblWarningMessage.Text = "Warning Message!!";
+            this.lblWarningMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblWarningMessage.Visible = false;
             // 
             // btnSave
             // 
@@ -306,21 +321,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lblWarningMessage
-            // 
-            this.lblWarningMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblWarningMessage.AutoSize = true;
-            this.lblWarningMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWarningMessage.Location = new System.Drawing.Point(183, 68);
-            this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(162, 20);
-            this.lblWarningMessage.TabIndex = 20;
-            this.lblWarningMessage.Text = "Warning Message!!";
-            this.lblWarningMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblWarningMessage.Visible = false;
             // 
             // frmSechduleTest
             // 

@@ -176,12 +176,12 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         {
             return clsTestTypesBusinessLayer._GetTestTypeFees(TestTypeTitle);
         }
-        private void _SaveTestAppointment()
+        private void _SaveTestAppointmentAndRetakeApplication()
         {
             //Save Retake application if it's schedule retake test
             if (LblTestType.Text == "Schedule Retake Test")
             {
-                _SaveApplication();
+                _SaveRetakeApplication();
 
                 clsGlobalSettings.TestAppointements.TestTypeID = 1;
                 clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
@@ -190,17 +190,23 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 clsGlobalSettings.TestAppointements.CreatedByUserID = clsGlobalSettings.User.UserID;
                 clsGlobalSettings.TestAppointements.IsLocked = false;
                 clsGlobalSettings.TestAppointements.RetakeTestApplicationID = clsGlobalSettings.Applications.ApplicationID;
-            }
-            else
-            {
-                clsGlobalSettings.TestAppointements.TestTypeID = 1;
-                clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
-                clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
-                clsGlobalSettings.TestAppointements.PaidFees = Convert.ToDecimal(lblFees.Text);
-                clsGlobalSettings.TestAppointements.CreatedByUserID = clsGlobalSettings.User.UserID;
-                clsGlobalSettings.TestAppointements.IsLocked = false;
 
+                //turn the mode to add new to save the test appointment linked to this retake application
+                clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
             }
+           
+            //save or update test appointment
+            _SaveTestAppointment();
+        }
+
+        private void _SaveTestAppointment()
+        {
+            clsGlobalSettings.TestAppointements.TestTypeID = 1;
+            clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
+            clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
+            clsGlobalSettings.TestAppointements.PaidFees = Convert.ToDecimal(lblFees.Text);
+            clsGlobalSettings.TestAppointements.CreatedByUserID = clsGlobalSettings.User.UserID;
+            clsGlobalSettings.TestAppointements.IsLocked = false;
 
             if (clsGlobalSettings.TestAppointements.Save())
             {
@@ -208,7 +214,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 {
                     RefreshTestAppointmentData?.Invoke(clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID);
                     RowsCounter?.Invoke();
-                    this.Close();   
+                    this.Close();
                 }
             }
             else
@@ -216,7 +222,21 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 MessageBox.Show("Test appointment not saved");
             }
         }
-        private void _SaveApplication()
+
+        private static void _ChangeModeToAddNewOrUpdate()
+        {
+            //turn mode to addnew if it's in Update mode or vice Versa
+            if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.Update)
+            {
+                clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
+            }
+            else
+            {
+                clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+            }
+        }
+
+        private void _SaveRetakeApplication()
         {
             //create new application with type retake
             clsGlobalSettings.Applications = new clsApplicationsBusinessLayer();
@@ -251,7 +271,14 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _SaveTestAppointment();
+            if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.AddNew)
+            {
+                _SaveTestAppointmentAndRetakeApplication();
+            }
+            else
+            {
+                _SaveTestAppointment();
+            }
         }
     }
 }

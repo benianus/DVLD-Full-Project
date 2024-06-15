@@ -1,4 +1,5 @@
-﻿using System;
+﻿using clsDataLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,9 @@ namespace clsBusinessLayer
         public bool DefaultValidityLength { get; set; }
         public decimal ClassFees { get; set; }
 
+        public static int GetLicenseClassID(string ClassName)
+        {
+            return clsLicenseClassesDataLayer.GetLicenseClassID(ClassName);
+        }
     }
 }

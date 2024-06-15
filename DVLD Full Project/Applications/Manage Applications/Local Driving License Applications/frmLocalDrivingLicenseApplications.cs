@@ -118,6 +118,11 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
             clsGlobalSettings.TestAppointementID = clsTestAppointementsBusinessLayer.GetTestAppointmentID(LDLApplications);
 
             frmTestAppointments testAppointments = new frmTestAppointments(LDLApplications);
+
+            //refresh the data an rows counter after closing the form 
+            testAppointments.RefreshLicenseDrivingLicenseApplicationsData += _RefreshLocalDrivingLicenseAppsData;
+            testAppointments.RefreshRowsCounter += _RowsCounter;
+
             testAppointments.ShowDialog();
         }
 

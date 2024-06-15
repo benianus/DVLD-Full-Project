@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.LblTestType = new System.Windows.Forms.Label();
             this.dgvTestAppointments = new System.Windows.Forms.DataGridView();
+            this.cmsTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddAppointment = new System.Windows.Forms.Button();
             this.ucTestAppointments1 = new DVLD_Full_Project.ucTestAppointments();
-            this.cmsTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.takeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTestAppointments)).BeginInit();
             this.cmsTestAppointment.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +68,29 @@
             this.dgvTestAppointments.ReadOnly = true;
             this.dgvTestAppointments.Size = new System.Drawing.Size(762, 150);
             this.dgvTestAppointments.TabIndex = 2;
+            // 
+            // cmsTestAppointment
+            // 
+            this.cmsTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiEdit,
+            this.tsmiTakeTest});
+            this.cmsTestAppointment.Name = "cmsTestAppointment";
+            this.cmsTestAppointment.Size = new System.Drawing.Size(181, 70);
+            this.cmsTestAppointment.Opened += new System.EventHandler(this.cmsTestAppointment_Opened);
+            // 
+            // tsmiEdit
+            // 
+            this.tsmiEdit.Name = "tsmiEdit";
+            this.tsmiEdit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEdit.Text = "Edit";
+            this.tsmiEdit.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // tsmiTakeTest
+            // 
+            this.tsmiTakeTest.Name = "tsmiTakeTest";
+            this.tsmiTakeTest.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTakeTest.Text = "Take Test";
+            this.tsmiTakeTest.Click += new System.EventHandler(this.takeToolStripMenuItem_Click);
             // 
             // lblRecordsNumber
             // 
@@ -130,28 +153,6 @@
             this.ucTestAppointments1.Size = new System.Drawing.Size(763, 345);
             this.ucTestAppointments1.TabIndex = 0;
             // 
-            // cmsTestAppointment
-            // 
-            this.cmsTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.takeToolStripMenuItem});
-            this.cmsTestAppointment.Name = "cmsTestAppointment";
-            this.cmsTestAppointment.Size = new System.Drawing.Size(181, 70);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // takeToolStripMenuItem
-            // 
-            this.takeToolStripMenuItem.Name = "takeToolStripMenuItem";
-            this.takeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.takeToolStripMenuItem.Text = "Take Test";
-            this.takeToolStripMenuItem.Click += new System.EventHandler(this.takeToolStripMenuItem_Click);
-            // 
             // frmTestAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +187,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddAppointment;
         private System.Windows.Forms.ContextMenuStrip cmsTestAppointment;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem takeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTakeTest;
     }
 }

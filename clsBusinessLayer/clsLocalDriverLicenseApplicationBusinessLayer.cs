@@ -78,8 +78,8 @@ namespace clsBusinessLayer
                 case clsGlobalSettings.enMode.AddNew:
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
                     return _AddNewLocalDrivingLicenseApplication();
-                case clsGlobalSettings.enMode.Update:
-                    return _UpdateLocalDrivingLicenseApplication();
+                //case clsGlobalSettings.enMode.Update:
+                //    return _UpdateLocalDrivingLicenseApplication();
             }
             return false;
         }

@@ -83,20 +83,21 @@ namespace clsBusinessLayer
         }
         public bool _UpdateApplication()
         {
-
             return true;
         }
         public bool Save()
         {
-            switch (clsGlobalSettings.Mode )
+            switch (clsGlobalSettings.Mode)
             {
+
                 case clsGlobalSettings.enMode.AddNew:
-                    clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+                    //clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
                     return _AddNewApplication();
-                case clsGlobalSettings.enMode.Update:
-                    return _UpdateApplication();
+                    //case clsGlobalSettings.enMode.Update:
+                    //    return _UpdateApplication();
             }
-            return _AddNewApplication();
+            return false;
+
         }
     }
 }

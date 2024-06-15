@@ -63,7 +63,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             }
             else if (isPersonPassTestAppointment())
             {
-                MessageBox.Show("Person Already pass the appointement for this test");
+                MessageBox.Show("Person Already pass the appointement for this test, you can't add Test Appointment");
             }
             else
             {
@@ -125,7 +125,19 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             TakeTest.ShowDialog();
             
         }
-       
+        private void _showOrHideTakeTestMenuStrip()
+        {
+            int testAppointmentID = Convert.ToInt32(dgvTestAppointments.CurrentRow.Cells[0].Value);
+            if (clsTestAppointementsBusinessLayer.isTestAppointmentLocked(testAppointmentID))
+            {
+                tsmiTakeTest.Enabled = false;
+            }
+            else
+            {
+                tsmiTakeTest.Enabled = true;
+            }
+        }
+
         //button
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
@@ -151,5 +163,12 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         {
             _ShowTakeTestForm();
         }
+
+        private void cmsTestAppointment_Opened(object sender, EventArgs e)
+        {
+            _showOrHideTakeTestMenuStrip();
+        }
+
+        
     }
 }

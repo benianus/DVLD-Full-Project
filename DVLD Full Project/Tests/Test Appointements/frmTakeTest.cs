@@ -69,6 +69,14 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblDate.Text = clsGlobalSettings.TestAppointements.AppointmentDate.ToString();
             lblFees.Text = _GetTestTypeFees("Vision Test");
             lblTestID.Text = clsGlobalSettings.Tests.TestID.ToString();
+            if (clsGlobalSettings.Tests.TestResult == false)
+            {
+                rbFail.Checked = true;
+            }
+            else
+            {
+                rbPass.Checked = true;
+            }
         }
         private string _GetTestTrialNumber()
         {
