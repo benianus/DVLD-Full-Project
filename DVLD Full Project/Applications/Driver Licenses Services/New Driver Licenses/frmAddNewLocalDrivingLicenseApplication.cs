@@ -51,7 +51,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
             {
                 lblApplicationDate.Text = $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
                 cbLicsenseClass.SelectedIndex = 0;
-                lblApplicatonFees.Text = clsApplicationsTypesBusinessLayer.GetApplicationTypeFees("New Local Driving License Service").ToString();
+                lblApplicatonFees.Text = clsApplicationsTypesBusinessLayer._GetApplicationTypeFees("New Local Driving License Service").ToString();
                 lblCreateBy.Text = clsGlobalSettings.User.UserName;
                 clsGlobalSettings.Applications = new clsApplicationsBusinessLayer();
                 return;
@@ -91,7 +91,6 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                 _SaveApplication();
             }
         }
-
         private void _SaveApplication()
         {
             _GetApplicationsObjectInfos();
@@ -109,13 +108,11 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                 MessageBox.Show("Application not Saved");
             }
         }
-
         private void _GetConditionsToVerifyIfApplicationExists(out string NationalNo, out string ClassName)
         {
             NationalNo = clsGlobalSettings.Person.NationalNo;
             ClassName = cbLicsenseClass.SelectedItem.ToString();
         }
-
         private void _GetApplicationsObjectInfos()
         {
             clsGlobalSettings.Applications.ApplicantPersonID = clsGlobalSettings.Person.PersonId;

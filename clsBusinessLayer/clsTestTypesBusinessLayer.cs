@@ -22,6 +22,11 @@ namespace clsBusinessLayer
         public string TestTypeTitle { get; set; }
         public string TestTypeDescription { get; set; }
         public decimal TestTypeFees { get; set; }
+
+        public static string _GetTestTypeFees(string TestTypeTitle)
+        {
+            return clsTestTypesDataLayer._GetTestTypeFees(TestTypeTitle);
+        }
         public static DataTable GetAllTestTypes()
         {
             return clsTestTypesDataLayer.GetAllTestTypes();

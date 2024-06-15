@@ -47,7 +47,7 @@
             this.pictureBox1.Image = global::DVLD_Full_Project.Properties.Resources.Mylogo1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(375, 450);
+            this.pictureBox1.Size = new System.Drawing.Size(344, 352);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -59,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(425, 79);
+            this.label1.Location = new System.Drawing.Point(413, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 34);
             this.label1.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(397, 160);
+            this.label2.Location = new System.Drawing.Point(385, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(397, 193);
+            this.label3.Location = new System.Drawing.Point(385, 193);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 20);
             this.label3.TabIndex = 3;
@@ -87,14 +87,14 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(486, 160);
+            this.txtUserName.Location = new System.Drawing.Point(474, 160);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(179, 20);
             this.txtUserName.TabIndex = 4;
             // 
             // txtPassWord
             // 
-            this.txtPassWord.Location = new System.Drawing.Point(486, 193);
+            this.txtPassWord.Location = new System.Drawing.Point(474, 193);
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
             this.txtPassWord.Size = new System.Drawing.Size(179, 20);
@@ -102,7 +102,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(539, 252);
+            this.btnLogin.Location = new System.Drawing.Point(527, 252);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 32);
             this.btnLogin.TabIndex = 7;
@@ -123,7 +123,7 @@
             // checkBoxRememberMe
             // 
             this.checkBoxRememberMe.AutoSize = true;
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(486, 225);
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(474, 225);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
             this.checkBoxRememberMe.Size = new System.Drawing.Size(94, 17);
             this.checkBoxRememberMe.TabIndex = 6;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 450);
+            this.ClientSize = new System.Drawing.Size(693, 352);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnLogin);
@@ -144,6 +144,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLoginScreen";
             this.Text = "frmLoginScreen";
             this.Load += new System.EventHandler(this.frmLoginScreen_Load);

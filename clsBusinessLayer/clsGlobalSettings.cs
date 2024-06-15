@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,12 @@ namespace clsBusinessLayer
             New = 1,
             Cancelled = 2,
             Completed = 3
+        }
+        public enum enTestTypes
+        {
+            VisionTest = 1,
+            WrittenTheoryTest,
+            PracticalStreetTest
         }
 
         public static clsUserBusinessLayer User;
@@ -46,6 +53,7 @@ namespace clsBusinessLayer
 
         public static enMode Mode;
         public static enApplicationStatus Status;
+        public static enTestTypes TestType;
         
     }
 }

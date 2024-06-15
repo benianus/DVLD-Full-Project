@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucTestAppointments1 = new DVLD_Full_Project.ucTestAppointments();
+            this.components = new System.ComponentModel.Container();
             this.LblTestType = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTestAppointments = new System.Windows.Forms.DataGridView();
+            this.cmsTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddAppointment = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ucTestAppointments1 = new DVLD_Full_Project.ucTestAppointments();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestAppointments)).BeginInit();
+            this.cmsTestAppointment.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ucTestAppointments1
-            // 
-            this.ucTestAppointments1.Location = new System.Drawing.Point(12, 93);
-            this.ucTestAppointments1.Name = "ucTestAppointments1";
-            this.ucTestAppointments1.Size = new System.Drawing.Size(763, 345);
-            this.ucTestAppointments1.TabIndex = 0;
             // 
             // LblTestType
             // 
@@ -56,14 +54,43 @@
             this.LblTestType.TabIndex = 1;
             this.LblTestType.Text = "Vision Test Appointments";
             // 
-            // dataGridView1
+            // dgvTestAppointments
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 466);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(762, 150);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvTestAppointments.AllowUserToAddRows = false;
+            this.dgvTestAppointments.AllowUserToDeleteRows = false;
+            this.dgvTestAppointments.AllowUserToOrderColumns = true;
+            this.dgvTestAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvTestAppointments.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTestAppointments.ContextMenuStrip = this.cmsTestAppointment;
+            this.dgvTestAppointments.Location = new System.Drawing.Point(12, 466);
+            this.dgvTestAppointments.Name = "dgvTestAppointments";
+            this.dgvTestAppointments.ReadOnly = true;
+            this.dgvTestAppointments.Size = new System.Drawing.Size(762, 150);
+            this.dgvTestAppointments.TabIndex = 2;
+            // 
+            // cmsTestAppointment
+            // 
+            this.cmsTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiEdit,
+            this.tsmiTakeTest});
+            this.cmsTestAppointment.Name = "cmsTestAppointment";
+            this.cmsTestAppointment.Size = new System.Drawing.Size(181, 70);
+            this.cmsTestAppointment.Opened += new System.EventHandler(this.cmsTestAppointment_Opened);
+            // 
+            // tsmiEdit
+            // 
+            this.tsmiEdit.Name = "tsmiEdit";
+            this.tsmiEdit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEdit.Text = "Edit";
+            this.tsmiEdit.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // tsmiTakeTest
+            // 
+            this.tsmiTakeTest.Name = "tsmiTakeTest";
+            this.tsmiTakeTest.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTakeTest.Text = "Take Test";
+            this.tsmiTakeTest.Click += new System.EventHandler(this.takeToolStripMenuItem_Click);
             // 
             // lblRecordsNumber
             // 
@@ -97,7 +124,7 @@
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
             // label1
             // 
@@ -119,6 +146,13 @@
             this.btnAddAppointment.UseVisualStyleBackColor = true;
             this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
             // 
+            // ucTestAppointments1
+            // 
+            this.ucTestAppointments1.Location = new System.Drawing.Point(12, 93);
+            this.ucTestAppointments1.Name = "ucTestAppointments1";
+            this.ucTestAppointments1.Size = new System.Drawing.Size(763, 345);
+            this.ucTestAppointments1.TabIndex = 0;
+            // 
             // frmTestAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,12 +163,14 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblRecordsNumber);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvTestAppointments);
             this.Controls.Add(this.LblTestType);
             this.Controls.Add(this.ucTestAppointments1);
             this.Name = "frmTestAppointments";
             this.Text = "frmVisionTestAppointments";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmTestAppointments_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestAppointments)).EndInit();
+            this.cmsTestAppointment.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,11 +180,14 @@
 
         private ucTestAppointments ucTestAppointments1;
         private System.Windows.Forms.Label LblTestType;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTestAppointments;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddAppointment;
+        private System.Windows.Forms.ContextMenuStrip cmsTestAppointment;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTakeTest;
     }
 }

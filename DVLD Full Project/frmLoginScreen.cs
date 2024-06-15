@@ -15,6 +15,7 @@ namespace DVLD_Full_Project
 {
     public partial class frmLoginScreen : Form
     {
+        
         public frmLoginScreen()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace DVLD_Full_Project
         }
         private void _CloseLoginScreen()
         {
+            
             this.Close();
             this.Dispose();
         }
@@ -107,10 +109,7 @@ namespace DVLD_Full_Project
         }
 
         //buttons
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            _CloseLoginScreen();
-        }
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             _Login();
@@ -119,6 +118,20 @@ namespace DVLD_Full_Project
         private void frmLoginScreen_Load(object sender, EventArgs e)
         {
             _LoadLoginScreen();
+        }
+
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            _CloseLoginScreen();
+        }
+
+        private void CloseIfEscapeClicked(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                _CloseLoginScreen();
+            }
         }
     }
 }
