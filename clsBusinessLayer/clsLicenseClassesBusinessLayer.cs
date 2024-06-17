@@ -31,5 +31,9 @@ namespace clsBusinessLayer
         {
             return clsLicenseClassesDataLayer.GetLicenseClassID(ClassName);
         }
+        public static byte GetDefaultValidityLength(int LicenseClassID)
+        {
+            return clsLicenseClassesDataLayer.GetDefaultValidityLength(LicenseClassID);
+        }
     }
 }

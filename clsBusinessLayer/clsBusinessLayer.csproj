@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsApplicationsBusinessLayer.cs" />
     <Compile Include="clsApplicationsTypesBusinessLayer.cs" />
+    <Compile Include="clsDetainedLicensesBusinessLayer.cs" />
     <Compile Include="clsDriversBusinessLayer.cs" />
     <Compile Include="clsGlobalSettings.cs" />
     <Compile Include="clsLicenseClassesBusinessLayer.cs" />

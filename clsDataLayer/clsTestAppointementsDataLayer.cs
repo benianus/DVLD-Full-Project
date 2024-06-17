@@ -11,16 +11,16 @@ namespace clsDataLayer
 {
     public class clsTestAppointementsDataLayer
     {
-        public static bool isPersonPassTestAppointment(int LDLApplicationID)
+        public static bool isPersonPassTestAppointment(int LDLApplicationID, int TestTypeID)
         {
             bool isPersonPassTheTest = false;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
             string query = "select * from TestAppointments " +
                 "INNER JOIN Tests on TestAppointments.TestAppointmentID = Tests.TestAppointmentID " +
-                "WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and TestResult = 1 and TestTypeID = 1;";
+                "WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and TestResult = 1 and TestTypeID = @TestTypeID;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLApplicationID);
-
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
             try
             {
                 connection.Open();
@@ -96,16 +96,16 @@ namespace clsDataLayer
 
             return isTestAppointmentLockedAndFail;
         }
-        public static bool isPersonFailInTheTest(int LocalDrivingLicenseApplicationID)
+        public static bool isPersonFailInTheTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             bool isPersonFailInTheTest = false;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
             string query = "select * from TestAppointments " +
                 "INNER JOIN Tests on TestAppointments.TestAppointmentID = Tests.TestAppointmentID " +
-                "WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and TestResult = 0 and TestTypeID = 1;";
+                "WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and TestResult = 0 and TestTypeID = @TestTypeID;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
             try
             {
                 connection.Open();
@@ -123,15 +123,15 @@ namespace clsDataLayer
             }
             return isPersonFailInTheTest;
         }
-        public static int _GetTestTrialNumber(string LocalDrivingLicenseApplicationID)
+        public static int _GetTestTrialNumber(string LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             int trial = 0;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = "select count(*) as Trial from TestAppointments where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and IsLocked = 1;";
+            string query = "select count(*) as Trial from TestAppointments where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and IsLocked = 1 and TestTypeID = @TestTypeID;";
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
             try
             {
                 connection.Open();
@@ -278,16 +278,17 @@ namespace clsDataLayer
 
             return TestAppointmentTable;
         }
-        public static DataTable GetTestAppointmentByLDLApplicationID(int LDLApplicationID)
+        public static DataTable GetTestAppointmentByLDLApplicationID(int LDLApplicationID, int TestTypeID)
         {
             DataTable TestAppointmentTable = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
             string query = "SELECT TestAppointmentID, AppointmentDate, PaidFees, IsLocked FROM TestAppointments " +
-                "WHERE (LocalDrivingLicenseApplicationID = @LDLApplicationID) " +
+                "WHERE (LocalDrivingLicenseApplicationID = @LDLApplicationID) and (TestTypeID = @TestTypeID) " +
                 "ORDER BY IsLocked ASC;";
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
             try
             {
@@ -330,15 +331,15 @@ namespace clsDataLayer
 
             return TestAppointmentTable;
         }
-        public static bool isPersonHasTestAppointment(int LDLApplcication)
+        public static bool isPersonHasTestAppointment(int LDLApplcication, int TestTypeID)
         {
             bool isFound = false;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = "select * from TestAppointments where LocalDrivingLicenseApplicationID = @LDLApplcication and TestTypeID = 1 and IsLocked = 0;";
+            string query = "select * from TestAppointments where LocalDrivingLicenseApplicationID = @LDLApplcication and TestTypeID = @TestTypeID and IsLocked = 0;";
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LDLApplcication", LDLApplcication);
-
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
             try
             {
                 connection.Open();

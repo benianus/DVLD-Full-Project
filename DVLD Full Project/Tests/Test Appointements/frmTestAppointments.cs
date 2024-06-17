@@ -18,9 +18,10 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
 
         public event eventRefreshRowsCounter RefreshRowsCounter;
         public event eventRefreshLicenseDrivingLicenseApplicationsData RefreshLicenseDrivingLicenseApplicationsData;
-        public frmTestAppointments(int LDLApplicationID)
+        public frmTestAppointments(int LDLApplicationID, clsGlobalSettings.enTestTypes TestType)
         {
             InitializeComponent();
+            clsGlobalSettings.TestType = TestType;
             clsGlobalSettings.LocalDrivingLicenseApplicationID = LDLApplicationID;
         }
         //functions
@@ -39,9 +40,9 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             dgvTestAppointments.DataSource = clsTestAppointementsBusinessLayer.GetTestAppointmentByID(TestAppointmentID);
         }
         //
-        private void _refreshTestAppointmentsDataByLDLApplicationID(int LDLApplicationID)
+        private void _refreshTestAppointmentsDataByLDLApplicationID(int LDLApplicationID, int TestTypeID)
         {
-            dgvTestAppointments.DataSource = clsTestAppointementsBusinessLayer.GetTestAppointmentByLDLApplicationID(LDLApplicationID);
+            dgvTestAppointments.DataSource = clsTestAppointementsBusinessLayer.GetTestAppointmentByLDLApplicationID(LDLApplicationID, TestTypeID);
         }
         
         private void _rowsCounter()
@@ -73,16 +74,19 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         
         private bool isPersonPassTestAppointment()
         {
-            return clsTestAppointementsBusinessLayer.isPersonPassTestAppointment(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            return clsTestAppointementsBusinessLayer.isPersonPassTestAppointment(clsGlobalSettings.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType);
         }
         private bool isPersonHasTestAppointment()
         {
-            return clsTestAppointementsBusinessLayer.isPersonHasTestAppointment(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            return clsTestAppointementsBusinessLayer.isPersonHasTestAppointment(clsGlobalSettings.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType);
         }
         private void _LoadTestAppointementForm()
         {
-            _refreshTestAppointmentsDataByLDLApplicationID(clsGlobalSettings.LocalDrivingLicenseApplicationID);
-            _rowsCounter();            
+            _refreshTestAppointmentsDataByLDLApplicationID(clsGlobalSettings.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType);
+            _rowsCounter();
+
+            //change the title 
+            LblTestType.Text = _GetTestTypeTitle();
         }
 
         private void EditSechudleTest()
@@ -137,7 +141,20 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 tsmiTakeTest.Enabled = true;
             }
         }
-
+        public static string _GetTestTypeTitle()
+        {
+            switch (clsGlobalSettings.TestType)
+            {
+                case clsGlobalSettings.enTestTypes.VisionTest:
+                    return "Vision Test";
+                case clsGlobalSettings.enTestTypes.WrittenTheoryTest:
+                    return "Written (Theory) Test";
+                case clsGlobalSettings.enTestTypes.PracticalStreetTest:
+                    return "Practical (Street) Test";
+                
+            }
+            return string.Empty;
+        }
         //button
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {

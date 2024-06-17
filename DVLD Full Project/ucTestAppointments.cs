@@ -42,11 +42,17 @@ namespace DVLD_Full_Project
             ApplicationInfo = _GetAppInfos();
 
             //driving License Application Info
-            lblDLAppID.Text = ApplicationInfo.LocalDrivingLicenseApplicationID;
-            lblAppliedForLicense.Text = ApplicationInfo.ClassName;
-            lblPassedTests.Text = ApplicationInfo.PassedTestCount +"/3";
+            _DrivingLicenseApplicationInfo();
+
+            //show the link label if the actual application is linked to a driver licnese already issued
+            _EnableShowLicenseInfoLinkLabel();
 
             //Application Basic info
+            _ApplicationBasicInfo();
+        }
+
+        private void _ApplicationBasicInfo()
+        {
             lblApplicationID.Text = ApplicationInfo.ApplicationID;
             lblStatus.Text = ApplicationInfo.ApplicationStatus;
             lblFees.Text = ApplicationInfo.PaidFees;
@@ -56,24 +62,48 @@ namespace DVLD_Full_Project
             lblStatusDate.Text = ApplicationInfo.LastDateStatus;
             lblCreatedBy.Text = ApplicationInfo.Username;
         }
+
+        private void _DrivingLicenseApplicationInfo()
+        {
+            lblDLAppID.Text = ApplicationInfo.LocalDrivingLicenseApplicationID;
+            lblAppliedForLicense.Text = ApplicationInfo.ClassName;
+            lblPassedTests.Text = ApplicationInfo.PassedTestCount + "/3";
+        }
+
+        private void _EnableShowLicenseInfoLinkLabel()
+        {
+            if (isApplicationHasDriverLicense())
+            {
+                lblShowLicenseInfo.Enabled = true;
+            }
+            else
+            {
+                lblShowLicenseInfo.Enabled = false;
+            }
+        }
+
+        private bool isApplicationHasDriverLicense()
+        {
+            return clsLicensesBusinessLayer.isApplicationHasDriverLicense(Convert.ToInt32(ApplicationInfo.ApplicationID));
+        }
         private stApplicationInfo _GetAppInfos()
         {
             ApplicationInfo = new stApplicationInfo();
             DataTable LocalDriverLicenseApplicationsTable = clsLocalDriverLicenseApplicationBusinessLayer.GetDrivingLicenseApplicationInfo(clsGlobalSettings.LocalDrivingLicenseApplicationID);
-            DataRow dr = LocalDriverLicenseApplicationsTable.Rows[0];
+            DataRow LDLApplicationRow = LocalDriverLicenseApplicationsTable.Rows[0];
 
-            ApplicationInfo.LocalDrivingLicenseApplicationID = dr[0].ToString();
-            ApplicationInfo.ApplicationID = dr[1].ToString();
-            ApplicationInfo.ApplicationStatus = dr[2].ToString();
-            ApplicationInfo.PaidFees = (Convert.ToInt32(dr[3])).ToString();
-            ApplicationInfo.ApplicationTypeTitle = dr[4].ToString();
-            ApplicationInfo.ClassName = dr[5].ToString();
-            ApplicationInfo.FullName = dr[6].ToString();
-            ApplicationInfo.ApplicationDate = dr[7].ToString();
-            ApplicationInfo.LastDateStatus = dr[8].ToString();
-            ApplicationInfo.PassedTestCount = dr[9].ToString();
-            ApplicationInfo.Username = dr[10].ToString();
-            ApplicationInfo.ApplicantPersonID = dr[11].ToString();
+            ApplicationInfo.LocalDrivingLicenseApplicationID = LDLApplicationRow[0].ToString();
+            ApplicationInfo.ApplicationID = LDLApplicationRow[1].ToString();
+            ApplicationInfo.ApplicationStatus = LDLApplicationRow[2].ToString();
+            ApplicationInfo.PaidFees = (Convert.ToInt32(LDLApplicationRow[3])).ToString();
+            ApplicationInfo.ApplicationTypeTitle = LDLApplicationRow[4].ToString();
+            ApplicationInfo.ClassName = LDLApplicationRow[5].ToString();
+            ApplicationInfo.FullName = LDLApplicationRow[6].ToString();
+            ApplicationInfo.ApplicationDate = LDLApplicationRow[7].ToString();
+            ApplicationInfo.LastDateStatus = LDLApplicationRow[8].ToString();
+            ApplicationInfo.PassedTestCount = LDLApplicationRow[9].ToString();
+            ApplicationInfo.Username = LDLApplicationRow[10].ToString();
+            ApplicationInfo.ApplicantPersonID = LDLApplicationRow[11].ToString();
 
             return ApplicationInfo;
         }

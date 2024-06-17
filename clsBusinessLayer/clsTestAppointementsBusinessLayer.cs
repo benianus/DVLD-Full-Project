@@ -47,9 +47,9 @@ namespace clsBusinessLayer
         public bool IsLocked { get; set; }
         public int RetakeTestApplicationID { get; set; }
 
-        public static bool isPersonPassTestAppointment(int LDLApplicationID)
+        public static bool isPersonPassTestAppointment(int LDLApplicationID, int TestTypeID)
         {
-            return clsTestAppointementsDataLayer.isPersonPassTestAppointment(LDLApplicationID);
+            return clsTestAppointementsDataLayer.isPersonPassTestAppointment(LDLApplicationID, TestTypeID);
         }
         public static bool isTestAppointmentLinkedToRetakeTestApplicationType(int TestAppointmentID)
         {
@@ -59,13 +59,13 @@ namespace clsBusinessLayer
         {
             return clsTestAppointementsDataLayer.isTestAppointmentLockedAndTestFailed(TestAppointmentID);
         }
-        public static bool isPersonFailInTheTest(int LocalDrivingLicenseApplicationID)
+        public static bool isPersonFailInTheTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
-            return clsTestAppointementsDataLayer.isPersonFailInTheTest(LocalDrivingLicenseApplicationID);
+            return clsTestAppointementsDataLayer.isPersonFailInTheTest(LocalDrivingLicenseApplicationID, TestTypeID);
         }
-        public static int _GetTestTrialNumber(string LocalDrivingLicenseApplicationID)
+        public static int _GetTestTrialNumber(string LocalDrivingLicenseApplicationID, int TestTypeID)
         {
-            return clsTestAppointementsDataLayer._GetTestTrialNumber(LocalDrivingLicenseApplicationID);
+            return clsTestAppointementsDataLayer._GetTestTrialNumber(LocalDrivingLicenseApplicationID, TestTypeID);
         }
         public static bool isTestAppointmentLocked(int testAppointmentID)
         {
@@ -104,14 +104,14 @@ namespace clsBusinessLayer
         {
             return clsTestAppointementsDataLayer.GetTestAppointmentByID(TestAppointmentID);
         }
-        public static DataTable GetTestAppointmentByLDLApplicationID(int LDLApplicationID)
+        public static DataTable GetTestAppointmentByLDLApplicationID(int LDLApplicationID, int TestTypeID)
         {
-            return clsTestAppointementsDataLayer.GetTestAppointmentByLDLApplicationID(LDLApplicationID);
+            return clsTestAppointementsDataLayer.GetTestAppointmentByLDLApplicationID(LDLApplicationID, TestTypeID);
         }
         
-        public static bool isPersonHasTestAppointment(int LDLApplcication)
+        public static bool isPersonHasTestAppointment(int LDLApplcication, int TestTypeID)
         {
-            return clsTestAppointementsDataLayer.isPersonHasTestAppointment(LDLApplcication);
+            return clsTestAppointementsDataLayer.isPersonHasTestAppointment(LDLApplcication, TestTypeID);
         }
         private bool _AddNewTestAppointment()
         {

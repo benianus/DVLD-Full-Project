@@ -12,6 +12,31 @@ namespace clsDataLayer
 {
     public class clsLocalDriverLicenseApplicationDataLayer
     {
+        public static bool isApplicationCancelled(int LDLApplicationID)
+        {
+            bool isApplicationCancelled = false;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from LocalDrivingLicenseApplications_View where LocalDrivingLicenseApplicationID = @LDLApplicationID and Status = 'Cancelled';";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    isApplicationCancelled = reader.Read();
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isApplicationCancelled;
+        }
         public static DataTable GetLicenseClasses()
         {
             DataTable ClassesTitlesTable = new DataTable();

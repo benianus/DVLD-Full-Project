@@ -31,7 +31,7 @@
             this.gbDrinvingLicenseApplicationInfo = new System.Windows.Forms.GroupBox();
             this.lblPassedTests = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lkblShowLicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.lblShowLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.lblAppliedForLicense = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDLAppID = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             // 
             this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.lblPassedTests);
             this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.label4);
-            this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.lkblShowLicenseInfo);
+            this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.lblShowLicenseInfo);
             this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.lblAppliedForLicense);
             this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.label3);
             this.gbDrinvingLicenseApplicationInfo.Controls.Add(this.lblDLAppID);
@@ -94,16 +94,16 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Passed Tests:";
             // 
-            // lkblShowLicenseInfo
+            // lblShowLicenseInfo
             // 
-            this.lkblShowLicenseInfo.AutoSize = true;
-            this.lkblShowLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lkblShowLicenseInfo.Location = new System.Drawing.Point(118, 62);
-            this.lkblShowLicenseInfo.Name = "lkblShowLicenseInfo";
-            this.lkblShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
-            this.lkblShowLicenseInfo.TabIndex = 4;
-            this.lkblShowLicenseInfo.TabStop = true;
-            this.lkblShowLicenseInfo.Text = "Show License Info";
+            this.lblShowLicenseInfo.AutoSize = true;
+            this.lblShowLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowLicenseInfo.Location = new System.Drawing.Point(118, 62);
+            this.lblShowLicenseInfo.Name = "lblShowLicenseInfo";
+            this.lblShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
+            this.lblShowLicenseInfo.TabIndex = 4;
+            this.lblShowLicenseInfo.TabStop = true;
+            this.lblShowLicenseInfo.Text = "Show License Info";
             // 
             // lblAppliedForLicense
             // 
@@ -119,7 +119,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(278, 20);
+            this.label3.Location = new System.Drawing.Point(271, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(173, 20);
             this.label3.TabIndex = 2;
@@ -365,7 +365,7 @@
         private System.Windows.Forms.GroupBox gbDrinvingLicenseApplicationInfo;
         private System.Windows.Forms.Label lblPassedTests;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel lkblShowLicenseInfo;
+        private System.Windows.Forms.LinkLabel lblShowLicenseInfo;
         private System.Windows.Forms.Label lblAppliedForLicense;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblDLAppID;
