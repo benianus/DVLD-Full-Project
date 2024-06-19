@@ -174,6 +174,7 @@
             this.tsmShowApplicationDetails.Name = "tsmShowApplicationDetails";
             this.tsmShowApplicationDetails.Size = new System.Drawing.Size(245, 22);
             this.tsmShowApplicationDetails.Text = "Show Application Details";
+            this.tsmShowApplicationDetails.Click += new System.EventHandler(this.tsmShowApplicationDetails_Click);
             // 
             // toolStripSeparator1
             // 
@@ -191,6 +192,7 @@
             this.tsmDeleteApplication.Name = "tsmDeleteApplication";
             this.tsmDeleteApplication.Size = new System.Drawing.Size(245, 22);
             this.tsmDeleteApplication.Text = "Delete Application";
+            this.tsmDeleteApplication.Click += new System.EventHandler(this.tsmDeleteApplication_Click);
             // 
             // tsmCancelApplication
             // 
@@ -269,6 +271,7 @@
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(245, 22);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
+            this.tsmShowPersonLicenseHistory.Click += new System.EventHandler(this.tsmShowPersonLicenseHistory_Click);
             // 
             // lblFilterBy
             // 

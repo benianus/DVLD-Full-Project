@@ -10,6 +10,109 @@ namespace clsDataLayer
 {
     public class clsDriversDataLayer
     {
+        public static DataTable FilterDriversBy(string filter, string condition)
+        {
+            DataTable driversTable = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = $"SELECT * FROM Drivers_view where {filter} = @condition;";
+
+            if (filter == "None" || condition == string.Empty)
+            {
+                query = "SELECT * FROM Drivers_view;";
+            }
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@condition", condition);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    driversTable.Load(reader);
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return driversTable;
+        }
+        public static DataTable GelAllDrivers()
+        {
+            DataTable driversTable = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT * FROM Drivers_view;";
+            SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    driversTable.Load(reader);
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return driversTable;
+        }
+        public static bool isDriverAlreadyExists(int PersonID)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT * FROM Drivers WHERE PersonID = @PersonID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                isFound = reader.Read();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+        public static int AddNewDriver(int PersonID, int CreateByUserID, DateTime CreatedDate)
+        {
+            int DriverID = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "Insert into Drivers (PersonID, CreatedByUserID, CreatedDate) values (@PersonID, @CreatedByUserID, @CreatedDate);" +
+                "SELECT SCOPE_IDENTITY();";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreateByUserID);    
+            command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    DriverID = insertedID;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DriverID;
+        }
         public static DataTable GetDriverLicenseInfos(int LDLApplicationID)
         {
             DataTable DriverLicenseInfosTable = new DataTable();

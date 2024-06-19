@@ -1,4 +1,5 @@
 ﻿using clsBusinessLayer;
+using DVLD_Full_Project.Licenses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,6 +115,11 @@ namespace DVLD_Full_Project
             frmPersonDetails PersonDetails = new frmPersonDetails(Person);
             PersonDetails.ShowDialog();
         }
+        private void _ShowLicenseInfos()
+        {
+            frmShowLicenseInfo showLicenseInfos = new frmShowLicenseInfo(Convert.ToInt32(ApplicationInfo.LocalDrivingLicenseApplicationID));
+            showLicenseInfos.ShowDialog();
+        }
         //buttons
         private void ucTestAppointments_Load(object sender, EventArgs e)
         {
@@ -126,6 +132,11 @@ namespace DVLD_Full_Project
         private void lkblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _ShowPersonDetailsForm();
+        }
+
+        private void lblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _ShowLicenseInfos();
         }
     }
 }

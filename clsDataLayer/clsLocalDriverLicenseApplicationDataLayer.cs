@@ -12,6 +12,26 @@ namespace clsDataLayer
 {
     public class clsLocalDriverLicenseApplicationDataLayer
     {
+        public static bool DeleteLocalDrivingLicenseApplicationID(int LDLApplicationID)
+        {
+            int RowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @LDLApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
+        }
         public static bool isApplicationCancelled(int LDLApplicationID)
         {
             bool isApplicationCancelled = false;
@@ -158,11 +178,10 @@ namespace clsDataLayer
 
             if (Filter == "None" || Condition == "All" || Condition == string.Empty)
             {
-                GetQuery = "Select * From LocalDrivingLicenseApplications_View;";
+                GetQuery = "Select * From LocalDrivingLicenseApplications_View ORDER BY LocalDrivingLicenseApplicationID DESC;";
             }
             
             SqlCommand command = new SqlCommand(GetQuery, Connection);
-            //command.Parameters.AddWithValue("@Filter", Filter);
             command.Parameters.AddWithValue("@Condition", Condition);
 
             try

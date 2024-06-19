@@ -30,6 +30,10 @@ namespace clsBusinessLayer
         public int ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
 
+        public static bool DeleteLocalDrivingLicenseApplicationID(int LDLApplicationID)
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.DeleteLocalDrivingLicenseApplicationID(LDLApplicationID);
+        }
         public static bool isApplicationCancelled(int LDLApplicationID)
         {
             return clsLocalDriverLicenseApplicationDataLayer.isApplicationCancelled(LDLApplicationID);

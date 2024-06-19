@@ -42,7 +42,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.pbPerson = new System.Windows.Forms.PictureBox();
             this.lblNotes = new System.Windows.Forms.Label();
             this.lblIssueReason = new System.Windows.Forms.Label();
             this.lblIssueDate = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.lblDriverID = new System.Windows.Forms.Label();
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblIsActive = new System.Windows.Forms.Label();
+            this.pbPerson = new System.Windows.Forms.PictureBox();
             this.gbDriverLicenseInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerson)).BeginInit();
             this.SuspendLayout();
@@ -180,7 +180,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(412, 239);
+            this.label10.Location = new System.Drawing.Point(414, 280);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 20);
             this.label10.TabIndex = 13;
@@ -190,7 +190,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(381, 198);
+            this.label11.Location = new System.Drawing.Point(383, 239);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(138, 20);
             this.label11.TabIndex = 12;
@@ -200,7 +200,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(434, 157);
+            this.label12.Location = new System.Drawing.Point(436, 198);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 20);
             this.label12.TabIndex = 11;
@@ -210,7 +210,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(399, 116);
+            this.label13.Location = new System.Drawing.Point(401, 157);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(120, 20);
             this.label13.TabIndex = 10;
@@ -220,20 +220,11 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(441, 75);
+            this.label14.Location = new System.Drawing.Point(443, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(78, 20);
             this.label14.TabIndex = 9;
             this.label14.Text = "IsActive:";
-            // 
-            // pbPerson
-            // 
-            this.pbPerson.Location = new System.Drawing.Point(719, 75);
-            this.pbPerson.Name = "pbPerson";
-            this.pbPerson.Size = new System.Drawing.Size(196, 184);
-            this.pbPerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPerson.TabIndex = 14;
-            this.pbPerson.TabStop = false;
             // 
             // lblNotes
             // 
@@ -319,7 +310,7 @@
             // 
             this.lblIsDetained.AutoSize = true;
             this.lblIsDetained.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsDetained.Location = new System.Drawing.Point(525, 239);
+            this.lblIsDetained.Location = new System.Drawing.Point(527, 280);
             this.lblIsDetained.Name = "lblIsDetained";
             this.lblIsDetained.Size = new System.Drawing.Size(27, 20);
             this.lblIsDetained.TabIndex = 27;
@@ -329,7 +320,7 @@
             // 
             this.lblExpirationDate.AutoSize = true;
             this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpirationDate.Location = new System.Drawing.Point(525, 198);
+            this.lblExpirationDate.Location = new System.Drawing.Point(527, 239);
             this.lblExpirationDate.Name = "lblExpirationDate";
             this.lblExpirationDate.Size = new System.Drawing.Size(27, 20);
             this.lblExpirationDate.TabIndex = 26;
@@ -339,7 +330,7 @@
             // 
             this.lblDriverID.AutoSize = true;
             this.lblDriverID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDriverID.Location = new System.Drawing.Point(525, 157);
+            this.lblDriverID.Location = new System.Drawing.Point(527, 198);
             this.lblDriverID.Name = "lblDriverID";
             this.lblDriverID.Size = new System.Drawing.Size(27, 20);
             this.lblDriverID.TabIndex = 25;
@@ -349,7 +340,7 @@
             // 
             this.lblDateOfBirth.AutoSize = true;
             this.lblDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateOfBirth.Location = new System.Drawing.Point(525, 116);
+            this.lblDateOfBirth.Location = new System.Drawing.Point(527, 157);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
             this.lblDateOfBirth.Size = new System.Drawing.Size(27, 20);
             this.lblDateOfBirth.TabIndex = 24;
@@ -359,11 +350,20 @@
             // 
             this.lblIsActive.AutoSize = true;
             this.lblIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsActive.Location = new System.Drawing.Point(525, 75);
+            this.lblIsActive.Location = new System.Drawing.Point(527, 116);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(27, 20);
             this.lblIsActive.TabIndex = 23;
             this.lblIsActive.Text = "??";
+            // 
+            // pbPerson
+            // 
+            this.pbPerson.Location = new System.Drawing.Point(719, 75);
+            this.pbPerson.Name = "pbPerson";
+            this.pbPerson.Size = new System.Drawing.Size(196, 184);
+            this.pbPerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPerson.TabIndex = 14;
+            this.pbPerson.TabStop = false;
             // 
             // ucDriverLicenseInfo
             // 

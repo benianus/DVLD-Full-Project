@@ -46,6 +46,14 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static bool DeleteApplication(int ApplicationID)
+        {
+            return clsApplicationsDataLayer.DeleteApplication(ApplicationID);
+        }
+        public static int GetApplicationID(int LDLApplicationID)
+        {
+            return clsApplicationsDataLayer.GetApplicationID(LDLApplicationID);
+        }
         public static bool isDriverLicenseIssuedForThisApplication(int LDLApplicationID)
         {
             return clsApplicationsDataLayer.isDriverLicenseIssuedForThisApplication(LDLApplicationID);

@@ -11,6 +11,53 @@ namespace clsDataLayer
 {
     public class clsApplicationsDataLayer
     {
+        public static int GetApplicationID(int LDLApplicationID)
+        {
+            int ApplicationID = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select Applications.ApplicationID from Applications join LocalDrivingLicenseApplications " +
+                " on applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID" +
+                " where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LDLApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int ID))
+                {
+                    ApplicationID = ID;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ApplicationID;
+        }
+        public static bool DeleteApplication(int ApplicationID)
+        {
+            int RowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "delete from Applications where ApplicationID = @ApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
+        }
         public static bool isDriverLicenseIssuedForThisApplication(int LDLApplicationID)
         {
             bool isIssued = false;

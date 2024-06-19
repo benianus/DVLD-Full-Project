@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_License_Applications
 {
     public partial class frmLocalDrivingLicenseApplications : Form
@@ -23,9 +24,11 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         }
 
         //functions
-        private void _LoadLocalDrivingLicenseApplication()
+        private void _LoadLocalDrivingLicenseApplicationsForm()
         {
-
+            _RefreshLocalDrivingLicenseAppsData();
+            _RowsCounter();
+            _LoadFiltersToComboBox();
         }
         private void _RefreshLocalDrivingLicenseAppsData()
         {
@@ -111,7 +114,32 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
                 _RefreshLocalDrivingLicenseAppsData();
             }
         }
+        private void _DeleteLocalDrivingLicenseApplication()
+        {
+            int LDLApplicationID = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
+            int ApplicationID = _GetApplicationID(LDLApplicationID);
 
+            if (MessageBox.Show("Are you sure to delete Application!", "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (clsLocalDriverLicenseApplicationBusinessLayer.DeleteLocalDrivingLicenseApplicationID(LDLApplicationID))
+                {
+                    if (clsApplicationsBusinessLayer.DeleteApplication(ApplicationID))
+                    {
+                        MessageBox.Show("Application Deleted Successfully");
+                        _RefreshLocalDrivingLicenseAppsData();
+                        _RowsCounter();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Delete Application Failed");
+                }
+            }
+        }
+        private int _GetApplicationID(int LDLApplicationID)
+        {
+            return clsApplicationsBusinessLayer.GetApplicationID(LDLApplicationID);
+        }
         private void _ShowTestAppointmentsForm(clsGlobalSettings.enTestTypes TestType)
         {
             int LDLApplications = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
@@ -141,9 +169,13 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
             }
             else if (isApplicationCancelled())
             {
+                tsmEditApplication.Enabled = true;
+                tsmDeleteApplication.Enabled = true;
+                tsmCancelApplication.Enabled = true;
                 tsmSechduleTests.Enabled = false;
                 tsmIssueDrivingLicenseFirstTime.Enabled = false;
                 tsmShowLicense.Enabled = false;
+
             }
             else
             {
@@ -199,8 +231,8 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         private int _HowMuchTestsPassed()
         {
             clsGlobalSettings.LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
-            int PasseTestCount = clsLocalDriverLicenseApplicationBusinessLayer.GetHowMuchTestsPassed(clsGlobalSettings.LocalDrivingLicenseApplicationID);
-            return PasseTestCount;
+            int PassedTestCount = clsLocalDriverLicenseApplicationBusinessLayer.GetHowMuchTestsPassed(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            return PassedTestCount;
         }
         private void _ShowIssueDriverLicenseForTheFirstTime()
         {
@@ -221,17 +253,31 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         {
             return Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
         }
+        private void _ShowPersonLicenseHistoryForm()
+        {
+            //get the national number related to the actual person to get person id
+            string NationalNo = dgvLocalLicenseApplcations.CurrentRow.Cells["NationalNo"].Value.ToString();
+            int personID = _GetPersonIdRealtedToPersonNationalNo(NationalNo);
 
+            frmShowLicenseHistory ShowLicensesHistory = new frmShowLicenseHistory(personID);
+            ShowLicensesHistory.ShowDialog();
+        }
+        private int _GetPersonIdRealtedToPersonNationalNo(string NationalNo)
+        {
+            return clsPeopleBusinessLayer.GetPersonIdRealtedToPersonNationalNo(NationalNo);
+        }
+        private void _ShowApplicationDetailsForm()
+        {
+            frmAddNewLocalDrivingLicenseApplication addNewLDLApplication = new frmAddNewLocalDrivingLicenseApplication();
+            addNewLDLApplication.ShowDialog();
+        }
 
         //buttons
         private void frmLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
             {
-                _RefreshLocalDrivingLicenseAppsData();
-                _RowsCounter();
-                _LoadFiltersToComboBox();
-                _LoadLocalDrivingLicenseApplication();
+                _LoadLocalDrivingLicenseApplicationsForm();
             }
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -248,7 +294,9 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         }
         private void cbFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             _DisabelFilterSearchBoxIfFilterIs();
+            _FilterLocalLicenseApplicationsBy("None", string.Empty);
         }
         private void txtFilterBy_TextChanged(object sender, EventArgs e)
         {
@@ -297,6 +345,21 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         private void tsmShowLicense_Click(object sender, EventArgs e)
         {
             _ShowLicenseInfoForm();
+        }
+
+        private void tsmShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            _ShowPersonLicenseHistoryForm();
+        }
+
+        private void tsmDeleteApplication_Click(object sender, EventArgs e)
+        {
+            _DeleteLocalDrivingLicenseApplication();
+        }
+
+        private void tsmShowApplicationDetails_Click(object sender, EventArgs e)
+        {
+            _ShowApplicationDetailsForm();
         }
     }
 }

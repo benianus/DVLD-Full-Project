@@ -11,6 +11,31 @@ namespace clsDataLayer
 {
     public static class clsPeopleDataLayer
     {
+        public static int GetPersonIdRealtedToPersonNationalNo(string nationalNo)
+        {
+            int personId = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "Select PersonID from People where NationalNo = @nationalNo;";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@NationalNo", nationalNo);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int ID))
+                {
+                    personId = ID;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return personId;
+        }
         public static DataTable GetAllPeople()
         {
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);

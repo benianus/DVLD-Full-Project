@@ -29,6 +29,26 @@ namespace clsBusinessLayer
         public int CreatedByUserID { get; set; }
         public DateTime CreatedDate { get; set; }
         
+        
+        public bool Save()
+        {
+            return _AddNewDriver();
+        }
+        private bool _AddNewDriver()
+        {
+            this.DriverID = clsDriversDataLayer.AddNewDriver(this.PersonID, this.CreatedByUserID, this.CreatedDate);
+
+            return this.DriverID > 0;
+        }
+
+        public static DataTable FilterDriversBy(string filter, string condition)
+        {
+            return clsDriversDataLayer.FilterDriversBy(filter, condition);
+        }
+        public static DataTable GelAllDrivers()
+        {
+            return clsDriversDataLayer.GelAllDrivers();
+        }
         public static DataTable GetDriverLicenseInfos(int LDLApplicationID)
         {
             return clsDriversDataLayer.GetDriverLicenseInfos(LDLApplicationID);
@@ -47,6 +67,10 @@ namespace clsBusinessLayer
             {
                 return null;
             }
+        }
+        public static bool isDriverAlreadyExists(int PersonID)
+        {
+            return clsDriversDataLayer.isDriverAlreadyExists(PersonID);
         }
     }
 }

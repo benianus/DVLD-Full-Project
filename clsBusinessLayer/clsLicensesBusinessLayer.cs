@@ -1,6 +1,7 @@
 ﻿using clsDataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,10 @@ namespace clsBusinessLayer
         public byte IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static DataTable GetPersonLocalLicensesHistory(int PersonID)
+        {
+            return clsLicensesDataLayer.GetPersonLocalLicensesHistory(PersonID);
+        }
         public static bool isApplicationHasDriverLicense(int ApplicationID)
         {
             return clsLicensesDataLayer.isApplicationHasDriverLicense(ApplicationID);

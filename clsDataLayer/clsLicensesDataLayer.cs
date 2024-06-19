@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,35 @@ namespace clsDataLayer
 {
     public class clsLicensesDataLayer
     {
+        public static DataTable GetPersonLocalLicensesHistory(int PersonID)
+        {
+            DataTable LocalLicensesHistoryTable = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate," +
+                " Licenses.IsActive from Licenses Join LicenseClasses" +
+                " on Licenses.LicenseClass = LicenseClasses.LicenseClassID " +
+                " join Applications on Applications.ApplicationID = Licenses.ApplicationID" +
+                " where Applications.ApplicantPersonID = @ApplicantPersonID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicantPersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    LocalLicensesHistoryTable.Load(reader);
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return LocalLicensesHistoryTable;
+        }
         public static bool isApplicationHasDriverLicense(int ApplicationID)
         {
             bool isApplicationHasDriverLicense = false;

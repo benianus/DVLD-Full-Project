@@ -82,6 +82,18 @@
     <Compile Include="Applications\Manage Test Types\frmUpdateTestTypes.Designer.cs">
       <DependentUpon>frmUpdateTestTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\frmManageDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmManageDrivers.Designer.cs">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmShowLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmShowLicenseHistory.Designer.cs">
+      <DependentUpon>frmShowLicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\frmShowLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +234,12 @@
     <EmbeddedResource Include="Applications\Manage Test Types\frmUpdateTestTypes.resx">
       <DependentUpon>frmUpdateTestTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmManageDrivers.resx">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmShowLicenseHistory.resx">
+      <DependentUpon>frmShowLicenseHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Licenses\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -338,7 +356,6 @@
   <ItemGroup>
     <Folder Include="Account Settings\" />
     <Folder Include="Applications\Manage Applications\International Driving License Applications\" />
-    <Folder Include="Drivers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

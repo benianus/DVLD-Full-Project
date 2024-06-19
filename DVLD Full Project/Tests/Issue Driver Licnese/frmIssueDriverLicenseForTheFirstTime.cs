@@ -37,10 +37,21 @@ namespace DVLD_Full_Project.Tests.Issue_Driver_Licnese
         }
         private void _SaveIssueDriverLicenseForTheFirstTime()
         {
+            clsGlobalSettings.Applications = clsApplicationsBusinessLayer.FindApplication(Convert.ToInt32(ucTestAppointments.ApplicationInfo.ApplicationID));
+
+            _SavePersonAsDriver();
+
+            _SaveLicense();
+        }
+
+        private void _SaveLicense()
+        {
+
+            //save (issue) the license
             clsGlobalSettings.Licenses.ApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.ApplicationID);
-            clsGlobalSettings.Licenses.DriverID = 8; /*clsGlobalSettings.Drivers.DriverID*/
+            clsGlobalSettings.Licenses.DriverID = clsGlobalSettings.Drivers.DriverID;
             clsGlobalSettings.Licenses.LicenseClass = clsLicenseClassesBusinessLayer.GetLicenseClassID(ucTestAppointments.ApplicationInfo.ClassName);
-            clsGlobalSettings.Licenses.IssueDate = DateTime.Now;    
+            clsGlobalSettings.Licenses.IssueDate = DateTime.Now;
             clsGlobalSettings.Licenses.ExpirationDate = DateTime.Now.AddYears(clsLicenseClassesBusinessLayer.GetDefaultValidityLength(clsGlobalSettings.Licenses.LicenseClass));
             if (txtNotes.Text == string.Empty)
             {
@@ -55,9 +66,11 @@ namespace DVLD_Full_Project.Tests.Issue_Driver_Licnese
             clsGlobalSettings.Licenses.IssueReason = 1;
             clsGlobalSettings.Licenses.CreatedByUserID = clsGlobalSettings.User.UserID;
 
+            //change the status of the application to completed
             clsGlobalSettings.Applications.ApplicationStatus = (int)clsGlobalSettings.enApplicationStatus.Completed;
 
             //issue the license
+
             if (clsGlobalSettings.Licenses.Save())
             {
                 //update the status of the application to completed
@@ -71,11 +84,38 @@ namespace DVLD_Full_Project.Tests.Issue_Driver_Licnese
                 MessageBox.Show("Driver License Not issued successfully!");
             }
         }
+
+        private void _SavePersonAsDriver()
+        {
+
+            if (isDriverAlreadyExists())
+            {
+                //if exists load it direclty to link it with the license
+                clsGlobalSettings.Drivers = clsDriversBusinessLayer.FindDriverByPersonID(clsGlobalSettings.Applications.ApplicantPersonID);
+                return;
+            }
+            else
+            {
+                clsGlobalSettings.Drivers = new clsDriversBusinessLayer();
+
+                clsGlobalSettings.Drivers.PersonID = clsGlobalSettings.Applications.ApplicantPersonID;
+                clsGlobalSettings.Drivers.CreatedByUserID = clsGlobalSettings.User.UserID;
+                clsGlobalSettings.Drivers.CreatedDate = DateTime.Now;
+
+                clsGlobalSettings.Drivers.Save();
+            }
+
+            //load the driver to link it with the license
+            clsGlobalSettings.Drivers = clsDriversBusinessLayer.FindDriverByPersonID(clsGlobalSettings.Applications.ApplicantPersonID);
+
+        }
+        private bool isDriverAlreadyExists()
+        {
+            return clsDriversBusinessLayer.isDriverAlreadyExists(clsGlobalSettings.Applications.ApplicantPersonID);
+        }
         private void _LoadIssueDriverLicenseForTheFirstTimeForm()
         {
             clsGlobalSettings.Licenses = new clsLicensesBusinessLayer();
-            clsGlobalSettings.Drivers = clsDriversBusinessLayer.FindDriverByPersonID(Convert.ToInt32(ucTestAppointments.ApplicationInfo.ApplicantPersonID));
-            clsGlobalSettings.Applications = clsApplicationsBusinessLayer.FindApplication(Convert.ToInt32(ucTestAppointments.ApplicationInfo.ApplicationID));
         }
         //buttons
         private void btnClose_Click(object sender, EventArgs e)
