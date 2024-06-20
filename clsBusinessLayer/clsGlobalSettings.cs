@@ -20,11 +20,11 @@ namespace clsBusinessLayer
             Cancelled = 2,
             Completed = 3
         }
-        public enum enTestTypes
+        public enum enTestTypes : byte
         {
             VisionTest = 1,
-            WrittenTheoryTest,
-            PracticalStreetTest
+            WrittenTheoryTest = 2 ,
+            PracticalStreetTest = 3
         }
 
         public static clsUserBusinessLayer User;

@@ -45,7 +45,6 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.linkLblEditPerson = new System.Windows.Forms.LinkLabel();
-            this.pbPersoPicture = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.pbPersoPicture = new System.Windows.Forms.PictureBox();
             this.gbFilter.SuspendLayout();
             this.gbPersonDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersoPicture)).BeginInit();
@@ -242,22 +242,13 @@
             // 
             this.linkLblEditPerson.AutoSize = true;
             this.linkLblEditPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLblEditPerson.Location = new System.Drawing.Point(620, 36);
+            this.linkLblEditPerson.Location = new System.Drawing.Point(652, 36);
             this.linkLblEditPerson.Name = "linkLblEditPerson";
             this.linkLblEditPerson.Size = new System.Drawing.Size(91, 20);
             this.linkLblEditPerson.TabIndex = 10;
             this.linkLblEditPerson.TabStop = true;
             this.linkLblEditPerson.Text = "Edit Person";
             this.linkLblEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblEditPerson_LinkClicked);
-            // 
-            // pbPersoPicture
-            // 
-            this.pbPersoPicture.Location = new System.Drawing.Point(571, 80);
-            this.pbPersoPicture.Name = "pbPersoPicture";
-            this.pbPersoPicture.Size = new System.Drawing.Size(197, 191);
-            this.pbPersoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersoPicture.TabIndex = 9;
-            this.pbPersoPicture.TabStop = false;
             // 
             // label9
             // 
@@ -348,6 +339,15 @@
             this.label10.Size = new System.Drawing.Size(89, 20);
             this.label10.TabIndex = 0;
             this.label10.Text = "PersonID:";
+            // 
+            // pbPersoPicture
+            // 
+            this.pbPersoPicture.Location = new System.Drawing.Point(599, 80);
+            this.pbPersoPicture.Name = "pbPersoPicture";
+            this.pbPersoPicture.Size = new System.Drawing.Size(197, 191);
+            this.pbPersoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersoPicture.TabIndex = 9;
+            this.pbPersoPicture.TabStop = false;
             // 
             // ucAddUpdateUser
             // 

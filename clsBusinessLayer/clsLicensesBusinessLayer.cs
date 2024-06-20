@@ -1,5 +1,7 @@
-﻿using System;
+﻿using clsDataLayer;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,20 @@ namespace clsBusinessLayer
             CreatedByUserID = createdByUserID;
         }
 
+        public clsLicensesBusinessLayer()
+        {
+            LicenseID = 0;
+            ApplicationID = 0;
+            DriverID = 0;
+            LicenseClass = 0;
+            IssueDate = DateTime.Now;
+            ExpirationDate = DateTime.Now;
+            Notes = string.Empty;
+            PaidFees = 0;
+            IsActive = false;
+            IssueReason = 0;
+            CreatedByUserID = 0;
+        }
         public int LicenseID { get; set; }
         public int ApplicationID { get; set; }
         public int DriverID { get; set; }
@@ -36,5 +52,24 @@ namespace clsBusinessLayer
         public byte IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static DataTable GetPersonLocalLicensesHistory(int PersonID)
+        {
+            return clsLicensesDataLayer.GetPersonLocalLicensesHistory(PersonID);
+        }
+        public static bool isApplicationHasDriverLicense(int ApplicationID)
+        {
+            return clsLicensesDataLayer.isApplicationHasDriverLicense(ApplicationID);
+        }
+        public bool _AddNewDriverLicense()
+        {
+            this.LicenseID = clsLicensesDataLayer.AddNewDriverLicense(this.ApplicationID, this.DriverID, this.LicenseClass, this.IssueDate, this.ExpirationDate, this.Notes,
+                this.PaidFees, this.IsActive, this.IssueReason, this.CreatedByUserID);
+
+            return this.LicenseID > 0;
+        }
+        public bool Save()
+        {
+            return _AddNewDriverLicense();
+        }
     }
 }

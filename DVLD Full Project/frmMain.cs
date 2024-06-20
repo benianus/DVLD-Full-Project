@@ -3,6 +3,7 @@ using DVLD_Full_Project.Applications;
 using DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Licenses;
 using DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_License_Applications;
 using DVLD_Full_Project.Applications.Manage_Test_Types;
+using DVLD_Full_Project.Drivers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,6 +70,11 @@ namespace DVLD_Full_Project
             frmLocalDrivingLicenseApplications ManageLDLApplications = new frmLocalDrivingLicenseApplications();    
             ManageLDLApplications.ShowDialog();
         }
+        private void _showManageDriversForm()
+        {
+            frmManageDrivers manageDrivers = new frmManageDrivers();
+            manageDrivers.ShowDialog();
+        }
 
 
         //Buttons
@@ -107,6 +113,11 @@ namespace DVLD_Full_Project
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowManageLocalLicenseDrivingApplications();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _showManageDriversForm();
         }
     }
 }

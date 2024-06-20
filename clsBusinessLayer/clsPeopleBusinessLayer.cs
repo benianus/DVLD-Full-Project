@@ -63,6 +63,10 @@ namespace clsBusinessLayer
 
             clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
         }
+        public static int GetPersonIdRealtedToPersonNationalNo(string NationalNo)
+        {
+            return clsPeopleDataLayer.GetPersonIdRealtedToPersonNationalNo(NationalNo);
+        }
         public static DataTable FilterBy(string Filter)
         {
             return clsPeopleDataLayer.FilterBy(Filter);

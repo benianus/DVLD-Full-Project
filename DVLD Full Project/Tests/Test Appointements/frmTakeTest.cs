@@ -13,7 +13,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
 {
     public partial class frmTakeTest : Form
     {
-        public delegate void eventRefreshTestAppointmentData(int LDLApplicationID);
+        public delegate void eventRefreshTestAppointmentData(int LDLApplicationID, int TestTypeID);
         public event eventRefreshTestAppointmentData RefreshTestAppointmentData;
 
         public delegate void eventRowsCounter();
@@ -80,7 +80,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         }
         private string _GetTestTrialNumber()
         {
-            return clsTestAppointementsBusinessLayer._GetTestTrialNumber(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID).ToString();
+            return clsTestAppointementsBusinessLayer._GetTestTrialNumber(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType).ToString();
         }
         private void ifModeAddNew()
         {
@@ -130,7 +130,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                     {
                     
                         MessageBox.Show("Test appointment saved");
-                        RefreshTestAppointmentData?.Invoke(clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID);
+                        RefreshTestAppointmentData?.Invoke(clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType);
                         RowsCounter?.Invoke();
                         this.Close();
                     }

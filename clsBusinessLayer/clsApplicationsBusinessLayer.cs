@@ -46,6 +46,18 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static bool DeleteApplication(int ApplicationID)
+        {
+            return clsApplicationsDataLayer.DeleteApplication(ApplicationID);
+        }
+        public static int GetApplicationID(int LDLApplicationID)
+        {
+            return clsApplicationsDataLayer.GetApplicationID(LDLApplicationID);
+        }
+        public static bool isDriverLicenseIssuedForThisApplication(int LDLApplicationID)
+        {
+            return clsApplicationsDataLayer.isDriverLicenseIssuedForThisApplication(LDLApplicationID);
+        }
         public static clsApplicationsBusinessLayer FindApplication(int ApplicationID)
         {
             int ApplicantPersonID = 0;
@@ -83,7 +95,8 @@ namespace clsBusinessLayer
         }
         public bool _UpdateApplication()
         {
-            return true;
+            return clsApplicationsDataLayer.UpdateApplication(this.ApplicationID ,this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID, this.ApplicationStatus, this.LastStatusDate,
+                this.PaidFees, this.CreatedByUserID);
         }
         public bool Save()
         {
@@ -91,10 +104,10 @@ namespace clsBusinessLayer
             {
 
                 case clsGlobalSettings.enMode.AddNew:
-                    //clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+                    clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
                     return _AddNewApplication();
-                    //case clsGlobalSettings.enMode.Update:
-                    //    return _UpdateApplication();
+                case clsGlobalSettings.enMode.Update:
+                    return _UpdateApplication();
             }
             return false;
 

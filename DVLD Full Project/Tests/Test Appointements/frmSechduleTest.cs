@@ -1,4 +1,5 @@
 ﻿using clsBusinessLayer;
+using DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_License_Applications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
 {
     public partial class frmSechduleTest : Form
     {
-        public delegate void eventRefreshTestAppointmentData(int LDLApplicationID);
+        public delegate void eventRefreshTestAppointmentData(int LDLApplicationID, int TestTypeID);
         public event eventRefreshTestAppointmentData RefreshTestAppointmentData;
 
         public delegate void eventRowsCounter();
@@ -64,7 +65,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 lblTrial.Text = _GetTestTrialNumber();
                 dtpDate.Value = clsGlobalSettings.TestAppointements.AppointmentDate;
                 dtpDate.Enabled = true;
-                lblFees.Text = _GetTestTypeFees("Vision Test");
+                lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
 
                 //retake test
                 gbRetakeTestInfo.Enabled = true;
@@ -86,7 +87,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 lblTrial.Text = _GetTestTrialNumber();
                 dtpDate.Value = clsGlobalSettings.TestAppointements.AppointmentDate;
                 dtpDate.Enabled = false;
-                lblFees.Text = _GetTestTypeFees("Vision Test");
+                lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
 
                 //retake test
                 gbRetakeTestInfo.Enabled = true;
@@ -104,7 +105,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
             lblTrial.Text = _GetTestTrialNumber();
             dtpDate.Value = clsGlobalSettings.TestAppointements.AppointmentDate;
-            lblFees.Text = _GetTestTypeFees("Vision Test");
+            lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
             gbRetakeTestInfo.Enabled = false;
 
             //retake test
@@ -138,7 +139,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
                 lblTrial.Text = _GetTestTrialNumber();
                 dtpDate.Value = DateTime.Now;
-                lblFees.Text = _GetTestTypeFees("Vision Test");
+                lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
 
                 //retake test
                 gbRetakeTestInfo.Enabled = true;
@@ -156,7 +157,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
             lblTrial.Text = _GetTestTrialNumber();
             dtpDate.Value = DateTime.Now;
-            lblFees.Text = _GetTestTypeFees("Vision Test");
+            lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
             gbRetakeTestInfo.Enabled = false;
 
             //retake test
@@ -166,11 +167,11 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
         }
         private bool isPersonFailInTheTest()
         {
-            return clsTestAppointementsBusinessLayer.isPersonFailInTheTest(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            return clsTestAppointementsBusinessLayer.isPersonFailInTheTest(clsGlobalSettings.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType);
         }
         private string _GetTestTrialNumber()
         {
-            return clsTestAppointementsBusinessLayer._GetTestTrialNumber(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID).ToString();  
+            return clsTestAppointementsBusinessLayer._GetTestTrialNumber(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID, (int)clsGlobalSettings.TestType).ToString();  
         }
         private string _GetTestTypeFees(string TestTypeTitle)
         {
@@ -183,7 +184,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             {
                 _SaveRetakeApplication();
 
-                clsGlobalSettings.TestAppointements.TestTypeID = 1;
+                clsGlobalSettings.TestAppointements.TestTypeID = (int)clsGlobalSettings.TestType;
                 clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
                 clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
                 clsGlobalSettings.TestAppointements.PaidFees = Convert.ToDecimal(lblFees.Text);
@@ -194,14 +195,14 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 //turn the mode to add new to save the test appointment linked to this retake application
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
             }
-           
+            
             //save or update test appointment
             _SaveTestAppointment();
         }
-
+      
         private void _SaveTestAppointment()
         {
-            clsGlobalSettings.TestAppointements.TestTypeID = 1;
+            clsGlobalSettings.TestAppointements.TestTypeID = (int)clsGlobalSettings.TestType;
             clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
             clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
             clsGlobalSettings.TestAppointements.PaidFees = Convert.ToDecimal(lblFees.Text);
@@ -212,7 +213,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             {
                 if (MessageBox.Show("Test appointment saved") == DialogResult.OK)
                 {
-                    RefreshTestAppointmentData?.Invoke(clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID);
+                    RefreshTestAppointmentData?.Invoke(clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID, clsGlobalSettings.TestAppointements.TestTypeID);
                     RowsCounter?.Invoke();
                     this.Close();
                 }
@@ -222,7 +223,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 MessageBox.Show("Test appointment not saved");
             }
         }
-
+       
         private static void _ChangeModeToAddNewOrUpdate()
         {
             //turn mode to addnew if it's in Update mode or vice Versa

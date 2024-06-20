@@ -174,6 +174,7 @@
             this.tsmShowApplicationDetails.Name = "tsmShowApplicationDetails";
             this.tsmShowApplicationDetails.Size = new System.Drawing.Size(245, 22);
             this.tsmShowApplicationDetails.Text = "Show Application Details";
+            this.tsmShowApplicationDetails.Click += new System.EventHandler(this.tsmShowApplicationDetails_Click);
             // 
             // toolStripSeparator1
             // 
@@ -191,6 +192,7 @@
             this.tsmDeleteApplication.Name = "tsmDeleteApplication";
             this.tsmDeleteApplication.Size = new System.Drawing.Size(245, 22);
             this.tsmDeleteApplication.Text = "Delete Application";
+            this.tsmDeleteApplication.Click += new System.EventHandler(this.tsmDeleteApplication_Click);
             // 
             // tsmCancelApplication
             // 
@@ -226,12 +228,14 @@
             this.tsmSechduleWrittenTest.Name = "tsmSechduleWrittenTest";
             this.tsmSechduleWrittenTest.Size = new System.Drawing.Size(184, 22);
             this.tsmSechduleWrittenTest.Text = "Sechdule WrittenTest";
+            this.tsmSechduleWrittenTest.Click += new System.EventHandler(this.tsmSechduleWrittenTest_Click);
             // 
             // tsmSechduleStreetTest
             // 
             this.tsmSechduleStreetTest.Name = "tsmSechduleStreetTest";
             this.tsmSechduleStreetTest.Size = new System.Drawing.Size(184, 22);
             this.tsmSechduleStreetTest.Text = "Sechdule Street Test";
+            this.tsmSechduleStreetTest.Click += new System.EventHandler(this.tsmSechduleStreetTest_Click);
             // 
             // toolStripSeparator3
             // 
@@ -243,6 +247,7 @@
             this.tsmIssueDrivingLicenseFirstTime.Name = "tsmIssueDrivingLicenseFirstTime";
             this.tsmIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(245, 22);
             this.tsmIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
+            this.tsmIssueDrivingLicenseFirstTime.Click += new System.EventHandler(this.tsmIssueDrivingLicenseFirstTime_Click);
             // 
             // toolStripSeparator4
             // 
@@ -254,6 +259,7 @@
             this.tsmShowLicense.Name = "tsmShowLicense";
             this.tsmShowLicense.Size = new System.Drawing.Size(245, 22);
             this.tsmShowLicense.Text = "Show License";
+            this.tsmShowLicense.Click += new System.EventHandler(this.tsmShowLicense_Click);
             // 
             // toolStripSeparator5
             // 
@@ -265,6 +271,7 @@
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(245, 22);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
+            this.tsmShowPersonLicenseHistory.Click += new System.EventHandler(this.tsmShowPersonLicenseHistory_Click);
             // 
             // lblFilterBy
             // 
