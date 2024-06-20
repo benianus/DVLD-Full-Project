@@ -6,12 +6,96 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace clsDataLayer
 {
     public class clsLocalDriverLicenseApplicationDataLayer
     {
+        public static bool UpdateLocalDrivingLicenseApplication(int LDLApplicationID, int ApplicationID, int LicenseClassID)
+        {
+            int rowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "Update LocalDrivingLicenseApplications set" +
+                " ApplicationID = @ApplicationID," +
+                " LicenseClassID = @LicenseClassID" +
+                " WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
+        public static bool FindLocalDrivingLicenseApplication(int LDLApplicationID, ref int ApplicationID, ref int LicenseClassID)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    isFound = reader.Read();
+
+                    LDLApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
+                    ApplicationID = (int)reader["ApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClassID"];
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+        public static int GetLicenseClasseID(int LDLApplicationID)
+        {
+            int LicenseClasseID = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT LicenseClassID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    LicenseClasseID = insertedID;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { connection.Close(); }
+
+            return LicenseClasseID;
+        }
         public static bool DeleteLocalDrivingLicenseApplicationID(int LDLApplicationID)
         {
             int RowsAffected = 0;

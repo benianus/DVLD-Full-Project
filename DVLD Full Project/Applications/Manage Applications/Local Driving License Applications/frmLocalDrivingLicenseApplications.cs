@@ -48,12 +48,11 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         }
         private void _CLoseLocalDrivingLicenseApplication()
         {
-
             this.Close();
         }
         private void _AddNewLocalDrivingLicenseApplication()
         {
-            frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication(-1);
+            frmAddEditLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication(-1);
             AddNewLocalDrivingLicenseApplication.RefreshLocalDrivingLicenseApplication += _RefreshLocalDrivingLicenseAppsData;
             AddNewLocalDrivingLicenseApplication.ShowDialog();
         }
@@ -268,10 +267,19 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         }
         private void _ShowApplicationDetailsForm()
         {
-            frmAddNewLocalDrivingLicenseApplication addNewLDLApplication = new frmAddNewLocalDrivingLicenseApplication();
-            addNewLDLApplication.ShowDialog();
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
+            frmShowApplicationDetails showApplicationDetails = new frmShowApplicationDetails(LocalDrivingLicenseApplicationID);
+            showApplicationDetails.ShowDialog();
         }
+        private void _ShowEditApplication()
+        {
+            clsGlobalSettings.LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);
+            clsGlobalSettings.ApplicationID = clsApplicationsBusinessLayer.GetApplicationID(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            clsGlobalSettings.PersonID = clsApplicationsBusinessLayer.GetApplicantPersonID(clsGlobalSettings.ApplicationID);
 
+            frmAddEditLocalDrivingLicenseApplication addNewLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication(clsGlobalSettings.ApplicationID);
+            addNewLocalDrivingLicenseApplication.ShowDialog();
+        }
         //buttons
         private void frmLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
@@ -360,6 +368,13 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         private void tsmShowApplicationDetails_Click(object sender, EventArgs e)
         {
             _ShowApplicationDetailsForm();
+        }
+
+        private void tsmEditApplication_Click(object sender, EventArgs e)
+        {
+            _ShowEditApplication();
+            _RefreshLocalDrivingLicenseAppsData();
+            _RowsCounter();
         }
     }
 }

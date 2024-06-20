@@ -49,9 +49,9 @@ namespace clsBusinessLayer
         {
             return clsDriversDataLayer.GelAllDrivers();
         }
-        public static DataTable GetDriverLicenseInfos(int LDLApplicationID)
+        public static DataTable GetDriverLicenseInfosByLDLApplicationID(int LDLApplicationID)
         {
-            return clsDriversDataLayer.GetDriverLicenseInfos(LDLApplicationID);
+            return clsDriversDataLayer.GetDriverLicenseInfosByLDLApplicationID(LDLApplicationID);
         }
         public static clsDriversBusinessLayer FindDriverByPersonID(int PersonID)
         {

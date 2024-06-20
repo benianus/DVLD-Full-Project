@@ -167,6 +167,7 @@
             this.tsmShowPersonLicenseHistory});
             this.cmsLDLApplications.Name = "cmsLDLApplications";
             this.cmsLDLApplications.Size = new System.Drawing.Size(246, 232);
+            this.cmsLDLApplications.Text = "Local Driving Licenses";
             this.cmsLDLApplications.Opening += new System.ComponentModel.CancelEventHandler(this.cmsLDLApplications_Opening);
             // 
             // tsmShowApplicationDetails
@@ -186,6 +187,7 @@
             this.tsmEditApplication.Name = "tsmEditApplication";
             this.tsmEditApplication.Size = new System.Drawing.Size(245, 22);
             this.tsmEditApplication.Text = "Edit Application";
+            this.tsmEditApplication.Click += new System.EventHandler(this.tsmEditApplication_Click);
             // 
             // tsmDeleteApplication
             // 

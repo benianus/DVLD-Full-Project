@@ -11,6 +11,30 @@ namespace clsDataLayer
 {
     public class clsApplicationsDataLayer
     {
+        public static int GetApplicantPersonID(int ApplicationID)
+        {
+            int ApplicantPersonID = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT ApplicantPersonID FROM Applications WHERE ApplicationID = @ApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int PersonID))
+                {
+                    ApplicantPersonID = PersonID;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ApplicantPersonID;
+        }
         public static int GetApplicationID(int LDLApplicationID)
         {
             int ApplicationID = 0;

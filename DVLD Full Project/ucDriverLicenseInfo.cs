@@ -45,7 +45,7 @@ namespace DVLD_Full_Project
             
             if(DriverLicenseInfosTable == null)
             {
-                return null;
+                return new stDriverLicenseInfos();
             }
 
             DriverLicenseInfos.Class = DriverLicenseInfosTable.Rows[0]["ClassName"].ToString();
