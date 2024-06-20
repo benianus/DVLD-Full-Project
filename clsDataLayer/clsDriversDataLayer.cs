@@ -113,7 +113,33 @@ namespace clsDataLayer
 
             return DriverID;
         }
-        public static DataTable GetDriverLicenseInfos(int LDLApplicationID)
+        public static DataTable GetDriverLicenseInfosByLDLApplicationID(int LDLApplicationID)
+        {
+            DataTable DriverLicenseInfosTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from DriverLicenseInfos_view where LocalDrivingLicenseApplicationID = @LDLApplicationID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    DriverLicenseInfosTable.Load(reader);
+                }
+            }
+            catch { throw; }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DriverLicenseInfosTable;
+        }
+        public static DataTable GetDriverLicenseInfosByLicenseID(int LDLApplicationID)
         {
             DataTable DriverLicenseInfosTable = new DataTable();
 
