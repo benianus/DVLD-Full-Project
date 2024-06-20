@@ -21,12 +21,23 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         {
 
         }
+        private void _CloseAddInternationalLicenseApplicationForm()
+        {
+            this.Close();
+        }
+
+
+        //buttons
         private void frmAddInternationalLicenseApplication_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
             {
                 _LoadAddInternationalLicenseApplication();
             }
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            _CloseAddInternationalLicenseApplicationForm();
         }
     }
 }
