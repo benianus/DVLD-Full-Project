@@ -43,11 +43,6 @@ namespace DVLD_Full_Project
         {
             DataTable DriverLicenseInfosTable = clsDriversBusinessLayer.GetDriverLicenseInfosByLDLApplicationID(clsGlobalSettings.LocalDrivingLicenseApplicationID);
             
-            if(DriverLicenseInfosTable == null)
-            {
-                return new stDriverLicenseInfos();
-            }
-
             DriverLicenseInfos.Class = DriverLicenseInfosTable.Rows[0]["ClassName"].ToString();
             DriverLicenseInfos.Name = DriverLicenseInfosTable.Rows[0]["Name"].ToString();
             DriverLicenseInfos.LicenseID = DriverLicenseInfosTable.Rows[0]["LicenseID"].ToString();
@@ -78,6 +73,7 @@ namespace DVLD_Full_Project
         private void _LoadDriverLicenseInfoUserControl()
         {
             DriverLicenseInfos = _GetDriverLicenseInfos();
+
             lblClass.Text = DriverLicenseInfos.Class;
             lblName.Text = DriverLicenseInfos.Name;
             lblLicenseID.Text = DriverLicenseInfos.LicenseID;

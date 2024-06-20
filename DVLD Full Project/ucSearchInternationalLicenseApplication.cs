@@ -16,5 +16,22 @@ namespace DVLD_Full_Project
         {
             InitializeComponent();
         }
+        //Functions
+        private void _LoadSearchInternationalLicenseApplication()
+        {
+
+        }
+        private void ucSearchInternationalLicenseApplication_Load(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+                _LoadSearchInternationalLicenseApplication();
+            }
+        }
+
+        private void ucDriverLicenseInfo1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
