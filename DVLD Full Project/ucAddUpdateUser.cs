@@ -36,7 +36,7 @@ namespace DVLD_Full_Project
                 return;
             }
 
-            clsGlobalSettings.User = clsUserBusinessLayer.FindUser(clsGlobalSettings.UserID);
+            clsGlobalSettings.User = clsUserBusinessLayer.FindUser(clsGlobalSettings.User.UserID);
             clsGlobalSettings.Person = clsPeopleBusinessLayer.FindPersonByPersonID(clsGlobalSettings.PersonID);
 
             //Disabl filters in case Mode is update

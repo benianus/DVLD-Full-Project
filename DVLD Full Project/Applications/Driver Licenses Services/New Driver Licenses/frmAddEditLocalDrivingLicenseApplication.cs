@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Licenses
 {
-    public partial class frmAddNewLocalDrivingLicenseApplication : Form
+    public partial class frmAddEditLocalDrivingLicenseApplication : Form
     {
         public delegate void eventRereshLocalDrivingLicenseApplication();
         public event eventRereshLocalDrivingLicenseApplication RefreshLocalDrivingLicenseApplication;
-        public frmAddNewLocalDrivingLicenseApplication(int ApplicationID)
+        public frmAddEditLocalDrivingLicenseApplication(int ApplicationID)
         {
             InitializeComponent();
             clsGlobalSettings.ApplicationID = ApplicationID;
@@ -56,14 +56,28 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                 clsGlobalSettings.Applications = new clsApplicationsBusinessLayer();
                 return;
             }
+
+            clsGlobalSettings.LocalDriverLicenseApplication = clsLocalDriverLicenseApplicationBusinessLayer.FindLocalDrivingLicenseApplication(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            clsGlobalSettings.Applications = clsApplicationsBusinessLayer.FindApplication(clsGlobalSettings.ApplicationID);
+
+            _ShowUpdateLocalDrivingLicenseApplication();
         }
         private void _ShowUpdateLocalDrivingLicenseApplication()
         {
             if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.Update)
             {
+                tpPeronalApplicationInfo.SelectTab(1);
                 lblNewLocalDrivingLicense.Text = "Update Local Driver License Application";
-                lblDLApplicationiD.Text = clsGlobalSettings.LocalDriverLicenseApplication.LocalDrivingLicenseApplicationID.ToString();  
+                lblDLApplicationiD.Text = clsGlobalSettings.LocalDrivingLicenseApplicationID.ToString();
+                lblApplicationDate.Text = clsGlobalSettings.Applications.ApplicationDate.ToString();
+                cbLicsenseClass.SelectedIndex = clsLocalDriverLicenseApplicationBusinessLayer.GetLicenseClasseID(clsGlobalSettings.LocalDrivingLicenseApplicationID) - 1;
+                lblApplicatonFees.Text = clsApplicationsTypesBusinessLayer._GetApplicationTypeFees("New Local Driving License Service").ToString();
+                lblCreateBy.Text = clsGlobalSettings.User.UserName;
             }
+        }
+        private int GetLicenseClasseID(int LDLApplicationID)
+        {
+            return clsLocalDriverLicenseApplicationBusinessLayer.GetLicenseClasseID(LDLApplicationID);
         }
         private void _LoadLicenseClassToComboBox()
         {
@@ -94,19 +108,36 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         private void _SaveApplication()
         {
             _GetApplicationsObjectInfos();
-            if (clsGlobalSettings.Applications.Save())
+
+            if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.Update)
             {
                 _GetLocalDrivingLicenseObjectInfos();
-                if (clsGlobalSettings.LocalDriverLicenseApplication.Save())
+
+                if (clsGlobalSettings.Applications.Save())
                 {
-                    MessageBox.Show("Application Saved");
-                    _ShowUpdateLocalDrivingLicenseApplication();
+                    if (clsGlobalSettings.LocalDriverLicenseApplication.Save())
+                    {
+                        MessageBox.Show("Application Saved");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Application not Saved");
+                if (clsGlobalSettings.Applications.Save())
+                {
+                    _GetLocalDrivingLicenseObjectInfos();
+
+                    clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
+
+                    if (clsGlobalSettings.LocalDriverLicenseApplication.Save())
+                    {
+                        MessageBox.Show("Application Saved");
+                    }
+                }
             }
+
+            _ShowUpdateLocalDrivingLicenseApplication();
+
         }
         private void _GetConditionsToVerifyIfApplicationExists(out string NationalNo, out string ClassName)
         {
@@ -125,29 +156,25 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         }
         private void _GetLocalDrivingLicenseObjectInfos()
         {
-            //Turn the mode to add new
-            clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
-
             //local driving License application object
             clsGlobalSettings.LocalDriverLicenseApplication.ApplicationID = clsGlobalSettings.Applications.ApplicationID;
             clsGlobalSettings.LocalDriverLicenseApplication.LicenseClassID = cbLicsenseClass.SelectedIndex + 1;
         }
+        
+        //--------------
         //buttons
         private void btnClose_Click(object sender, EventArgs e)
         {
             _CloseAddNewLocalDrivingLicenseApplicationForm();
         }
-
         private void btnNext_Click(object sender, EventArgs e)
         {
             _GoToTheNextTabApplicationInfo();
         }
-
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             _ReturnToThePreviousPersonalInfoTab();
         }
-
         private void frmAddNewLocalDrivingLicenseApplication_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
@@ -156,7 +183,6 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                 _ShowAddNewLocalDrivingLicenseApplicationForm();
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             _SaveApplicationsAndLocalLicenseApplication();

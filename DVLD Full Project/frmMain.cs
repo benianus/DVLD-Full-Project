@@ -62,7 +62,7 @@ namespace DVLD_Full_Project
         }
         private void _showAddNewLocalDrivingLicenseApplicationForm()
         {
-            frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplicaton = new frmAddNewLocalDrivingLicenseApplication(-1);
+            frmAddEditLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplicaton = new frmAddEditLocalDrivingLicenseApplication(-1);
             AddNewLocalDrivingLicenseApplicaton.ShowDialog();
         }
         private void _ShowManageLocalLicenseDrivingApplications()
@@ -75,7 +75,11 @@ namespace DVLD_Full_Project
             frmManageDrivers manageDrivers = new frmManageDrivers();
             manageDrivers.ShowDialog();
         }
-
+        private void _showAddNewInternationalApplicationForm()
+        {
+            frmAddInternationalLicenseApplication addInternationalLicenseApplication = new frmAddInternationalLicenseApplication();
+            addInternationalLicenseApplication.ShowDialog();
+        }
 
         //Buttons
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,6 +122,11 @@ namespace DVLD_Full_Project
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _showManageDriversForm();
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _showAddNewInternationalApplicationForm();
         }
     }
 }

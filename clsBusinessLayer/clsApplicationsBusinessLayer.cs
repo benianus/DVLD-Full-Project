@@ -46,6 +46,10 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static int GetApplicantPersonID(int ApplicationID)
+        {
+            return clsApplicationsDataLayer.GetApplicantPersonID(ApplicationID);
+        }
         public static bool DeleteApplication(int ApplicationID)
         {
             return clsApplicationsDataLayer.DeleteApplication(ApplicationID);

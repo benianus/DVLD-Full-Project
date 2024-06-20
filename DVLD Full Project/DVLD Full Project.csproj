@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddNewLocalDrivingLicenseApplication.cs">
+    <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddEditLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddNewLocalDrivingLicenseApplication.Designer.cs">
-      <DependentUpon>frmAddNewLocalDrivingLicenseApplication.cs</DependentUpon>
+    <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddEditLocalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmAddEditLocalDrivingLicenseApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddInternationalLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddInternationalLicenseApplication.Designer.cs">
+      <DependentUpon>frmAddInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\Manage Application Types\frmUpdateApplicationType.cs">
       <SubType>Form</SubType>
@@ -69,6 +75,12 @@
     </Compile>
     <Compile Include="Applications\Manage Applications\Local Driving License Applications\frmLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmLocalDrivingLicenseApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Manage Applications\Local Driving License Applications\frmShowApplicationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Manage Applications\Local Driving License Applications\frmShowApplicationDetails.Designer.cs">
+      <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\Manage Test Types\frmManageTestTypes.cs">
       <SubType>Form</SubType>
@@ -129,6 +141,12 @@
     </Compile>
     <Compile Include="ucDriverLicenseInfo.Designer.cs">
       <DependentUpon>ucDriverLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSearchInternationalLicenseApplication.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSearchInternationalLicenseApplication.Designer.cs">
+      <DependentUpon>ucSearchInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="ucTestAppointments.cs">
       <SubType>UserControl</SubType>
@@ -216,8 +234,11 @@
     <Compile Include="ucPersonLoginInfo.Designer.cs">
       <DependentUpon>ucPersonLoginInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddNewLocalDrivingLicenseApplication.resx">
-      <DependentUpon>frmAddNewLocalDrivingLicenseApplication.cs</DependentUpon>
+    <EmbeddedResource Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddEditLocalDrivingLicenseApplication.resx">
+      <DependentUpon>frmAddEditLocalDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddInternationalLicenseApplication.resx">
+      <DependentUpon>frmAddInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Application Types\frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
@@ -227,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Applications\Local Driving License Applications\frmLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmLocalDrivingLicenseApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Manage Applications\Local Driving License Applications\frmShowApplicationDetails.resx">
+      <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Test Types\frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
@@ -257,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucDriverLicenseInfo.resx">
       <DependentUpon>ucDriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSearchInternationalLicenseApplication.resx">
+      <DependentUpon>ucSearchInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucTestAppointments.resx">
       <DependentUpon>ucTestAppointments.cs</DependentUpon>

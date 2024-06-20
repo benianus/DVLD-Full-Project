@@ -30,6 +30,24 @@ namespace clsBusinessLayer
         public int ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
 
+        public static clsLocalDriverLicenseApplicationBusinessLayer FindLocalDrivingLicenseApplication(int LDLApplicationID)
+        {
+            int ApplicationID = 0;
+            int LicenseClassID = 0;
+
+            if (clsLocalDriverLicenseApplicationDataLayer.FindLocalDrivingLicenseApplication(LDLApplicationID, ref ApplicationID, ref LicenseClassID))
+            {
+                return new clsLocalDriverLicenseApplicationBusinessLayer(LDLApplicationID, ApplicationID, LicenseClassID);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static int GetLicenseClasseID(int LDLApplicationID)
+        {
+            return clsLocalDriverLicenseApplicationDataLayer.GetLicenseClasseID(LDLApplicationID);
+        }
         public static bool DeleteLocalDrivingLicenseApplicationID(int LDLApplicationID)
         {
             return clsLocalDriverLicenseApplicationDataLayer.DeleteLocalDrivingLicenseApplicationID(LDLApplicationID);
@@ -75,10 +93,8 @@ namespace clsBusinessLayer
 
         private bool _UpdateLocalDrivingLicenseApplication()
         {
-            return true;
+            return clsLocalDriverLicenseApplicationDataLayer.UpdateLocalDrivingLicenseApplication(this.LocalDrivingLicenseApplicationID, this.ApplicationID, this.LicenseClassID);
         }
-        
-
         public bool Save()
         {
             switch (clsGlobalSettings.Mode)
@@ -86,8 +102,8 @@ namespace clsBusinessLayer
                 case clsGlobalSettings.enMode.AddNew:
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
                     return _AddNewLocalDrivingLicenseApplication();
-                //case clsGlobalSettings.enMode.Update:
-                //    return _UpdateLocalDrivingLicenseApplication();
+                case clsGlobalSettings.enMode.Update:
+                    return _UpdateLocalDrivingLicenseApplication();
             }
             return false;
         }
