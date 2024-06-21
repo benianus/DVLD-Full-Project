@@ -46,6 +46,7 @@
     <Compile Include="clsDetainedLicensesBusinessLayer.cs" />
     <Compile Include="clsDriversBusinessLayer.cs" />
     <Compile Include="clsGlobalSettings.cs" />
+    <Compile Include="clsInternationalLicensesBusinessLayer.cs" />
     <Compile Include="clsLicenseClassesBusinessLayer.cs" />
     <Compile Include="clsLicensesBusinessLayer.cs" />
     <Compile Include="clsLocalDriverLicenseApplicationBusinessLayer.cs" />

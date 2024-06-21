@@ -8,8 +8,38 @@ using System.Threading.Tasks;
 
 namespace clsDataLayer
 {
+    
     public class clsLicensesDataLayer
     {
+        public static DataTable GetDriverLicenseInfos(int LicenseID)
+        {
+            DataTable DriverLicenseInfos = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from LicenseInfos_view where licenseID = @LicenseID and IsActive = 'Yes' and ExpirationDate > IssueDate and ClassName = 'Class 3 - Ordinary driving license';";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    DriverLicenseInfos.Load(reader);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DriverLicenseInfos;
+        }
         public static DataTable GetPersonLocalLicensesHistory(int PersonID)
         {
             DataTable LocalLicensesHistoryTable = new DataTable();

@@ -46,6 +46,10 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static int GetPersonIDRelatedToLocalLicenseByLicenseID(int LicenseID)
+        {
+            return clsApplicationsDataLayer.GetPersonIDRelatedToLocalLicenseByLicenseID(LicenseID);
+        }
         public static int GetApplicantPersonID(int ApplicationID)
         {
             return clsApplicationsDataLayer.GetApplicantPersonID(ApplicationID);

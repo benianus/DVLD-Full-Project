@@ -72,6 +72,7 @@ namespace DVLD_Full_Project
         }
         private void _LoadDriverLicenseInfoUserControl()
         {
+
             DriverLicenseInfos = _GetDriverLicenseInfos();
 
             lblClass.Text = DriverLicenseInfos.Class;

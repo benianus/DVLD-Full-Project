@@ -29,7 +29,6 @@ namespace DVLD_Full_Project.Licenses
             {
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
             }
-
         }
 
         //function
@@ -47,6 +46,7 @@ namespace DVLD_Full_Project.Licenses
         }
         private void _RefreshInternationalLicensesData()
         {
+            dgvInternationlLicensesHistory.DataSource = clsInternationalLicensesBusinessLayer.GetInternationalLicense(clsGlobalSettings.PersonID);
         }
         private void _RowsCounterInternationalLicenses()
         {

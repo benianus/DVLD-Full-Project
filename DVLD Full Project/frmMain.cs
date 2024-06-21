@@ -77,7 +77,7 @@ namespace DVLD_Full_Project
         }
         private void _showAddNewInternationalApplicationForm()
         {
-            frmAddInternationalLicenseApplication addInternationalLicenseApplication = new frmAddInternationalLicenseApplication();
+            frmAddInternationalLicenseApplication addInternationalLicenseApplication = new frmAddInternationalLicenseApplication(-1);
             addInternationalLicenseApplication.ShowDialog();
         }
 

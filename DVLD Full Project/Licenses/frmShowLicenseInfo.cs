@@ -22,6 +22,14 @@ namespace DVLD_Full_Project.Licenses
         {
             InitializeComponent();
             clsGlobalSettings.LocalDrivingLicenseApplicationID = LDLApplicationID;
+            if (clsGlobalSettings.LocalDrivingLicenseApplicationID == -1)
+            {
+                clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
+            }
+            else
+            {
+                clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+            }
         }
         private void _CloseShowDriverLicenseInfosForms()
         {

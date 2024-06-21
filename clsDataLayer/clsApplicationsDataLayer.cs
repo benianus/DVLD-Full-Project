@@ -11,6 +11,33 @@ namespace clsDataLayer
 {
     public class clsApplicationsDataLayer
     {
+        public static int GetPersonIDRelatedToLocalLicenseByLicenseID(int LicenseID)
+        {
+            int PersonID = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT Applications.ApplicantPersonID" +
+                " FROM Applications INNER JOIN" +
+                " Licenses ON Applications.ApplicationID = Licenses.ApplicationID" +
+                " where licenses.LicenseID = @LicenseID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    PersonID = (int)result;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return PersonID;
+        }
         public static int GetApplicantPersonID(int ApplicationID)
         {
             int ApplicantPersonID = 0;
