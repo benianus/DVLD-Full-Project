@@ -299,6 +299,7 @@
             this.lklShowLicensesInfos.TabIndex = 15;
             this.lklShowLicensesInfos.TabStop = true;
             this.lklShowLicensesInfos.Text = "Show Licenses Infos";
+            this.lklShowLicensesInfos.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklShowLicensesInfos_LinkClicked);
             // 
             // frmAddInternationalLicenseApplication
             // 

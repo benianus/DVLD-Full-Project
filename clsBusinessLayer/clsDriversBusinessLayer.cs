@@ -10,6 +10,7 @@ namespace clsBusinessLayer
 {
     public class clsDriversBusinessLayer
     {
+
         public clsDriversBusinessLayer(int driverID, int personID, int createdByUserID, DateTime createdDate)
         {
             DriverID = driverID;
@@ -29,7 +30,10 @@ namespace clsBusinessLayer
         public int CreatedByUserID { get; set; }
         public DateTime CreatedDate { get; set; }
         
-        
+        public static int GetDriverRelatedToPerson(int personID)
+        {
+            return clsDriversDataLayer.GetDriverRelatedToPerson(personID);
+        }
         public bool Save()
         {
             return _AddNewDriver();

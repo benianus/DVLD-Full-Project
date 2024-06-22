@@ -10,6 +10,30 @@ namespace clsDataLayer
 {
     public class clsDriversDataLayer
     {
+        public static int GetDriverRelatedToPerson(int personID)
+        {
+            int driverID = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT DriverID FROM Drivers WHERE PersonID = @personID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@personID", personID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    driverID = (int)result;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return driverID;
+        }
         public static DataTable FilterDriversBy(string filter, string condition)
         {
             DataTable driversTable = new DataTable();

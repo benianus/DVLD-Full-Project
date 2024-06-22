@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace DVLD_Full_Project.Licenses
 {
-    public partial class frmShowLicenseInfo : Form
+    public partial class frmShowLocalLicenseInfo : Form
     {
-        public frmShowLicenseInfo()
+        public frmShowLocalLicenseInfo()
         {
             InitializeComponent();
         }
 
-        public frmShowLicenseInfo(int LDLApplicationID)
+        public frmShowLocalLicenseInfo(int LDLApplicationID)
         {
             InitializeComponent();
             clsGlobalSettings.LocalDrivingLicenseApplicationID = LDLApplicationID;

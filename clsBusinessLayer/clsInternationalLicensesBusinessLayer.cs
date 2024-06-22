@@ -46,6 +46,32 @@ namespace clsBusinessLayer
         public bool IsActive { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static clsInternationalLicensesBusinessLayer FindDriverInternationalLicense(int LicenseID)
+        {
+            int InternationalLicenseID = 0;
+            int ApplicationID = 0;
+            int DriverID = 0;
+            DateTime IssueDate = DateTime.Now;
+            DateTime ExpirationDate = DateTime.Now;
+            bool IsActive = false;
+            int CreatedByUserID = 0;
+
+            if (clsInternationalLicensesDataLayer.FindDriverInternationalLicense(ref InternationalLicenseID, ref ApplicationID, 
+                ref DriverID, LicenseID, ref IssueDate, ref ExpirationDate, ref IsActive, ref CreatedByUserID))
+            {
+                return new clsInternationalLicensesBusinessLayer(InternationalLicenseID, ApplicationID, DriverID, LicenseID,
+                    IssueDate, ExpirationDate, IsActive, CreatedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+    }
+        public static DataTable GetInternationalLicenseInfos(int internationalLicenseID)
+        {
+            return clsInternationalLicensesDataLayer.GetInternationalLicenseInfos(internationalLicenseID);
+
+        }
         public static DataTable GetInternationalLicense(int PersonID)
         {
             return clsInternationalLicensesDataLayer.GetInternationalLicense(PersonID);
@@ -53,6 +79,30 @@ namespace clsBusinessLayer
         public static bool isPersonHasInternationalLicense(int LocalLicenseID)
         {
             return clsInternationalLicensesDataLayer.isPersonHasInternationalLicense(LocalLicenseID);
+        }
+
+        public bool _AddNewInternationalLicense()
+        {
+            this.InternationalLicenseID = clsInternationalLicensesDataLayer.AddNewInternationalLicense(this.ApplicationID, this.DriverID,
+                this.IssuedUsingLocalLicenseID, this.IssueDate, this.ExpirationDate, this.IsActive, this.CreatedByUserID);
+
+            return this.InternationalLicenseID > 0;
+        }
+        public bool _UpdateInternationalLicense()
+        {
+            return true;
+        }
+        public bool Save()
+        {
+            switch (clsGlobalSettings.Mode)
+            {
+                case clsGlobalSettings.enMode.AddNew:
+                    clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
+                    return _AddNewInternationalLicense();
+                case clsGlobalSettings.enMode.Update:
+                    return _UpdateInternationalLicense();
+            }
+            return false;
         }
     }
 }

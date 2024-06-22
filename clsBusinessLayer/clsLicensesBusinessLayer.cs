@@ -52,6 +52,10 @@ namespace clsBusinessLayer
         public byte IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static bool isPersonHasLocalLicense(int LicenseID)
+        {
+            return clsLicensesDataLayer.isPersonHasLocalLicense(LicenseID);
+        }
         public static DataTable GetDriverLicenseInfos(int LicenseID)
         {
             return clsLicensesDataLayer.GetDriverLicenseInfos(LicenseID);

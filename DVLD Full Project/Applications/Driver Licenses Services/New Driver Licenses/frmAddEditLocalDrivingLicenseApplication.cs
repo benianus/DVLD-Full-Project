@@ -39,7 +39,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         {
             tpPeronalApplicationInfo.SelectTab(tpApplicationInfo.Name);
             clsGlobalSettings.Applications = new clsApplicationsBusinessLayer();
-            clsGlobalSettings.LocalDriverLicenseApplication = new clsLocalDriverLicenseApplicationBusinessLayer();  
+            clsGlobalSettings.LocalDriverLicenseApplications = new clsLocalDriverLicenseApplicationBusinessLayer();  
         }
         private void _ReturnToThePreviousPersonalInfoTab()
         {
@@ -57,7 +57,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                 return;
             }
 
-            clsGlobalSettings.LocalDriverLicenseApplication = clsLocalDriverLicenseApplicationBusinessLayer.FindLocalDrivingLicenseApplication(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            clsGlobalSettings.LocalDriverLicenseApplications = clsLocalDriverLicenseApplicationBusinessLayer.FindLocalDrivingLicenseApplication(clsGlobalSettings.LocalDrivingLicenseApplicationID);
             clsGlobalSettings.Applications = clsApplicationsBusinessLayer.FindApplication(clsGlobalSettings.ApplicationID);
 
             _ShowUpdateLocalDrivingLicenseApplication();
@@ -115,7 +115,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
 
                 if (clsGlobalSettings.Applications.Save())
                 {
-                    if (clsGlobalSettings.LocalDriverLicenseApplication.Save())
+                    if (clsGlobalSettings.LocalDriverLicenseApplications.Save())
                     {
                         MessageBox.Show("Application Saved");
                     }
@@ -129,7 +129,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
 
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
 
-                    if (clsGlobalSettings.LocalDriverLicenseApplication.Save())
+                    if (clsGlobalSettings.LocalDriverLicenseApplications.Save())
                     {
                         MessageBox.Show("Application Saved");
                     }
@@ -157,8 +157,8 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         private void _GetLocalDrivingLicenseObjectInfos()
         {
             //local driving License application object
-            clsGlobalSettings.LocalDriverLicenseApplication.ApplicationID = clsGlobalSettings.Applications.ApplicationID;
-            clsGlobalSettings.LocalDriverLicenseApplication.LicenseClassID = cbLicsenseClass.SelectedIndex + 1;
+            clsGlobalSettings.LocalDriverLicenseApplications.ApplicationID = clsGlobalSettings.Applications.ApplicationID;
+            clsGlobalSettings.LocalDriverLicenseApplications.LicenseClassID = cbLicsenseClass.SelectedIndex + 1;
         }
         
         //--------------

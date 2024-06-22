@@ -11,6 +11,39 @@ namespace clsDataLayer
     
     public class clsLicensesDataLayer
     {
+        public static bool isPersonHasLocalLicense(int LicenseID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from Licenses where licenseID = @LicenseID and IsActive = 1 and LicenseClass = 3;";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    isFound = reader.Read();
+                }
+            }
+            catch
+            {
+                return isFound;
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
         public static DataTable GetDriverLicenseInfos(int LicenseID)
         {
             DataTable DriverLicenseInfos = new DataTable();

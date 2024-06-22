@@ -1,4 +1,5 @@
 ﻿using clsBusinessLayer;
+using DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Licenses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace DVLD_Full_Project
 {
     public partial class ucSearchInternationalLicenseApplication : UserControl
     {
+       
         public event Action<int> onClickSearchForDriverLicense;
         protected virtual void ClickSearch(int LicenseID)
         {
@@ -54,13 +56,22 @@ namespace DVLD_Full_Project
         }
         private void _LoadDriverLicenseInfos()
         {
+            if (txtLiceneseID.Text == string.Empty)
+            {
+                return;
+            }
+
             clsGlobalSettings.LicenseID = Convert.ToInt32(txtLiceneseID.Text);
 
             DataTable DriverLicenseInfosTable = _GetDriverLicenseInfos(clsGlobalSettings.LicenseID);
 
             if (DriverLicenseInfosTable == null)
             {
-                MessageBox.Show("Driver License is not Active, Expired or Not Ordinary Driving License Type");
+                MessageBox.Show("Driver License is doesn't exist, not Active, Expired or Not Ordinary Driving License Type");
+                if (onClickSearchForDriverLicense != null)
+                {
+                    ClickSearch(clsGlobalSettings.LicenseID);
+                }
                 return;
             }
 

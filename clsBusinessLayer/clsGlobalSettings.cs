@@ -31,13 +31,14 @@ namespace clsBusinessLayer
         public static clsPeopleBusinessLayer Person;
         public static clsApplicationsTypesBusinessLayer ApplicationType;
         public static clsTestTypesBusinessLayer TestTypes;
-        public static clsLocalDriverLicenseApplicationBusinessLayer LocalDriverLicenseApplication;
+        public static clsLocalDriverLicenseApplicationBusinessLayer LocalDriverLicenseApplications;
         public static clsApplicationsBusinessLayer Applications;
         public static clsLicenseClassesBusinessLayer LicenseClasses;
         public static clsLicensesBusinessLayer Licenses;
         public static clsTestAppointementsBusinessLayer TestAppointements;
         public static clsTestsBusinessLayer Tests;
         public static clsDriversBusinessLayer Drivers;
+        public static clsInternationalLicensesBusinessLayer InternationalLicenses;
 
         public static int TestTypeID;
         public static int TestAppointementID;
@@ -50,6 +51,7 @@ namespace clsBusinessLayer
         public static int LicenseClassID;
         public static int LicenseID;
         public static int DriverID;
+        public static int InternationalLicenseID;
 
         public static enMode Mode;
         public static enApplicationStatus Status;

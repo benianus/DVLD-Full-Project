@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace DVLD_Full_Project
 {
-    public partial class ucDriverLicenseInfo : UserControl
+    public partial class ucDriverLocalLicenseInfo : UserControl
     {
-        public ucDriverLicenseInfo()
+        public ucDriverLocalLicenseInfo()
         {
             InitializeComponent();
         }

@@ -110,7 +110,6 @@ namespace clsBusinessLayer
         {
             switch (clsGlobalSettings.Mode)
             {
-
                 case clsGlobalSettings.enMode.AddNew:
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
                     return _AddNewApplication();
@@ -118,7 +117,6 @@ namespace clsBusinessLayer
                     return _UpdateApplication();
             }
             return false;
-
         }
     }
 }
