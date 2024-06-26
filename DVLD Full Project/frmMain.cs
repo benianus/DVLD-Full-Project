@@ -1,6 +1,8 @@
 ﻿using clsBusinessLayer;
 using DVLD_Full_Project.Applications;
 using DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Licenses;
+using DVLD_Full_Project.Applications.Driver_Licenses_Services.Renew_Driving_License;
+using DVLD_Full_Project.Applications.Manage_Applications.International_Driving_License_Applications;
 using DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_License_Applications;
 using DVLD_Full_Project.Applications.Manage_Test_Types;
 using DVLD_Full_Project.Drivers;
@@ -77,9 +79,20 @@ namespace DVLD_Full_Project
         }
         private void _showAddNewInternationalApplicationForm()
         {
-            frmAddInternationalLicenseApplication addInternationalLicenseApplication = new frmAddInternationalLicenseApplication();
+            frmAddInternationalLicenseApplication addInternationalLicenseApplication = new frmAddInternationalLicenseApplication(-1);
             addInternationalLicenseApplication.ShowDialog();
         }
+        private void _ShowManageInternationalLicenseApplications()
+        {
+            frmInternationalApplications internationalApplications = new frmInternationalApplications();
+            internationalApplications.ShowDialog();
+        }
+        private void _ShowRenewLicenseApplicationForm()
+        {
+            frmRenewDrivingLicense renewLicenseApplication = new frmRenewDrivingLicense(-1);
+            renewLicenseApplication.ShowDialog();
+        }
+        
 
         //Buttons
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,6 +140,16 @@ namespace DVLD_Full_Project
         private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _showAddNewInternationalApplicationForm();
+        }
+
+        private void internationalLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowManageInternationalLicenseApplications();
+        }
+
+        private void renewDriverLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowRenewLicenseApplicationForm();
         }
     }
 }

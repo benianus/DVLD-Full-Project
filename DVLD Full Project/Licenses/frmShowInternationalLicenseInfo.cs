@@ -11,25 +11,24 @@ using System.Windows.Forms;
 
 namespace DVLD_Full_Project.Licenses
 {
-    public partial class frmShowLicenseInfo : Form
+    public partial class frmShowInternationalLicenseInfo : Form
     {
-        public frmShowLicenseInfo()
+        public frmShowInternationalLicenseInfo(int InternationalLicenseID)
         {
             InitializeComponent();
+            clsGlobalSettings.InternationalLicenseID = InternationalLicenseID;
         }
 
-        public frmShowLicenseInfo(int LDLApplicationID)
-        {
-            InitializeComponent();
-            clsGlobalSettings.LocalDrivingLicenseApplicationID = LDLApplicationID;
-        }
-        private void _CloseShowDriverLicenseInfosForms()
+        //functions
+        private void _CloseInternationaLicenseInfosForm()
         {
             this.Close();
         }
+
+        //buttons
         private void btnClose_Click(object sender, EventArgs e)
         {
-            _CloseShowDriverLicenseInfosForms();
+            _CloseInternationaLicenseInfosForm();
         }
     }
 }

@@ -117,7 +117,7 @@ namespace DVLD_Full_Project
         }
         private void _ShowLicenseInfos()
         {
-            frmShowLicenseInfo showLicenseInfos = new frmShowLicenseInfo(Convert.ToInt32(ApplicationInfo.LocalDrivingLicenseApplicationID));
+            frmShowLocalLicenseInfo showLicenseInfos = new frmShowLocalLicenseInfo(Convert.ToInt32(ApplicationInfo.ApplicationID));
             showLicenseInfos.ShowDialog();
         }
         //buttons

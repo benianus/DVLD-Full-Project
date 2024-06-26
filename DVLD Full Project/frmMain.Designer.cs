@@ -131,6 +131,7 @@
             this.renewDriverLicenseToolStripMenuItem.Name = "renewDriverLicenseToolStripMenuItem";
             this.renewDriverLicenseToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
             this.renewDriverLicenseToolStripMenuItem.Text = "Renew driving license";
+            this.renewDriverLicenseToolStripMenuItem.Click += new System.EventHandler(this.renewDriverLicenseToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -186,6 +187,7 @@
             this.internationalLicenseApplicationsToolStripMenuItem.Name = "internationalLicenseApplicationsToolStripMenuItem";
             this.internationalLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.internationalLicenseApplicationsToolStripMenuItem.Text = "International License Applications";
+            this.internationalLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseApplicationsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 

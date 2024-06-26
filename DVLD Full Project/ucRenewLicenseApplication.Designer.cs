@@ -1,6 +1,6 @@
 ﻿namespace DVLD_Full_Project
 {
-    partial class ucSearchInternationalLicenseApplication
+    partial class ucRenewLicenseApplication
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbLicenseFilter = new System.Windows.Forms.GroupBox();
-            this.btnLicenseSearch = new System.Windows.Forms.Button();
-            this.txtLiceneseID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gbDriverLicenseInfo = new System.Windows.Forms.GroupBox();
             this.lblIsDetained = new System.Windows.Forms.Label();
             this.lblExpirationDate = new System.Windows.Forms.Label();
             this.lblDriverID = new System.Windows.Forms.Label();
@@ -46,7 +41,6 @@
             this.lblLicenseID = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblClass = new System.Windows.Forms.Label();
-            this.pbPerson = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -60,85 +54,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.gbLicenseFilter.SuspendLayout();
+            this.btnLicenseSearch = new System.Windows.Forms.Button();
+            this.txtLiceneseID = new System.Windows.Forms.TextBox();
+            this.lblLicenseIDFilter = new System.Windows.Forms.Label();
+            this.gbDriverLicenseInfo = new System.Windows.Forms.GroupBox();
+            this.pbPerson = new System.Windows.Forms.PictureBox();
+            this.gbLicenseFilter = new System.Windows.Forms.GroupBox();
             this.gbDriverLicenseInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerson)).BeginInit();
+            this.gbLicenseFilter.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gbLicenseFilter
-            // 
-            this.gbLicenseFilter.Controls.Add(this.btnLicenseSearch);
-            this.gbLicenseFilter.Controls.Add(this.txtLiceneseID);
-            this.gbLicenseFilter.Controls.Add(this.label1);
-            this.gbLicenseFilter.Location = new System.Drawing.Point(7, 7);
-            this.gbLicenseFilter.Name = "gbLicenseFilter";
-            this.gbLicenseFilter.Size = new System.Drawing.Size(945, 71);
-            this.gbLicenseFilter.TabIndex = 0;
-            this.gbLicenseFilter.TabStop = false;
-            this.gbLicenseFilter.Text = "Filter";
-            // 
-            // btnLicenseSearch
-            // 
-            this.btnLicenseSearch.Location = new System.Drawing.Point(615, 16);
-            this.btnLicenseSearch.Name = "btnLicenseSearch";
-            this.btnLicenseSearch.Size = new System.Drawing.Size(75, 42);
-            this.btnLicenseSearch.TabIndex = 2;
-            this.btnLicenseSearch.Text = "Search";
-            this.btnLicenseSearch.UseVisualStyleBackColor = true;
-            this.btnLicenseSearch.Click += new System.EventHandler(this.btnLicenseSearch_Click);
-            // 
-            // txtLiceneseID
-            // 
-            this.txtLiceneseID.Location = new System.Drawing.Point(171, 27);
-            this.txtLiceneseID.Name = "txtLiceneseID";
-            this.txtLiceneseID.Size = new System.Drawing.Size(384, 20);
-            this.txtLiceneseID.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "License ID:";
-            // 
-            // gbDriverLicenseInfo
-            // 
-            this.gbDriverLicenseInfo.Controls.Add(this.lblIsDetained);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblExpirationDate);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblDriverID);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblDateOfBirth);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblIsActive);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblNotes);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblIssueReason);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblIssueDate);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblGendor);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblNationalNo);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblLicenseID);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblName);
-            this.gbDriverLicenseInfo.Controls.Add(this.lblClass);
-            this.gbDriverLicenseInfo.Controls.Add(this.pbPerson);
-            this.gbDriverLicenseInfo.Controls.Add(this.label10);
-            this.gbDriverLicenseInfo.Controls.Add(this.label11);
-            this.gbDriverLicenseInfo.Controls.Add(this.label12);
-            this.gbDriverLicenseInfo.Controls.Add(this.label13);
-            this.gbDriverLicenseInfo.Controls.Add(this.label14);
-            this.gbDriverLicenseInfo.Controls.Add(this.label8);
-            this.gbDriverLicenseInfo.Controls.Add(this.label7);
-            this.gbDriverLicenseInfo.Controls.Add(this.label6);
-            this.gbDriverLicenseInfo.Controls.Add(this.label5);
-            this.gbDriverLicenseInfo.Controls.Add(this.label4);
-            this.gbDriverLicenseInfo.Controls.Add(this.label3);
-            this.gbDriverLicenseInfo.Controls.Add(this.label2);
-            this.gbDriverLicenseInfo.Controls.Add(this.label9);
-            this.gbDriverLicenseInfo.Location = new System.Drawing.Point(10, 82);
-            this.gbDriverLicenseInfo.Name = "gbDriverLicenseInfo";
-            this.gbDriverLicenseInfo.Size = new System.Drawing.Size(943, 367);
-            this.gbDriverLicenseInfo.TabIndex = 4;
-            this.gbDriverLicenseInfo.TabStop = false;
-            this.gbDriverLicenseInfo.Text = "Driver License Info";
             // 
             // lblIsDetained
             // 
@@ -270,15 +195,6 @@
             this.lblClass.TabIndex = 15;
             this.lblClass.Text = "??";
             // 
-            // pbPerson
-            // 
-            this.pbPerson.Location = new System.Drawing.Point(719, 75);
-            this.pbPerson.Name = "pbPerson";
-            this.pbPerson.Size = new System.Drawing.Size(196, 184);
-            this.pbPerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPerson.TabIndex = 14;
-            this.pbPerson.TabStop = false;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -409,30 +325,110 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "Class:";
             // 
-            // ucSearchInternationalLicenseApplication
+            // btnLicenseSearch
+            // 
+            this.btnLicenseSearch.Location = new System.Drawing.Point(615, 16);
+            this.btnLicenseSearch.Name = "btnLicenseSearch";
+            this.btnLicenseSearch.Size = new System.Drawing.Size(75, 42);
+            this.btnLicenseSearch.TabIndex = 2;
+            this.btnLicenseSearch.Text = "Search";
+            this.btnLicenseSearch.UseVisualStyleBackColor = true;
+            this.btnLicenseSearch.Click += new System.EventHandler(this.btnLicenseSearch_Click);
+            // 
+            // txtLiceneseID
+            // 
+            this.txtLiceneseID.Location = new System.Drawing.Point(171, 27);
+            this.txtLiceneseID.Name = "txtLiceneseID";
+            this.txtLiceneseID.Size = new System.Drawing.Size(384, 20);
+            this.txtLiceneseID.TabIndex = 1;
+            // 
+            // lblLicenseIDFilter
+            // 
+            this.lblLicenseIDFilter.AutoSize = true;
+            this.lblLicenseIDFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLicenseIDFilter.Location = new System.Drawing.Point(35, 27);
+            this.lblLicenseIDFilter.Name = "lblLicenseIDFilter";
+            this.lblLicenseIDFilter.Size = new System.Drawing.Size(100, 20);
+            this.lblLicenseIDFilter.TabIndex = 0;
+            this.lblLicenseIDFilter.Text = "License ID:";
+            // 
+            // gbDriverLicenseInfo
+            // 
+            this.gbDriverLicenseInfo.Controls.Add(this.lblIsDetained);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblExpirationDate);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblDriverID);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblDateOfBirth);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblIsActive);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblNotes);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblIssueReason);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblIssueDate);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblGendor);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblNationalNo);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblLicenseID);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblName);
+            this.gbDriverLicenseInfo.Controls.Add(this.lblClass);
+            this.gbDriverLicenseInfo.Controls.Add(this.pbPerson);
+            this.gbDriverLicenseInfo.Controls.Add(this.label10);
+            this.gbDriverLicenseInfo.Controls.Add(this.label11);
+            this.gbDriverLicenseInfo.Controls.Add(this.label12);
+            this.gbDriverLicenseInfo.Controls.Add(this.label13);
+            this.gbDriverLicenseInfo.Controls.Add(this.label14);
+            this.gbDriverLicenseInfo.Controls.Add(this.label8);
+            this.gbDriverLicenseInfo.Controls.Add(this.label7);
+            this.gbDriverLicenseInfo.Controls.Add(this.label6);
+            this.gbDriverLicenseInfo.Controls.Add(this.label5);
+            this.gbDriverLicenseInfo.Controls.Add(this.label4);
+            this.gbDriverLicenseInfo.Controls.Add(this.label3);
+            this.gbDriverLicenseInfo.Controls.Add(this.label2);
+            this.gbDriverLicenseInfo.Controls.Add(this.label9);
+            this.gbDriverLicenseInfo.Location = new System.Drawing.Point(7, 81);
+            this.gbDriverLicenseInfo.Name = "gbDriverLicenseInfo";
+            this.gbDriverLicenseInfo.Size = new System.Drawing.Size(943, 367);
+            this.gbDriverLicenseInfo.TabIndex = 6;
+            this.gbDriverLicenseInfo.TabStop = false;
+            this.gbDriverLicenseInfo.Text = "Driver License Info";
+            // 
+            // pbPerson
+            // 
+            this.pbPerson.Location = new System.Drawing.Point(719, 75);
+            this.pbPerson.Name = "pbPerson";
+            this.pbPerson.Size = new System.Drawing.Size(196, 184);
+            this.pbPerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPerson.TabIndex = 14;
+            this.pbPerson.TabStop = false;
+            // 
+            // gbLicenseFilter
+            // 
+            this.gbLicenseFilter.Controls.Add(this.btnLicenseSearch);
+            this.gbLicenseFilter.Controls.Add(this.txtLiceneseID);
+            this.gbLicenseFilter.Controls.Add(this.lblLicenseIDFilter);
+            this.gbLicenseFilter.Location = new System.Drawing.Point(4, 6);
+            this.gbLicenseFilter.Name = "gbLicenseFilter";
+            this.gbLicenseFilter.Size = new System.Drawing.Size(945, 71);
+            this.gbLicenseFilter.TabIndex = 5;
+            this.gbLicenseFilter.TabStop = false;
+            this.gbLicenseFilter.Text = "Filter";
+            // 
+            // ucRenewLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbDriverLicenseInfo);
             this.Controls.Add(this.gbLicenseFilter);
-            this.Name = "ucSearchInternationalLicenseApplication";
-            this.Size = new System.Drawing.Size(962, 459);
-            this.Load += new System.EventHandler(this.ucSearchInternationalLicenseApplication_Load);
-            this.gbLicenseFilter.ResumeLayout(false);
-            this.gbLicenseFilter.PerformLayout();
+            this.Name = "ucRenewLicenseApplication";
+            this.Size = new System.Drawing.Size(958, 455);
+            this.Load += new System.EventHandler(this.ucRenewLicenseApplication_Load);
             this.gbDriverLicenseInfo.ResumeLayout(false);
             this.gbDriverLicenseInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerson)).EndInit();
+            this.gbLicenseFilter.ResumeLayout(false);
+            this.gbLicenseFilter.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox gbLicenseFilter;
-        private System.Windows.Forms.Button btnLicenseSearch;
-        private System.Windows.Forms.TextBox txtLiceneseID;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox gbDriverLicenseInfo;
+
         private System.Windows.Forms.Label lblIsDetained;
         private System.Windows.Forms.Label lblExpirationDate;
         private System.Windows.Forms.Label lblDriverID;
@@ -460,5 +456,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnLicenseSearch;
+        private System.Windows.Forms.TextBox txtLiceneseID;
+        private System.Windows.Forms.Label lblLicenseIDFilter;
+        private System.Windows.Forms.GroupBox gbDriverLicenseInfo;
+        private System.Windows.Forms.GroupBox gbLicenseFilter;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DVLD_Full_Project.Licenses
 {
-    partial class frmShowLicenseInfo
+    partial class frmShowLocalLicenseInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.ucDriverLicenseInfo1 = new DVLD_Full_Project.ucDriverLicenseInfo();
+            this.ucDriverLicenseInfo1 = new DVLD_Full_Project.ucDriverLocalLicenseInfo();
             this.SuspendLayout();
             // 
             // btnClose
@@ -77,7 +77,7 @@
 
         #endregion
 
-        private ucDriverLicenseInfo ucDriverLicenseInfo1;
+        private ucDriverLocalLicenseInfo ucDriverLicenseInfo1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
     }

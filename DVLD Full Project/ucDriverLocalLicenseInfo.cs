@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace DVLD_Full_Project
 {
-    public partial class ucDriverLicenseInfo : UserControl
+    public partial class ucDriverLocalLicenseInfo : UserControl
     {
-        public ucDriverLicenseInfo()
+        public ucDriverLocalLicenseInfo()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace DVLD_Full_Project
         //functions
         private stDriverLicenseInfos _GetDriverLicenseInfos()
         {
-            DataTable DriverLicenseInfosTable = clsDriversBusinessLayer.GetDriverLicenseInfosByLDLApplicationID(clsGlobalSettings.LocalDrivingLicenseApplicationID);
+            DataTable DriverLicenseInfosTable = clsDriversBusinessLayer.GetDriverLicenseInfosByLDLApplicationID(clsGlobalSettings.ApplicationID);
             
             DriverLicenseInfos.Class = DriverLicenseInfosTable.Rows[0]["ClassName"].ToString();
             DriverLicenseInfos.Name = DriverLicenseInfosTable.Rows[0]["Name"].ToString();
@@ -54,6 +54,7 @@ namespace DVLD_Full_Project
             DriverLicenseInfos.DriverID = DriverLicenseInfosTable.Rows[0]["DriverID"].ToString();
             DriverLicenseInfos.ExpirationDate = DriverLicenseInfosTable.Rows[0]["ExpirationDate"].ToString();
             DriverLicenseInfos.ImagePath = DriverLicenseInfosTable.Rows[0]["ImagePath"].ToString();
+            DriverLicenseInfos.IsActive = DriverLicenseInfosTable.Rows[0]["IsActive"].ToString();
 
             if (_IsLicenseDetained(DriverLicenseInfos.LicenseID))
             {
@@ -72,6 +73,7 @@ namespace DVLD_Full_Project
         }
         private void _LoadDriverLicenseInfoUserControl()
         {
+
             DriverLicenseInfos = _GetDriverLicenseInfos();
 
             lblClass.Text = DriverLicenseInfos.Class;

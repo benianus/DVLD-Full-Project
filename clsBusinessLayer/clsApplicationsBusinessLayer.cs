@@ -46,6 +46,10 @@ namespace clsBusinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static int GetPersonIDRelatedToLocalLicenseByLicenseID(int LicenseID)
+        {
+            return clsApplicationsDataLayer.GetPersonIDRelatedToLocalLicenseByLicenseID(LicenseID);
+        }
         public static int GetApplicantPersonID(int ApplicationID)
         {
             return clsApplicationsDataLayer.GetApplicantPersonID(ApplicationID);
@@ -106,7 +110,6 @@ namespace clsBusinessLayer
         {
             switch (clsGlobalSettings.Mode)
             {
-
                 case clsGlobalSettings.enMode.AddNew:
                     clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
                     return _AddNewApplication();
@@ -114,7 +117,6 @@ namespace clsBusinessLayer
                     return _UpdateApplication();
             }
             return false;
-
         }
     }
 }

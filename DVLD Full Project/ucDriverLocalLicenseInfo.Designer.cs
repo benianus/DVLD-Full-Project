@@ -1,6 +1,6 @@
 ﻿namespace DVLD_Full_Project
 {
-    partial class ucDriverLicenseInfo
+    partial class ucDriverLocalLicenseInfo
     {
         /// <summary> 
         /// Required designer variable.

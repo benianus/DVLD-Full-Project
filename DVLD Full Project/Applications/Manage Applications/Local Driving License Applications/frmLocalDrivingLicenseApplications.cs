@@ -245,9 +245,10 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
         }
         private void _ShowLicenseInfoForm()
         {
-            frmShowLicenseInfo ShowLicenseInfo = new frmShowLicenseInfo(_GetLocalDrivingLicenseApplictionIDFromDataGridView());
+            frmShowLocalLicenseInfo ShowLicenseInfo = new frmShowLocalLicenseInfo(clsApplicationsBusinessLayer.GetApplicationID(_GetLocalDrivingLicenseApplictionIDFromDataGridView()));
             ShowLicenseInfo.ShowDialog();
         }
+        
         private int _GetLocalDrivingLicenseApplictionIDFromDataGridView()
         {
             return Convert.ToInt32(dgvLocalLicenseApplcations.CurrentRow.Cells[0].Value);

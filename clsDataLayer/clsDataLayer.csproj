@@ -47,6 +47,7 @@
     <Compile Include="clsApplicationsTypesDataLayer.cs" />
     <Compile Include="clsDetainedLicensesDataLayer.cs" />
     <Compile Include="clsDriversDataLayer.cs" />
+    <Compile Include="clsInternationalLicensesDataLayer.cs" />
     <Compile Include="clsLicenseClassesDataLayer.cs" />
     <Compile Include="clsLicensesDataLayer.cs" />
     <Compile Include="clsLocalDriverLicenseApplicationDataLayer.cs" />
