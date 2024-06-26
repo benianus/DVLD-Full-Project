@@ -11,6 +11,66 @@ namespace clsDataLayer
 {
     public class clsInternationalLicensesDataLayer
     {
+        public static DataTable GetAllInternationalLicenses()
+        {
+            DataTable ILApplicationsTable = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT        InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive" +
+                " FROM            InternationalLicenses";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    ILApplicationsTable.Load(reader);
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ILApplicationsTable;
+        }
+        public static DataTable GetAllInternationalLicenses(string filter, string condition)
+        {
+            DataTable ILApplicationsTable = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = $"SELECT InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, " +
+                $"IsActive FROM InternationalLicenses WHERE {filter} = @condition;";
+
+            
+
+            if (filter == "None" || condition == string.Empty)
+            {
+                query = "SELECT InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive" +
+                " FROM InternationalLicenses";
+            }
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@condition", condition);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    ILApplicationsTable.Load(reader);
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ILApplicationsTable;
+        }
         public static bool FindDriverInternationalLicense(ref int InternationalLicenseID, ref int ApplicationID,
                 ref int DriverID, int LicenseID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref bool IsActive, ref int CreatedByUserID)
         {

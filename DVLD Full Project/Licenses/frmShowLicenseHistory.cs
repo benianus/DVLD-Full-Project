@@ -62,7 +62,26 @@ namespace DVLD_Full_Project.Licenses
                 _RowsCounterLocalLicenses();
             }
         }
-       
+        private void _ShowLocalLicenseInfosForm()
+        {
+            frmShowLocalLicenseInfo showLocalLicenseInfo = new frmShowLocalLicenseInfo(_GetApplicationIDRelatedToLicense());
+            showLocalLicenseInfo.ShowDialog();
+        }
+        private int _GetApplicationIDRelatedToLicense()
+        {
+            clsGlobalSettings.LicenseID = Convert.ToInt32(dgvLocalLicensesHistory.CurrentRow.Cells["LicenseID"].Value);
+            return clsLicensesBusinessLayer.GetApplicationIDRelatedToLicense(clsGlobalSettings.LicenseID);
+        }
+        private void _ShowInternationalLicenseInfosForm()
+        {
+            frmShowInternationalLicenseInfo showInternationalLicenseInfo = new frmShowInternationalLicenseInfo(Convert.ToInt32(dgvInternationlLicensesHistory.CurrentRow.Cells[0].Value));
+            showInternationalLicenseInfo.ShowDialog();
+        }
+
+        private int _GetLocalApplicationIDRelatedToThisLicense(int ApplicationID)
+        {
+            return clsLicensesBusinessLayer.GetLocalApplicationIDRelatedToThisLicense(ApplicationID);
+        }
         //buttons
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -72,6 +91,15 @@ namespace DVLD_Full_Project.Licenses
         {
             _LoadShowLiceneseHistory();
         }
-        
+
+        private void tsShowLicenseInfos_Click(object sender, EventArgs e)
+        {
+            _ShowLocalLicenseInfosForm();
+        }
+
+        private void tsInternationalLicenseInfos_Click(object sender, EventArgs e)
+        {
+            _ShowInternationalLicenseInfosForm();
+        }
     }
 }

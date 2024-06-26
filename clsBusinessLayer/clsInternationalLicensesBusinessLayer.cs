@@ -46,6 +46,14 @@ namespace clsBusinessLayer
         public bool IsActive { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static DataTable GetAllInternationalLicenses()
+        {
+            return clsInternationalLicensesDataLayer.GetAllInternationalLicenses();
+        }
+        public static DataTable GetAllInternationalLicenses(string filter, string condition)
+        {
+            return clsInternationalLicensesDataLayer.GetAllInternationalLicenses(filter, condition);
+        }
         public static clsInternationalLicensesBusinessLayer FindDriverInternationalLicense(int LicenseID)
         {
             int InternationalLicenseID = 0;

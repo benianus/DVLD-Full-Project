@@ -166,7 +166,7 @@
             this.toolStripSeparator5,
             this.tsmShowPersonLicenseHistory});
             this.cmsLDLApplications.Name = "cmsLDLApplications";
-            this.cmsLDLApplications.Size = new System.Drawing.Size(246, 232);
+            this.cmsLDLApplications.Size = new System.Drawing.Size(246, 210);
             this.cmsLDLApplications.Text = "Local Driving Licenses";
             this.cmsLDLApplications.Opening += new System.ComponentModel.CancelEventHandler(this.cmsLDLApplications_Opening);
             // 
@@ -292,11 +292,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(252, 9);
+            this.label1.Location = new System.Drawing.Point(241, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(569, 56);
+            this.label1.Size = new System.Drawing.Size(591, 56);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Local Driving License Aplications";
+            this.label1.Text = "Local Driving License Applications";
             // 
             // cbStatusFilter
             // 

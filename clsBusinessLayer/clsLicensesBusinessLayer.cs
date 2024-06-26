@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace clsBusinessLayer
 {
@@ -52,6 +53,38 @@ namespace clsBusinessLayer
         public byte IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static bool isLicenseExpired(int LicenseID)
+        {
+            return clsLicensesDataLayer.isLicenseExpired(LicenseID);
+        }
+        public static bool isLicenseActive(int LicenseID)
+        {
+            return clsLicensesDataLayer.isLicenseActive(LicenseID);
+        }
+        public static bool isLicenseExists(int LicenseID)
+        {
+            return clsLicensesDataLayer.isLicenseExists(LicenseID);
+        }
+        public static bool DeactivateOldLicense(int LicenseID)
+        {
+            return clsLicensesDataLayer.DeactivateOldLicense(LicenseID);
+        }
+        public static int GetLicenseClassID(int LicenseID)
+        {
+            return clsLicensesDataLayer.GetLicenseClassID(LicenseID);
+        }
+        public static int GetLicenseFees(int LicenseID)
+        {
+            return clsLicensesDataLayer.GetLicenseFees(LicenseID);
+        }
+        public static int GetApplicationIDRelatedToLicense(int LicenseID)
+        {
+            return clsLicensesDataLayer.GetApplicationIDRelatedToLicense(LicenseID);    
+        }
+        public static int GetLocalApplicationIDRelatedToThisLicense(int ApplicationID)
+        {
+            return clsLicensesDataLayer.GetLocalApplicationIDRelatedToThisLicense(ApplicationID);
+        }
         public static bool isPersonHasLocalLicense(int LicenseID)
         {
             return clsLicensesDataLayer.isPersonHasLocalLicense(LicenseID);
@@ -59,6 +92,14 @@ namespace clsBusinessLayer
         public static DataTable GetDriverLicenseInfos(int LicenseID)
         {
             return clsLicensesDataLayer.GetDriverLicenseInfos(LicenseID);
+        }
+        public static DataTable GetExpiredDriverLicense(int LicenseID)
+        {
+            return clsLicensesDataLayer.GetExpiredDriverLicense(LicenseID);
+        }
+        public static DataTable GetNotExpiredDriverLicense(int LicenseID)
+        {
+            return clsLicensesDataLayer.GetNotExpiredDriverLicense(LicenseID);
         }
         public static DataTable GetPersonLocalLicensesHistory(int PersonID)
         {

@@ -58,6 +58,12 @@
     <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddInternationalLicenseApplication.Designer.cs">
       <DependentUpon>frmAddInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Driver Licenses Services\Renew Driving License\frmRenewDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Driver Licenses Services\Renew Driving License\frmRenewDrivingLicense.Designer.cs">
+      <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Manage Application Types\frmUpdateApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,12 @@
     </Compile>
     <Compile Include="Applications\Manage Application Types\frmManageApplicationTypes.Designer.cs">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Manage Applications\International Driving License Applications\frmInternationalApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Manage Applications\International Driving License Applications\frmInternationalApplications.Designer.cs">
+      <DependentUpon>frmInternationalApplications.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\Manage Applications\Local Driving License Applications\frmLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
@@ -153,6 +165,12 @@
     </Compile>
     <Compile Include="ucDriverLocalLicenseInfo.Designer.cs">
       <DependentUpon>ucDriverLocalLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucRenewLicenseApplication.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucRenewLicenseApplication.Designer.cs">
+      <DependentUpon>ucRenewLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="ucSearchInternationalLicenseApplication.cs">
       <SubType>UserControl</SubType>
@@ -252,11 +270,17 @@
     <EmbeddedResource Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddInternationalLicenseApplication.resx">
       <DependentUpon>frmAddInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Driver Licenses Services\Renew Driving License\frmRenewDrivingLicense.resx">
+      <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Application Types\frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Application Types\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Manage Applications\International Driving License Applications\frmInternationalApplications.resx">
+      <DependentUpon>frmInternationalApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Manage Applications\Local Driving License Applications\frmLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmLocalDrivingLicenseApplications.cs</DependentUpon>
@@ -299,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucDriverLocalLicenseInfo.resx">
       <DependentUpon>ucDriverLocalLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucRenewLicenseApplication.resx">
+      <DependentUpon>ucRenewLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucSearchInternationalLicenseApplication.resx">
       <DependentUpon>ucSearchInternationalLicenseApplication.cs</DependentUpon>
@@ -400,7 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account Settings\" />
-    <Folder Include="Applications\Manage Applications\International Driving License Applications\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

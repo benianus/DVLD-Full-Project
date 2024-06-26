@@ -18,11 +18,11 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         {
             InitializeComponent();
         }
-        public frmAddInternationalLicenseApplication(int LDLApplication)
+        public frmAddInternationalLicenseApplication(int internationalLicenseID)
         {
             InitializeComponent();
-            clsGlobalSettings.LocalDrivingLicenseApplicationID = LDLApplication;
-            if (clsGlobalSettings.LocalDrivingLicenseApplicationID == -1)
+            clsGlobalSettings.InternationalLicenseID = internationalLicenseID;
+            if (clsGlobalSettings.InternationalLicenseID == -1)
             {
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
             }
@@ -83,15 +83,16 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
 
             if (_isPersonHasInternationalLicense())
             {
+                MessageBox.Show("Person already an active international driving license with ID");
+
                 lblLocalLicenseID.Text = LicenseID.ToString();
-                btnIssue.Enabled = true;
+                lblILApplicationID.Text = "??";
+                lblLicenseID.Text = "??";
+                btnIssue.Enabled = false;
                 lklShowLicensesHistory.Enabled = true;
                 lklShowLicensesInfos.Enabled = true;
 
                 clsGlobalSettings.InternationalLicenses = clsInternationalLicensesBusinessLayer.FindDriverInternationalLicense(LicenseID);
-
-                lblILApplicationID.Text = clsGlobalSettings.InternationalLicenses.ApplicationID.ToString();
-                lblLicenseID.Text = clsGlobalSettings.InternationalLicenses.InternationalLicenseID.ToString();
 
                 //load international license id to show license infos
                 clsGlobalSettings.InternationalLicenseID = clsGlobalSettings.InternationalLicenses.InternationalLicenseID;

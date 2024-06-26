@@ -20,7 +20,7 @@ namespace DVLD_Full_Project
         //functions
         private void _LoadDriverInternationalLicenseInfos()
         {
-            DataTable InternationalLicenses = clsInternationalLicensesBusinessLayer.GetInternationalLicenseInfos(clsGlobalSettings.InternationalLicenses.InternationalLicenseID);
+            DataTable InternationalLicenses = clsInternationalLicensesBusinessLayer.GetInternationalLicenseInfos(clsGlobalSettings.InternationalLicenseID);
 
             lblName.Text = InternationalLicenses.Rows[0]["FullName"].ToString();
             lblIntInternationalLicenseID.Text = InternationalLicenses.Rows[0]["InternationalLicenseID"].ToString();

@@ -18,10 +18,10 @@ namespace DVLD_Full_Project.Licenses
             InitializeComponent();
         }
 
-        public frmShowLocalLicenseInfo(int LDLApplicationID)
+        public frmShowLocalLicenseInfo(int ApplicationID)
         {
             InitializeComponent();
-            clsGlobalSettings.LocalDrivingLicenseApplicationID = LDLApplicationID;
+            clsGlobalSettings.ApplicationID = ApplicationID;
             if (clsGlobalSettings.LocalDrivingLicenseApplicationID == -1)
             {
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
@@ -31,6 +31,7 @@ namespace DVLD_Full_Project.Licenses
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
             }
         }
+        
         private void _CloseShowDriverLicenseInfosForms()
         {
             this.Close();

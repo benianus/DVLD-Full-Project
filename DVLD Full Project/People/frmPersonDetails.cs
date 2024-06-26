@@ -24,15 +24,14 @@ namespace DVLD_Full_Project
         public frmPersonDetails(int PersonID)
         {
             InitializeComponent();
+            clsGlobalSettings.PersonID = PersonID;
             if (PersonID == -1)
             {
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
-                clsGlobalSettings.PersonID = PersonID;
             }
             else
             {
                 clsGlobalSettings.Mode = clsGlobalSettings.enMode.Update;
-                clsGlobalSettings.PersonID = PersonID;
             }
             
             _sendPersonIdToUserControl(clsGlobalSettings.PersonID);
