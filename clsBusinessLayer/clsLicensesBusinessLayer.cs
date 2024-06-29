@@ -53,6 +53,10 @@ namespace clsBusinessLayer
         public byte IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
+        public static DataTable GetLicenseInfos(int LicenseID)
+        {
+            return clsLicensesDataLayer.GetLicenseInfos(LicenseID);
+        }
         public static bool isLicenseExpired(int LicenseID)
         {
             return clsLicensesDataLayer.isLicenseExpired(LicenseID);
@@ -68,6 +72,10 @@ namespace clsBusinessLayer
         public static bool DeactivateOldLicense(int LicenseID)
         {
             return clsLicensesDataLayer.DeactivateOldLicense(LicenseID);
+        }
+        public static bool ActivateOldLicense(int LicenseID)
+        {
+            return clsLicensesDataLayer.ActivateOldLicense(LicenseID);
         }
         public static int GetLicenseClassID(int LicenseID)
         {

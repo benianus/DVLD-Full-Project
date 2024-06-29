@@ -147,7 +147,8 @@ namespace clsDataLayer
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
             string query = "SELECT InternationalLicenses.* FROM InternationalLicenses JOIN Applications" +
                 " ON InternationalLicenses.ApplicationID = Applications.ApplicationID" +
-                " WHERE Applications.ApplicantPersonID = @PersonID;";
+                " WHERE Applications.ApplicantPersonID = @PersonID " +
+                " ORDER BY InternationalLicenses.InternationalLicenseID DESC;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
 

@@ -68,9 +68,9 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
             {
                 tpPeronalApplicationInfo.SelectTab(1);
                 lblNewLocalDrivingLicense.Text = "Update Local Driver License Application";
-                lblDLApplicationiD.Text = clsGlobalSettings.LocalDrivingLicenseApplicationID.ToString();
+                lblDLApplicationiD.Text = clsGlobalSettings.LocalDriverLicenseApplications.LocalDrivingLicenseApplicationID.ToString();
                 lblApplicationDate.Text = clsGlobalSettings.Applications.ApplicationDate.ToString();
-                cbLicsenseClass.SelectedIndex = clsLocalDriverLicenseApplicationBusinessLayer.GetLicenseClasseID(clsGlobalSettings.LocalDrivingLicenseApplicationID) - 1;
+                cbLicsenseClass.SelectedIndex = clsLocalDriverLicenseApplicationBusinessLayer.GetLicenseClasseID(clsGlobalSettings.LocalDriverLicenseApplications.LocalDrivingLicenseApplicationID) - 1;
                 lblApplicatonFees.Text = clsApplicationsTypesBusinessLayer._GetApplicationTypeFees("New Local Driving License Service").ToString();
                 lblCreateBy.Text = clsGlobalSettings.User.UserName;
             }
@@ -91,6 +91,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         {
             string NationalNo, ClassName;
             _GetConditionsToVerifyIfApplicationExists(out NationalNo, out ClassName);
+
             //verify if the application 'New' or 'Completed'
             if (clsLocalDriverLicenseApplicationBusinessLayer.isLocalApplcationNew(NationalNo, ClassName))
             {
@@ -135,6 +136,10 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
                     }
                 }
             }
+
+            //fill the objects if exists
+            clsGlobalSettings.LocalDriverLicenseApplications = clsLocalDriverLicenseApplicationBusinessLayer.FindLocalDrivingLicenseApplication(clsGlobalSettings.LocalDriverLicenseApplications.LocalDrivingLicenseApplicationID);
+            clsGlobalSettings.Applications = clsApplicationsBusinessLayer.FindApplication(clsGlobalSettings.Applications.ApplicationID);
 
             _ShowUpdateLocalDrivingLicenseApplication();
 

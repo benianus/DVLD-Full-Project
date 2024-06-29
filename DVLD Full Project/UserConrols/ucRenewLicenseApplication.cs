@@ -32,6 +32,7 @@ namespace DVLD_Full_Project
         public ucRenewLicenseApplication(int renewMode)
         {
             InitializeComponent();
+            _Mode = renewMode;
         }
         //functions
         private void _LoadRenewLicenseApplicationUserControl()
@@ -182,14 +183,7 @@ namespace DVLD_Full_Project
         {
             return clsDetainedLicensesBusinessLayer.isLicenseDetained(LicenseID);
         }
-        public void disableFilterAfterRenewLicense()
-        {
-            gbLicenseFilter.Enabled = false;
-            lblLicenseIDFilter.Enabled = false;
-            txtLiceneseID.Enabled = false;
-            btnLicenseSearch.Enabled = false;
-        }
-
+        
         //buttons
         private void ucRenewLicenseApplication_Load(object sender, EventArgs e)
         {
