@@ -281,6 +281,8 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
             frmAddEditLocalDrivingLicenseApplication addNewLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication(clsGlobalSettings.ApplicationID);
             addNewLocalDrivingLicenseApplication.ShowDialog();
         }
+
+        //------------------------
         //buttons
         private void frmLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {

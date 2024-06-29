@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Detains Licenses\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detains Licenses\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Detains Licenses\frmManageDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detains Licenses\frmManageDetainedLicenses.Designer.cs">
+      <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Detains Licenses\frmReleaseLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detains Licenses\frmReleaseLicense.Designer.cs">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Driver Licenses Services\frmReplacementForLostOrDamagedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Driver Licenses Services\frmReplacementForLostOrDamagedLicense.Designer.cs">
+      <DependentUpon>frmReplacementForLostOrDamagedLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddEditLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,34 +178,52 @@
     <Compile Include="Tests\Test Appointements\frmTestAppointments.Designer.cs">
       <DependentUpon>frmTestAppointments.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucDriverInternationalLicenseInfos.cs">
+    <Compile Include="UserConrols\ucDetainLicense.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucDriverInternationalLicenseInfos.Designer.cs">
+    <Compile Include="UserConrols\ucDetainLicense.Designer.cs">
+      <DependentUpon>ucDetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserConrols\ucDriverInternationalLicenseInfos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserConrols\ucDriverInternationalLicenseInfos.Designer.cs">
       <DependentUpon>ucDriverInternationalLicenseInfos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucDriverLocalLicenseInfo.cs">
+    <Compile Include="UserConrols\ucDriverLocalLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucDriverLocalLicenseInfo.Designer.cs">
+    <Compile Include="UserConrols\ucDriverLocalLicenseInfo.Designer.cs">
       <DependentUpon>ucDriverLocalLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucRenewLicenseApplication.cs">
+    <Compile Include="UserConrols\ucReleaseLicense.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucRenewLicenseApplication.Designer.cs">
+    <Compile Include="UserConrols\ucReleaseLicense.Designer.cs">
+      <DependentUpon>ucReleaseLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserConrols\ucRenewLicenseApplication.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserConrols\ucRenewLicenseApplication.Designer.cs">
       <DependentUpon>ucRenewLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucSearchInternationalLicenseApplication.cs">
+    <Compile Include="UserConrols\ucReplacementForLostOrDamaged.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucSearchInternationalLicenseApplication.Designer.cs">
+    <Compile Include="UserConrols\ucReplacementForLostOrDamaged.Designer.cs">
+      <DependentUpon>ucReplacementForLostOrDamaged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserConrols\ucSearchInternationalLicenseApplication.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserConrols\ucSearchInternationalLicenseApplication.Designer.cs">
       <DependentUpon>ucSearchInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucTestAppointments.cs">
+    <Compile Include="UserConrols\ucTestAppointments.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucTestAppointments.Designer.cs">
+    <Compile Include="UserConrols\ucTestAppointments.Designer.cs">
       <DependentUpon>ucTestAppointments.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmChangePassword.cs">
@@ -196,10 +238,10 @@
     <Compile Include="Users\frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucAddUpdateUser.cs">
+    <Compile Include="UserConrols\ucAddUpdateUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAddUpdateUser.Designer.cs">
+    <Compile Include="UserConrols\ucAddUpdateUser.Designer.cs">
       <DependentUpon>ucAddUpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmAddUpdateUser.cs">
@@ -246,24 +288,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ucAddEditPerson.cs">
+    <Compile Include="UserConrols\ucAddEditPerson.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAddEditPerson.Designer.cs">
+    <Compile Include="UserConrols\ucAddEditPerson.Designer.cs">
       <DependentUpon>ucAddEditPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucPersonDetails.cs">
+    <Compile Include="UserConrols\ucPersonDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucPersonDetails.Designer.cs">
+    <Compile Include="UserConrols\ucPersonDetails.Designer.cs">
       <DependentUpon>ucPersonDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucPersonLoginInfo.cs">
+    <Compile Include="UserConrols\ucPersonLoginInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucPersonLoginInfo.Designer.cs">
+    <Compile Include="UserConrols\ucPersonLoginInfo.Designer.cs">
       <DependentUpon>ucPersonLoginInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\Detains Licenses\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detains Licenses\frmManageDetainedLicenses.resx">
+      <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detains Licenses\frmReleaseLicense.resx">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Driver Licenses Services\frmReplacementForLostOrDamagedLicense.resx">
+      <DependentUpon>frmReplacementForLostOrDamagedLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Driver Licenses Services\New Driver Licenses\frmAddEditLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddEditLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,19 +372,28 @@
     <EmbeddedResource Include="Tests\Test Appointements\frmTestAppointments.resx">
       <DependentUpon>frmTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucDriverInternationalLicenseInfos.resx">
+    <EmbeddedResource Include="UserConrols\ucDetainLicense.resx">
+      <DependentUpon>ucDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserConrols\ucDriverInternationalLicenseInfos.resx">
       <DependentUpon>ucDriverInternationalLicenseInfos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucDriverLocalLicenseInfo.resx">
+    <EmbeddedResource Include="UserConrols\ucDriverLocalLicenseInfo.resx">
       <DependentUpon>ucDriverLocalLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucRenewLicenseApplication.resx">
+    <EmbeddedResource Include="UserConrols\ucReleaseLicense.resx">
+      <DependentUpon>ucReleaseLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserConrols\ucRenewLicenseApplication.resx">
       <DependentUpon>ucRenewLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucSearchInternationalLicenseApplication.resx">
+    <EmbeddedResource Include="UserConrols\ucReplacementForLostOrDamaged.resx">
+      <DependentUpon>ucReplacementForLostOrDamaged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserConrols\ucSearchInternationalLicenseApplication.resx">
       <DependentUpon>ucSearchInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucTestAppointments.resx">
+    <EmbeddedResource Include="UserConrols\ucTestAppointments.resx">
       <DependentUpon>ucTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmChangePassword.resx">
@@ -339,7 +402,7 @@
     <EmbeddedResource Include="Users\frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucAddUpdateUser.resx">
+    <EmbeddedResource Include="UserConrols\ucAddUpdateUser.resx">
       <DependentUpon>ucAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddEditPerson.resx">
@@ -373,13 +436,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ucAddEditPerson.resx">
+    <EmbeddedResource Include="UserConrols\ucAddEditPerson.resx">
       <DependentUpon>ucAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucPersonDetails.resx">
+    <EmbeddedResource Include="UserConrols\ucPersonDetails.resx">
       <DependentUpon>ucPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucPersonLoginInfo.resx">
+    <EmbeddedResource Include="UserConrols\ucPersonLoginInfo.resx">
       <DependentUpon>ucPersonLoginInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

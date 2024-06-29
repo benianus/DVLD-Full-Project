@@ -39,6 +39,7 @@ namespace clsBusinessLayer
         public static clsTestsBusinessLayer Tests;
         public static clsDriversBusinessLayer Drivers;
         public static clsInternationalLicensesBusinessLayer InternationalLicenses;
+        public static clsDetainedLicensesBusinessLayer DetainedLicenses;
 
         public static int TestTypeID;
         public static int TestAppointementID;
@@ -52,6 +53,7 @@ namespace clsBusinessLayer
         public static int LicenseID;
         public static int DriverID;
         public static int InternationalLicenseID;
+        public static int DetainID;
 
         public static enMode Mode;
         public static enApplicationStatus Status;

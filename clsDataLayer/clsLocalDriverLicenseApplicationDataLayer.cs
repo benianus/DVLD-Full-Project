@@ -109,6 +109,10 @@ namespace clsDataLayer
                 connection.Open();
                 RowsAffected = command.ExecuteNonQuery();
             }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
             finally
             {
                 connection.Close();

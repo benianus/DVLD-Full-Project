@@ -11,6 +11,56 @@ namespace clsDataLayer
 {
     public static class clsUserDataLayer
     {
+        public static int GetUserID(string Username)
+        {
+            int userID = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT * FROM Users Where UserName = @username;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", Username);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    userID = (int)reader["UserID"];
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return userID;
+        }
+        public static string GetUserName(int UserID)
+        {
+            string username = string.Empty;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT * FROM Users Where UserID = @userID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userID", UserID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    username = (string)reader["UserName"];
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return username;
+        }
         public static DataTable GetAllUsers()
         {
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);

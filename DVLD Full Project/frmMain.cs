@@ -1,5 +1,7 @@
 ﻿using clsBusinessLayer;
 using DVLD_Full_Project.Applications;
+using DVLD_Full_Project.Applications.Detains_Licenses;
+using DVLD_Full_Project.Applications.Driver_Licenses_Services;
 using DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Licenses;
 using DVLD_Full_Project.Applications.Driver_Licenses_Services.Renew_Driving_License;
 using DVLD_Full_Project.Applications.Manage_Applications.International_Driving_License_Applications;
@@ -92,7 +94,31 @@ namespace DVLD_Full_Project
             frmRenewDrivingLicense renewLicenseApplication = new frmRenewDrivingLicense(-1);
             renewLicenseApplication.ShowDialog();
         }
-        
+        private void _ShowReplacementForDamagedOrLostLicenseForm()
+        {
+            frmReplacementForLostOrDamagedLicense replacementForDamagedOrLostLicense = new frmReplacementForLostOrDamagedLicense();
+            replacementForDamagedOrLostLicense.ShowDialog();
+        }
+        private void _ShowDetainLicenseForm()
+        {
+            frmDetainLicense detainLicense = new frmDetainLicense();
+            detainLicense.ShowDialog();
+        }
+        private void _ShowRealeaseLicenseForm()
+        {
+            frmReleaseLicense releaseLicense = new frmReleaseLicense(-1);
+            releaseLicense.ShowDialog();    
+        }
+        private void _ShowManageDetainedLicensesForm()
+        {
+            frmManageDetainedLicenses manageDetainedLicenses = new frmManageDetainedLicenses();
+            manageDetainedLicenses.ShowDialog();
+        }
+        private void _ShowReleaseDetianedLicenseForm()
+        {
+            frmReleaseLicense releaseLicense = new frmReleaseLicense(-1);
+            releaseLicense.ShowDialog();
+        }
 
         //Buttons
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -150,6 +176,36 @@ namespace DVLD_Full_Project
         private void renewDriverLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ShowRenewLicenseApplicationForm();
+        }
+
+        private void replacementForToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowReplacementForDamagedOrLostLicenseForm();
+        }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowManageLocalLicenseDrivingApplications();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowDetainLicenseForm();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowRealeaseLicenseForm();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowManageDetainedLicensesForm();
+        }
+
+        private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowReleaseDetianedLicenseForm();
         }
     }
 }

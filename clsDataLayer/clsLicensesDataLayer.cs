@@ -15,6 +15,35 @@ namespace clsDataLayer
     
     public class clsLicensesDataLayer
     {
+        public static DataTable GetLicenseInfos(int LicenseID)
+        {
+            DataTable DriverLicenseInfos = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select * from LicenseInfos_view where licenseID = @LicenseID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    DriverLicenseInfos.Load(reader);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DriverLicenseInfos;
+        }
         public static bool isLicenseExpired(int LicenseID)
         {
             bool isFound = false;
@@ -95,6 +124,25 @@ namespace clsDataLayer
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
             string query = "Update Licenses Set IsActive = 0 WHERE LicenseID = @LicenseID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", Licenses);
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
+        public static bool ActivateOldLicense(int Licenses)
+        {
+            int rowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "Update Licenses Set IsActive = 1 WHERE LicenseID = @LicenseID;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LicenseID", Licenses);
             try
@@ -345,7 +393,8 @@ namespace clsDataLayer
                            " JOIN People ON APPLICATIONS.ApplicantPersonID = people.PersonID" +
                            " JOIN Licenses ON Applications.ApplicationID = licenses.ApplicationID" +
                            " JOIN(select * from Licenses JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID) t1 On Licenses.LicenseClass = t1.LicenseClassID" +
-                           " Where people.PersonID = @PersonID; ";
+                           " Where people.PersonID = @PersonID" +
+                           " ORDER BY Licenses.LicenseID DESC; ";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
