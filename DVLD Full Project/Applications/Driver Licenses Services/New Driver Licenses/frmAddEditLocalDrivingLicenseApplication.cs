@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,6 +39,7 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         private void _GoToTheNextTabApplicationInfo()
         {
             tpPeronalApplicationInfo.SelectTab(tpApplicationInfo.Name);
+
             clsGlobalSettings.Applications = new clsApplicationsBusinessLayer();
             clsGlobalSettings.LocalDriverLicenseApplications = new clsLocalDriverLicenseApplicationBusinessLayer();  
         }
@@ -91,6 +93,15 @@ namespace DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Lic
         {
             string NationalNo, ClassName;
             _GetConditionsToVerifyIfApplicationExists(out NationalNo, out ClassName);
+
+            //verify if person has the minimum required age
+            int age = new DateTime((DateTime.Now - clsGlobalSettings.Person.DateOfBirth).Ticks).Year;
+            
+            if (age < clsLicenseClassesBusinessLayer.GetMinimumAllowedAge(cbLicsenseClass.SelectedIndex + 1))
+            {
+                MessageBox.Show("Person Is not old to get the license classe!");
+                return;
+            }
 
             //verify if the application 'New' or 'Completed'
             if (clsLocalDriverLicenseApplicationBusinessLayer.isLocalApplcationNew(NationalNo, ClassName))

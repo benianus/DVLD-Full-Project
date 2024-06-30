@@ -35,5 +35,9 @@ namespace clsBusinessLayer
         {
             return clsLicenseClassesDataLayer.GetDefaultValidityLength(LicenseClassID);
         }
+        public static int GetMinimumAllowedAge(int LicenseClassID)
+        {
+            return clsLicenseClassesDataLayer.GetMinimumAllowedAge(LicenseClassID);
+        }
     }
 }

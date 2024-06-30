@@ -277,7 +277,7 @@ namespace clsDataLayer
         {
             int RowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
-            string query = @"UPDATE Applications set Applications.ApplicationStatus = 2 from LocalDrivingLicenseApplications join Applications 
+            string query = @"UPDATE Applications set Applications.ApplicationStatus = 2, Applications.LastStatusDate = GETDATE() from LocalDrivingLicenseApplications join Applications 
                             on LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID 
                             where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @selectedApplication; ";
 

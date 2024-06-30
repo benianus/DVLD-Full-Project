@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace DVLD_Full_Project.Tests.Issue_Driver_Licnese
 {
@@ -68,6 +69,7 @@ namespace DVLD_Full_Project.Tests.Issue_Driver_Licnese
 
             //change the status of the application to completed
             clsGlobalSettings.Applications.ApplicationStatus = (int)clsGlobalSettings.enApplicationStatus.Completed;
+            clsGlobalSettings.Applications.LastStatusDate = DateTime.Now;
 
             //issue the license
 
