@@ -9,6 +9,30 @@ namespace clsDataLayer
 {
     public class clsLicenseClassesDataLayer
     {
+        public static int GetMinimumAllowedAge(int LicenseClassID)
+        {
+            int minimumAge = 0;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT MinimumAllowedAge FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int Value))
+                {
+                    minimumAge = Value;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return minimumAge;
+        }
         public static int GetLicenseClassID(string ClassName)
         {
             int LicenseClassID = 0;
