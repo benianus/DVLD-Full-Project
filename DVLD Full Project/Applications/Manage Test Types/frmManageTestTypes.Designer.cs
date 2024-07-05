@@ -33,15 +33,16 @@
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvMangeTestTypes = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.cmsTestTypes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMangeTestTypes)).BeginInit();
             this.cmsTestTypes.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(713, 408);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 40);
@@ -92,6 +93,20 @@
             this.dgvMangeTestTypes.Size = new System.Drawing.Size(776, 322);
             this.dgvMangeTestTypes.TabIndex = 10;
             // 
+            // cmsTestTypes
+            // 
+            this.cmsTestTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editTestTypesToolStripMenuItem});
+            this.cmsTestTypes.Name = "cmsTestTypes";
+            this.cmsTestTypes.Size = new System.Drawing.Size(148, 26);
+            // 
+            // editTestTypesToolStripMenuItem
+            // 
+            this.editTestTypesToolStripMenuItem.Name = "editTestTypesToolStripMenuItem";
+            this.editTestTypesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.editTestTypesToolStripMenuItem.Text = "Edit test types";
+            this.editTestTypesToolStripMenuItem.Click += new System.EventHandler(this.editTestTypesToolStripMenuItem_Click);
+            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -105,24 +120,11 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Manage Test Types";
             // 
-            // cmsTestTypes
-            // 
-            this.cmsTestTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editTestTypesToolStripMenuItem});
-            this.cmsTestTypes.Name = "cmsTestTypes";
-            this.cmsTestTypes.Size = new System.Drawing.Size(181, 48);
-            // 
-            // editTestTypesToolStripMenuItem
-            // 
-            this.editTestTypesToolStripMenuItem.Name = "editTestTypesToolStripMenuItem";
-            this.editTestTypesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editTestTypesToolStripMenuItem.Text = "Edit test types";
-            this.editTestTypesToolStripMenuItem.Click += new System.EventHandler(this.editTestTypesToolStripMenuItem_Click);
-            // 
             // frmManageTestTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(800, 455);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblRecordsNumber);

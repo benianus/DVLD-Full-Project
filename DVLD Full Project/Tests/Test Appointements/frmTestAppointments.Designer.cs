@@ -75,20 +75,20 @@
             this.tsmiEdit,
             this.tsmiTakeTest});
             this.cmsTestAppointment.Name = "cmsTestAppointment";
-            this.cmsTestAppointment.Size = new System.Drawing.Size(181, 70);
+            this.cmsTestAppointment.Size = new System.Drawing.Size(121, 48);
             this.cmsTestAppointment.Opened += new System.EventHandler(this.cmsTestAppointment_Opened);
             // 
             // tsmiEdit
             // 
             this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEdit.Size = new System.Drawing.Size(120, 22);
             this.tsmiEdit.Text = "Edit";
             this.tsmiEdit.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // tsmiTakeTest
             // 
             this.tsmiTakeTest.Name = "tsmiTakeTest";
-            this.tsmiTakeTest.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTakeTest.Size = new System.Drawing.Size(120, 22);
             this.tsmiTakeTest.Text = "Take Test";
             this.tsmiTakeTest.Click += new System.EventHandler(this.takeToolStripMenuItem_Click);
             // 
@@ -118,6 +118,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(697, 622);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 37);
@@ -138,6 +139,7 @@
             // 
             // btnAddAppointment
             // 
+            this.btnAddAppointment.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAddAppointment.Location = new System.Drawing.Point(669, 438);
             this.btnAddAppointment.Name = "btnAddAppointment";
             this.btnAddAppointment.Size = new System.Drawing.Size(103, 23);
@@ -157,6 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(786, 666);
             this.Controls.Add(this.btnAddAppointment);
             this.Controls.Add(this.label1);
