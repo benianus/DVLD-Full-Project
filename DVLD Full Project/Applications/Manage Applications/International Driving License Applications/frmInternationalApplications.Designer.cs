@@ -37,18 +37,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilters = new System.Windows.Forms.ComboBox();
             this.dgvInternationlLicenseApplcations = new System.Windows.Forms.DataGridView();
-            this.lblFilterBy = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.cmsInternationalApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsPersonDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblFilterBy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternationlLicenseApplcations)).BeginInit();
             this.cmsInternationalApplications.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(985, 442);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 37);
@@ -77,6 +78,7 @@
             // 
             // btnAddNew
             // 
+            this.btnAddNew.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAddNew.Location = new System.Drawing.Point(985, 87);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(75, 37);
@@ -135,6 +137,36 @@
             this.dgvInternationlLicenseApplcations.Size = new System.Drawing.Size(1053, 306);
             this.dgvInternationlLicenseApplcations.TabIndex = 25;
             // 
+            // cmsInternationalApplications
+            // 
+            this.cmsInternationalApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsPersonDetails,
+            this.tsLicenseDetails,
+            this.tsLicenseHistory});
+            this.cmsInternationalApplications.Name = "cmsInternationalApplications";
+            this.cmsInternationalApplications.Size = new System.Drawing.Size(226, 70);
+            // 
+            // tsPersonDetails
+            // 
+            this.tsPersonDetails.Name = "tsPersonDetails";
+            this.tsPersonDetails.Size = new System.Drawing.Size(225, 22);
+            this.tsPersonDetails.Text = "Show Person Details";
+            this.tsPersonDetails.Click += new System.EventHandler(this.tsPersonDetails_Click);
+            // 
+            // tsLicenseDetails
+            // 
+            this.tsLicenseDetails.Name = "tsLicenseDetails";
+            this.tsLicenseDetails.Size = new System.Drawing.Size(225, 22);
+            this.tsLicenseDetails.Text = "Show License Details";
+            this.tsLicenseDetails.Click += new System.EventHandler(this.tsLicenseDetails_Click);
+            // 
+            // tsLicenseHistory
+            // 
+            this.tsLicenseHistory.Name = "tsLicenseHistory";
+            this.tsLicenseHistory.Size = new System.Drawing.Size(225, 22);
+            this.tsLicenseHistory.Text = "Show Person License History";
+            this.tsLicenseHistory.Click += new System.EventHandler(this.tsLicenseHistory_Click);
+            // 
             // lblFilterBy
             // 
             this.lblFilterBy.AutoSize = true;
@@ -158,40 +190,11 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "International Driving License Applications";
             // 
-            // cmsInternationalApplications
-            // 
-            this.cmsInternationalApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsPersonDetails,
-            this.tsLicenseDetails,
-            this.tsLicenseHistory});
-            this.cmsInternationalApplications.Name = "cmsInternationalApplications";
-            this.cmsInternationalApplications.Size = new System.Drawing.Size(226, 92);
-            // 
-            // tsPersonDetails
-            // 
-            this.tsPersonDetails.Name = "tsPersonDetails";
-            this.tsPersonDetails.Size = new System.Drawing.Size(225, 22);
-            this.tsPersonDetails.Text = "Show Person Details";
-            this.tsPersonDetails.Click += new System.EventHandler(this.tsPersonDetails_Click);
-            // 
-            // tsLicenseDetails
-            // 
-            this.tsLicenseDetails.Name = "tsLicenseDetails";
-            this.tsLicenseDetails.Size = new System.Drawing.Size(225, 22);
-            this.tsLicenseDetails.Text = "Show License Details";
-            this.tsLicenseDetails.Click += new System.EventHandler(this.tsLicenseDetails_Click);
-            // 
-            // tsLicenseHistory
-            // 
-            this.tsLicenseHistory.Name = "tsLicenseHistory";
-            this.tsLicenseHistory.Size = new System.Drawing.Size(225, 22);
-            this.tsLicenseHistory.Text = "Show Person License History";
-            this.tsLicenseHistory.Click += new System.EventHandler(this.tsLicenseHistory_Click);
-            // 
             // frmInternationalApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1077, 488);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnHome);

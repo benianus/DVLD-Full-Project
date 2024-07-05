@@ -35,6 +35,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(886, 439);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 41);
@@ -60,15 +61,16 @@
             this.ucDriverLicenseInfo1.Size = new System.Drawing.Size(951, 373);
             this.ucDriverLicenseInfo1.TabIndex = 0;
             // 
-            // frmShowLicenseInfo
+            // frmShowLocalLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(973, 488);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ucDriverLicenseInfo1);
-            this.Name = "frmShowLicenseInfo";
+            this.Name = "frmShowLocalLicenseInfo";
             this.Text = "frmShowLicenseInfo";
             this.ResumeLayout(false);
             this.PerformLayout();

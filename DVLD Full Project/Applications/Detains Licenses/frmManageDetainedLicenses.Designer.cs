@@ -41,16 +41,17 @@
             this.tsPersonDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblFilterBy = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsReleaseDetainedLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblFilterBy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetainedLicenses)).BeginInit();
             this.cmsInternationalApplications.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(985, 437);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 37);
@@ -146,7 +147,7 @@
             this.toolStripSeparator1,
             this.tsReleaseDetainedLicense});
             this.cmsInternationalApplications.Name = "cmsInternationalApplications";
-            this.cmsInternationalApplications.Size = new System.Drawing.Size(226, 120);
+            this.cmsInternationalApplications.Size = new System.Drawing.Size(226, 98);
             this.cmsInternationalApplications.Opening += new System.ComponentModel.CancelEventHandler(this.cmsInternationalApplications_Opening);
             // 
             // tsPersonDetails
@@ -170,6 +171,18 @@
             this.tsLicenseHistory.Text = "Show Person License History";
             this.tsLicenseHistory.Click += new System.EventHandler(this.tsLicenseHistory_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(222, 6);
+            // 
+            // tsReleaseDetainedLicense
+            // 
+            this.tsReleaseDetainedLicense.Name = "tsReleaseDetainedLicense";
+            this.tsReleaseDetainedLicense.Size = new System.Drawing.Size(225, 22);
+            this.tsReleaseDetainedLicense.Text = "Release Detained License";
+            this.tsReleaseDetainedLicense.Click += new System.EventHandler(this.tsReleaseDetainedLicense_Click);
+            // 
             // lblFilterBy
             // 
             this.lblFilterBy.AutoSize = true;
@@ -190,22 +203,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Manage Detained Licenses";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(222, 6);
-            // 
-            // tsReleaseDetainedLicense
-            // 
-            this.tsReleaseDetainedLicense.Name = "tsReleaseDetainedLicense";
-            this.tsReleaseDetainedLicense.Size = new System.Drawing.Size(225, 22);
-            this.tsReleaseDetainedLicense.Text = "Release Detained License";
-            this.tsReleaseDetainedLicense.Click += new System.EventHandler(this.tsReleaseDetainedLicense_Click);
-            // 
             // frmManageDetainedLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1077, 488);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRelease);
