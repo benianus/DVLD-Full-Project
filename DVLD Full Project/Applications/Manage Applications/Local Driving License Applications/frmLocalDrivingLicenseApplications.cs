@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -122,6 +123,7 @@ namespace DVLD_Full_Project.Applications.Manage_Applications.Local_Driving_Licen
             {
                 if (clsLocalDriverLicenseApplicationBusinessLayer.DeleteLocalDrivingLicenseApplicationID(LDLApplicationID))
                 {
+
                     if (clsApplicationsBusinessLayer.DeleteApplication(ApplicationID))
                     {
                         MessageBox.Show("Application Deleted Successfully");

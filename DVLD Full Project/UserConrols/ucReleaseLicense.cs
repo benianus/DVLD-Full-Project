@@ -26,6 +26,21 @@ namespace DVLD_Full_Project.UserConrols
                 Handler(LicenseID);
             }
         }
+
+        private bool _filterDisabled = true;
+        public bool FilterDisabled
+        {
+            set
+            { 
+                _filterDisabled = value;
+                gbLicenseFilter.Enabled = _filterDisabled;
+            } 
+            get 
+            { 
+                return _filterDisabled;
+            }
+        }
+
         //function
         private void _LoadDetainLicenseUserControl()
         {

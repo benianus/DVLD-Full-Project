@@ -125,6 +125,18 @@ namespace DVLD_Full_Project
                 e.Cancel = false;
                 epAddUpdateUser.SetError(txtUserName, string.Empty);
             }
+
+            //validate if the username used already
+            if(clsUserBusinessLayer.IsUserNameExists(txtUserName.Text))
+            {
+                e.Cancel = true;
+                epAddUpdateUser.SetError(txtUserName, "UserName exists for another Person, try another one please!");
+                txtUserName.Focus();
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
         private void _ValidatePassword(CancelEventArgs e)
         {
@@ -140,7 +152,23 @@ namespace DVLD_Full_Project
                 epAddUpdateUser.SetError(txtPassword, string.Empty);
             }
         }
-       
+        private void _LoadAddUpdateUser()
+        {
+            if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.AddNew)
+            {
+                this.Text = "Add New user";
+                return;
+            }
+
+            this.Text = "Update user";
+            lblAddUpdateUser.Text = "Update User";
+            lblUsersID.Text = clsGlobalSettings.User.UserID.ToString();
+            txtUserName.Text = clsGlobalSettings.User.UserName;
+            txtPassword.Text = clsGlobalSettings.User.Password;
+            txtConfirmePassword.Text = clsGlobalSettings.User.Password;
+            CBoxIsActive.Checked = clsGlobalSettings.User.IsActive;
+        }
+
         //buttons
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -181,19 +209,9 @@ namespace DVLD_Full_Project
 
         private void frmAddUpdateUser_Load(object sender, EventArgs e)
         {
-            if (clsGlobalSettings.Mode == clsGlobalSettings.enMode.AddNew)
-            {
-                this.Text = "Add New user";
-                return;
-            }
-
-            this.Text = "Update user";
-            lblAddUpdateUser.Text = "Update User";
-            lblUsersID.Text = clsGlobalSettings.User.UserID.ToString();
-            txtUserName.Text = clsGlobalSettings.User.UserName;
-            txtPassword.Text = clsGlobalSettings.User.Password;
-            txtConfirmePassword.Text = clsGlobalSettings.User.Password;
-            CBoxIsActive.Checked = clsGlobalSettings.User.IsActive;
+            _LoadAddUpdateUser();
         }
+
+        
     }
 }

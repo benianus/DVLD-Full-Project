@@ -154,6 +154,11 @@
     <Compile Include="Licenses\frmShowLocalLicenseInfo.Designer.cs">
       <DependentUpon>frmShowLocalLicenseInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\Issue Driver Licnese\frmIssueDriverLicenseForTheFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -428,14 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserConrols\ucAddEditPerson.resx">
       <DependentUpon>ucAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -465,24 +465,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\photo_2023-10-09_11-40-19.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\photo_2023-10-10_11-00-40.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\images.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\muslim-women-wearing-hijab-icon-simple-style-vector-12034027.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Man.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Women.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Mylogo.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -490,6 +472,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account Settings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person-placeholder.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

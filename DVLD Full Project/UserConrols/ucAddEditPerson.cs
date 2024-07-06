@@ -1,4 +1,5 @@
 ﻿using clsBusinessLayer;
+using DVLD_Full_Project.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,9 +7,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace DVLD_Full_Project
 {
@@ -237,11 +240,11 @@ namespace DVLD_Full_Project
         {
             if (rbMale.Checked)
             {
-                pbPerson.Image = Properties.Resources.Man;
+                pbPerson.ImageLocation = @"E:\\Programming_Development\\Programming advices\\Programming advices Courses\\Course 19 - Full Project in C#\\DVLD Full Project\\DVLD Full Project\\Resources\\person-placeholder.jpg\";
             }
             else if (rbFemale.Checked)
             {
-                pbPerson.Image = Properties.Resources.Women;
+                pbPerson.ImageLocation = @"E:\\Programming_Development\\Programming advices\\Programming advices Courses\\Course 19 - Full Project in C#\\DVLD Full Project\\DVLD Full Project\\Resources\\person-placeholder.jpg\";
             }
         }
         

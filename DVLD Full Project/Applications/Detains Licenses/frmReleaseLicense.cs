@@ -187,7 +187,8 @@ namespace DVLD_Full_Project.Applications.Detains_Licenses
         {
             lblApplicationID.Text = clsGlobalSettings.Applications.ApplicationID.ToString();
 
-            ucReleaseLicense.Enabled = false;
+            //ucReleaseLicense.Enabled = false;
+            ucReleaseLicense.FilterDisabled = false;
             btnRelease.Enabled = false;
         }
 
