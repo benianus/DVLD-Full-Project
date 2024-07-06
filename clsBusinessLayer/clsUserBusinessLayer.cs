@@ -37,6 +37,10 @@ namespace clsBusinessLayer
         public string Password { get; set; }
         public bool IsActive { get; set; }
 
+        public static bool IsUserNameExists(string UserName)
+        {
+            return clsUserDataLayer.IsUserNameExists(UserName);
+        }
         public static int GetUserID(string Username)
         {
             return clsUserDataLayer.GetUserID(Username);

@@ -11,6 +11,34 @@ namespace clsDataLayer
 {
     public static class clsUserDataLayer
     {
+        public static bool IsUserNameExists(string UserName)
+        {
+            bool isUserNameExists = false;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+
+            string query = "SELECT * FROM Users WHERE UserName = @UserName;";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserName", UserName);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isUserNameExists = true;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isUserNameExists;
+        }
         public static int GetUserID(string Username)
         {
             int userID = 0;

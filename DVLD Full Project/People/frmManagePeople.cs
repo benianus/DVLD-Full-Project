@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using clsBusinessLayer;
+using System.IO;
 
 namespace DVLD_Full_Project
 {
@@ -71,8 +72,24 @@ namespace DVLD_Full_Project
         {
             int rowIndex = dgvLocalLicenseApplications.CurrentRow.Index;
             int PersonID = Convert.ToInt32(dgvLocalLicenseApplications.Rows[rowIndex].Cells[0].Value);
+            string ImagePath = string.Empty;
+
+            if (clsPeopleBusinessLayer.FindPersonByPersonID(PersonID).ImagePath == string.Empty)
+            {
+                ImagePath = string.Empty;
+            }
+            else
+            {
+                ImagePath = clsPeopleBusinessLayer.FindPersonByPersonID(PersonID).ImagePath;
+            }
+
             if (clsPeopleBusinessLayer.Delete(PersonID))
             {
+                //Delete image from disk after delete it in the database;
+                if (File.Exists(ImagePath))
+                {
+                    File.Delete(ImagePath);
+                }
                 return true;
             }
             else

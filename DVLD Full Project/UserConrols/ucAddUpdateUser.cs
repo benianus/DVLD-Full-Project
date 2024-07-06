@@ -202,7 +202,14 @@ namespace DVLD_Full_Project
         {
             _ShowAddNewPersonForm();
         }
-        
+
+        private void txtSearchUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSearch.PerformClick();
+            }
+        }
     }
     
 
