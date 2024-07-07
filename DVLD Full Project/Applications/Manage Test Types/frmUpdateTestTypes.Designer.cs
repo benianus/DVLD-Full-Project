@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -39,6 +40,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFees = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.epTestTypes = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epTestTypes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -69,6 +72,7 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(346, 99);
             this.txtDescription.TabIndex = 17;
+            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // txtTitle
             // 
@@ -76,6 +80,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(346, 20);
             this.txtTitle.TabIndex = 16;
+            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
             // 
             // label5
             // 
@@ -136,6 +141,8 @@
             this.txtFees.Name = "txtFees";
             this.txtFees.Size = new System.Drawing.Size(346, 20);
             this.txtFees.TabIndex = 21;
+            this.txtFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFees_KeyPress);
+            this.txtFees.Validating += new System.ComponentModel.CancelEventHandler(this.txtFees_Validating);
             // 
             // label3
             // 
@@ -146,6 +153,10 @@
             this.label3.Size = new System.Drawing.Size(58, 24);
             this.label3.TabIndex = 20;
             this.label3.Text = "Fees:";
+            // 
+            // epTestTypes
+            // 
+            this.epTestTypes.ContainerControl = this;
             // 
             // frmUpdateTestTypes
             // 
@@ -167,6 +178,8 @@
             this.Name = "frmUpdateTestTypes";
             this.Text = "frmUpdateTestTypes";
             this.Load += new System.EventHandler(this.frmUpdateTestTypes_Load);
+            this.Validating += new System.ComponentModel.CancelEventHandler(this.frmUpdateTestTypes_Validating);
+            ((System.ComponentModel.ISupportInitialize)(this.epTestTypes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +198,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFees;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider epTestTypes;
     }
 }
