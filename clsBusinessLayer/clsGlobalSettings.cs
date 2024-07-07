@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace clsBusinessLayer
@@ -58,6 +59,15 @@ namespace clsBusinessLayer
         public static enMode Mode;
         public static enApplicationStatus Status;
         public static enTestTypes TestType;
-        
+
+        public static bool IsNumber(int number)
+        {
+            string pattern = @"[0-9]$";
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(number.ToString());
+        }
+
+
     }
 }
