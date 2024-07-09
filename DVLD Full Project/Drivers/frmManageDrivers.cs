@@ -1,4 +1,8 @@
 ﻿using clsBusinessLayer;
+using DVLD_Full_Project.Applications.Driver_Licenses_Services.New_Driver_Licenses;
+using DVLD_Full_Project.Applications.Manage_Applications.International_Driving_License_Applications;
+using DVLD_Full_Project.Licenses;
+using DVLD_Full_Project.Tests.Issue_Driver_Licnese;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,6 +104,32 @@ namespace DVLD_Full_Project.Drivers
         private void txtFilterBy_TextChanged(object sender, EventArgs e)
         {
             _rowsCounter(_refreshDriversData(_FilterDriversBy()));
+        }
+
+        private void showPersonInfosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int personID = (int)dgvDrivers.CurrentRow.Cells["PersonID"].Value;
+            frmPersonDetails personDetails = new frmPersonDetails(personID);
+            personDetails.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int personID = (int)dgvDrivers.CurrentRow.Cells["PersonID"].Value;
+            frmShowLicenseHistory licenseHistory = new frmShowLicenseHistory(personID);
+            licenseHistory.ShowDialog();
+        }
+
+        private void issueInternationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int DriverID = (int)dgvDrivers.CurrentRow.Cells["DriverID"].Value;
+            if (clsDriversBusinessLayer.isDriverAlreadyHasInternationalLicense(DriverID))
+            {
+                MessageBox.Show("Driver Already has international License!");
+                return;
+            }
+            frmAddInternationalLicenseApplication addInternationalLicenseApplication = new frmAddInternationalLicenseApplication(-1);
+            addInternationalLicenseApplication.ShowDialog();
         }
     }
 }

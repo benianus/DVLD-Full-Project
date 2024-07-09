@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtFilterBy = new System.Windows.Forms.TextBox();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
@@ -36,7 +37,12 @@
             this.dgvDrivers = new System.Windows.Forms.DataGridView();
             this.lblFilterBy = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmsDrivers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showPersonInfosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.issueInternationalLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDrivers)).BeginInit();
+            this.cmsDrivers.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -101,6 +107,7 @@
             this.dgvDrivers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDrivers.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDrivers.ContextMenuStrip = this.cmsDrivers;
             this.dgvDrivers.Location = new System.Drawing.Point(12, 110);
             this.dgvDrivers.Name = "dgvDrivers";
             this.dgvDrivers.ReadOnly = true;
@@ -130,6 +137,36 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Manage Drivers";
             // 
+            // cmsDrivers
+            // 
+            this.cmsDrivers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showPersonInfosToolStripMenuItem,
+            this.showPersonLicenseHistoryToolStripMenuItem,
+            this.issueInternationalLicenseToolStripMenuItem});
+            this.cmsDrivers.Name = "cmsDrivers";
+            this.cmsDrivers.Size = new System.Drawing.Size(226, 92);
+            // 
+            // showPersonInfosToolStripMenuItem
+            // 
+            this.showPersonInfosToolStripMenuItem.Name = "showPersonInfosToolStripMenuItem";
+            this.showPersonInfosToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.showPersonInfosToolStripMenuItem.Text = "Show Person Infos";
+            this.showPersonInfosToolStripMenuItem.Click += new System.EventHandler(this.showPersonInfosToolStripMenuItem_Click);
+            // 
+            // showPersonLicenseHistoryToolStripMenuItem
+            // 
+            this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
+            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
+            this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
+            // 
+            // issueInternationalLicenseToolStripMenuItem
+            // 
+            this.issueInternationalLicenseToolStripMenuItem.Name = "issueInternationalLicenseToolStripMenuItem";
+            this.issueInternationalLicenseToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.issueInternationalLicenseToolStripMenuItem.Text = "Issue International License";
+            this.issueInternationalLicenseToolStripMenuItem.Click += new System.EventHandler(this.issueInternationalLicenseToolStripMenuItem_Click);
+            // 
             // frmManageDrivers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +185,7 @@
             this.Text = "frmManageDrivers";
             this.Load += new System.EventHandler(this.frmManageDrivers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDrivers)).EndInit();
+            this.cmsDrivers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +200,9 @@
         private System.Windows.Forms.DataGridView dgvDrivers;
         private System.Windows.Forms.Label lblFilterBy;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip cmsDrivers;
+        private System.Windows.Forms.ToolStripMenuItem showPersonInfosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showPersonLicenseHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem issueInternationalLicenseToolStripMenuItem;
     }
 }
