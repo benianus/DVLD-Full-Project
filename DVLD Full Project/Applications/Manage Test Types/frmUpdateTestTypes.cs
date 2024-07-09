@@ -92,6 +92,7 @@ namespace DVLD_Full_Project.Applications.Manage_Test_Types
             else
             {
                 e.Cancel = false;
+                epTestTypes.SetError(tempTextBox, null);
             }
         }
         private void txtTitle_Validating(object sender, CancelEventArgs e)
@@ -112,6 +113,7 @@ namespace DVLD_Full_Project.Applications.Manage_Test_Types
             if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
             {
                 e.Handled = false;
+                epTestTypes.SetError(txtFees, string.Empty);
             }
             else
             {

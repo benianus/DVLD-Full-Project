@@ -47,6 +47,10 @@ namespace clsBusinessLayer
         public bool IsLocked { get; set; }
         public int RetakeTestApplicationID { get; set; }
 
+        public static DateTime GetLastTestAppointmentDate(int LDLApplicationID, int testTypeID)
+        {
+            return clsTestAppointementsDataLayer.GetLastTestAppointmentDate(LDLApplicationID, testTypeID);
+        }
         public static bool isPersonPassTestAppointment(int LDLApplicationID, int TestTypeID)
         {
             return clsTestAppointementsDataLayer.isPersonPassTestAppointment(LDLApplicationID, TestTypeID);
