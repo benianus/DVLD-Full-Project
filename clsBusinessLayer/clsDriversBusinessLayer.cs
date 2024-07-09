@@ -30,6 +30,10 @@ namespace clsBusinessLayer
         public int CreatedByUserID { get; set; }
         public DateTime CreatedDate { get; set; }
         
+        public static bool isDriverAlreadyHasInternationalLicense(int driverID)
+        {
+            return clsDriversDataLayer.isDriverAlreadyHasInternationalLicense(driverID);
+        }
         public static int GetDriverRelatedToPerson(int personID)
         {
             return clsDriversDataLayer.GetDriverRelatedToPerson(personID);

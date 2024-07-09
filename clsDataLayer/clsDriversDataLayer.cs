@@ -10,6 +10,33 @@ namespace clsDataLayer
 {
     public class clsDriversDataLayer
     {
+        public static bool isDriverAlreadyHasInternationalLicense(int driverID)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "SELECT * FROM Drivers" +
+                " INNER JOIN InternationalLicenses" +
+                " On Drivers.DriverID = InternationalLicenses.DriverID" +
+                " WHERE Drivers.DriverID = @DriverID;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@DriverID", driverID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.Read();
+
+                reader.Close();
+            }
+            finally
+            {
+                connection.Close();
+            }
+            
+            return isFound;
+        }
         public static int GetDriverRelatedToPerson(int personID)
         {
             int driverID = 0;

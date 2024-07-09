@@ -104,7 +104,17 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblDClass.Text = ucTestAppointments.ApplicationInfo.ClassName;
             lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
             lblTrial.Text = _GetTestTrialNumber();
-            dtpDate.Value = clsGlobalSettings.TestAppointements.AppointmentDate;
+
+            //set the minimum date;
+            if (DateTime.Compare(DateTime.Now, clsGlobalSettings.TestAppointements.AppointmentDate) < 0) 
+            {
+                dtpDate.MinDate = DateTime.Now;
+            }
+            else
+            {
+                dtpDate.MinDate = clsGlobalSettings.TestAppointements.AppointmentDate;
+            }
+
             lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
             gbRetakeTestInfo.Enabled = false;
 
@@ -138,7 +148,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 lblDClass.Text = ucTestAppointments.ApplicationInfo.ClassName;
                 lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
                 lblTrial.Text = _GetTestTrialNumber();
-                dtpDate.Value = DateTime.Now;
+                dtpDate.MinDate = DateTime.Now;
                 lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
 
 
@@ -157,7 +167,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             lblDClass.Text = ucTestAppointments.ApplicationInfo.ClassName;
             lblName.Text = ucTestAppointments.ApplicationInfo.FullName;
             lblTrial.Text = _GetTestTrialNumber();
-            dtpDate.Value = DateTime.Now;
+            dtpDate.MinDate = DateTime.Now;
             lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
             gbRetakeTestInfo.Enabled = false;
 
