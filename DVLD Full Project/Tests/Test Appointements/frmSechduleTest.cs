@@ -193,7 +193,8 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
 
                 clsGlobalSettings.TestAppointements.TestTypeID = (int)clsGlobalSettings.TestType;
                 clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
-                
+
+                //Add date validation for retake test, you can't add date before the last test appointment date from the same test type
                 DateTime LastTestAppointmentDate = clsTestAppointementsBusinessLayer.GetLastTestAppointmentDate(Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID), (int)clsGlobalSettings.TestType);
                 if (DateTime.Compare(dtpDate.Value, LastTestAppointmentDate) >= 0)
                 {
