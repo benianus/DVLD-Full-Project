@@ -11,6 +11,34 @@ namespace clsDataLayer
 {
     public class clsTestAppointementsDataLayer
     {
+        public static DateTime GetLastTestAppointmentDate(int LDLAppliationID, int testTypeID)
+        {
+            DateTime TestDate = DateTime.MinValue;
+            SqlConnection connection = new SqlConnection(clsDataSettings.connectionString);
+            string query = "select top 1 AppointmentDate from TestAppointments where LocalDrivingLicenseApplicationID = @LDLApplicationID " +
+                " and TestTypeID = @TestTypeID order by AppointmentDate";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLAppliationID);
+            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && DateTime.TryParse(result.ToString(), out DateTime Value))
+                {
+                    TestDate = Value;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return TestDate;
+        }
         public static bool isPersonPassTestAppointment(int LDLApplicationID, int TestTypeID)
         {
             bool isPersonPassTheTest = false;

@@ -141,6 +141,7 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 dtpDate.Value = DateTime.Now;
                 lblFees.Text = _GetTestTypeFees(frmTestAppointments._GetTestTypeTitle());
 
+
                 //retake test
                 gbRetakeTestInfo.Enabled = true;
                 lblRetakeFees.Text = clsApplicationsTypesBusinessLayer._GetApplicationTypeFees("Retake Test").ToString();
@@ -182,11 +183,28 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
             //Save Retake application if it's schedule retake test
             if (LblTestType.Text == "Schedule Retake Test")
             {
+                if (MessageBox.Show("Are you sure", "Confirme", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    MessageBox.Show("Save cancelled");
+                    return;
+                }
+
                 _SaveRetakeApplication();
 
                 clsGlobalSettings.TestAppointements.TestTypeID = (int)clsGlobalSettings.TestType;
                 clsGlobalSettings.TestAppointements.LocalDrivingLicenseApplicationID = Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID);
-                clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
+                
+                DateTime LastTestAppointmentDate = clsTestAppointementsBusinessLayer.GetLastTestAppointmentDate(Convert.ToInt32(ucTestAppointments.ApplicationInfo.LocalDrivingLicenseApplicationID), (int)clsGlobalSettings.TestType);
+                if (DateTime.Compare(dtpDate.Value, LastTestAppointmentDate) >= 0)
+                {
+                    clsGlobalSettings.TestAppointements.AppointmentDate = dtpDate.Value;
+                }
+                else
+                {
+                    MessageBox.Show("You can't add Date before last appointment date, please change date!");
+                    return;
+                }
+
                 clsGlobalSettings.TestAppointements.PaidFees = Convert.ToDecimal(lblFees.Text);
                 clsGlobalSettings.TestAppointements.CreatedByUserID = clsGlobalSettings.User.UserID;
                 clsGlobalSettings.TestAppointements.IsLocked = false;
@@ -281,5 +299,6 @@ namespace DVLD_Full_Project.Tests.Test_Appointements
                 _SaveTestAppointment();
             }
         }
+
     }
 }
