@@ -32,6 +32,11 @@ namespace clsDataLayer
                     TestDate = Value;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -55,8 +60,9 @@ namespace clsDataLayer
                 SqlDataReader reader = command.ExecuteReader();
                 isPersonPassTheTest = reader.Read();
             }
-            catch
+            catch(Exception error) 
             {
+                clsDataSettings.CreateEventLog(error);
                 return isPersonPassTheTest;
                 throw;
             }
@@ -82,8 +88,9 @@ namespace clsDataLayer
                 isTestAppointmentLinkedToRetake = reader.Read();
 
             }
-            catch 
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isTestAppointmentLinkedToRetake;
                 throw; 
             }
@@ -112,8 +119,9 @@ namespace clsDataLayer
                 SqlDataReader reader = command.ExecuteReader();
                 isTestAppointmentLockedAndFail = reader.Read();
             }
-            catch
+            catch(Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isTestAppointmentLockedAndFail;
                 throw;
             }
@@ -140,8 +148,9 @@ namespace clsDataLayer
                 SqlDataReader reader = command.ExecuteReader();
                 isPersonFailInTheTest = reader.Read();
             }
-            catch 
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isPersonFailInTheTest;
                 throw; 
             }
@@ -169,9 +178,9 @@ namespace clsDataLayer
                     trial = TrialCount;
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -193,10 +202,12 @@ namespace clsDataLayer
                 SqlDataReader reader = command.ExecuteReader();
                 isLocked = reader.HasRows;
             }
-            catch
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isLocked;
-                throw; }
+                throw; 
+            }
             finally
             {
                 connection.Close();
@@ -242,8 +253,9 @@ namespace clsDataLayer
                 }
 
             }
-            catch(Exception)
+            catch(Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 IsFound = false;
                 throw;
             }
@@ -272,8 +284,11 @@ namespace clsDataLayer
                     TestAppointemetID = ID;
                 }
             }
-            catch (Exception)
-            { throw; }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -298,6 +313,11 @@ namespace clsDataLayer
                 {
                     TestAppointmentTable.Load(reader);
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -327,7 +347,11 @@ namespace clsDataLayer
                     TestAppointmentTable.Load(reader);
                 }
             }
-            catch { throw; }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -352,6 +376,11 @@ namespace clsDataLayer
                     TestAppointmentTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -375,8 +404,9 @@ namespace clsDataLayer
 
                 isFound = reader.Read();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -434,7 +464,7 @@ namespace clsDataLayer
                     TestAppointmentID = InsertedID;
                 }
             }
-            catch (Exception){ throw; }
+            catch (Exception e) { clsDataSettings.CreateEventLog(e); throw; }
             finally
             {
                 connection.Close();
@@ -476,10 +506,10 @@ namespace clsDataLayer
             {
                 connection.Open();
                 RowsAffected = command.ExecuteNonQuery();
-            }            
-            catch (Exception)
+            }
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally

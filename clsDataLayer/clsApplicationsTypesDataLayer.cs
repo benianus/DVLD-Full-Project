@@ -31,7 +31,7 @@ namespace clsDataLayer
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { Connection.Close(); }
@@ -57,9 +57,9 @@ namespace clsDataLayer
                     ApplicationFees = Convert.ToInt32(result);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -88,8 +88,10 @@ namespace clsDataLayer
                     ApplicationFees = (decimal)reader["ApplicationFees"];
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                
+                clsDataSettings.CreateEventLog(error);
                 return isFound;
                 throw;
             }
@@ -112,8 +114,9 @@ namespace clsDataLayer
                 connection.Open();
                 RowsAffected = command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return false;
                 throw;
             }

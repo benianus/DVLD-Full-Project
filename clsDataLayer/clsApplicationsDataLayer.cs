@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +33,11 @@ namespace clsDataLayer
                     PersonID = (int)result;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -54,6 +61,11 @@ namespace clsDataLayer
                 {
                     ApplicantPersonID = PersonID;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -82,6 +94,11 @@ namespace clsDataLayer
                     ApplicationID = ID;
                 }
             }
+            catch(Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -101,6 +118,11 @@ namespace clsDataLayer
             {
                 connection.Open();
                 RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -131,6 +153,11 @@ namespace clsDataLayer
                 {
                     isIssued = reader.Read();
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -165,6 +192,11 @@ namespace clsDataLayer
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -189,9 +221,9 @@ namespace clsDataLayer
                     ApplicationTable.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); } 
@@ -225,9 +257,9 @@ namespace clsDataLayer
                     ApplicationID = insertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
 
@@ -266,6 +298,11 @@ namespace clsDataLayer
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -290,9 +327,9 @@ namespace clsDataLayer
 
                 RowsAffected = command.ExecuteNonQuery();
             }
-            catch (Exception Error)
+            catch (Exception error)
             {
-                MessageBox.Show(Error.Message);
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }

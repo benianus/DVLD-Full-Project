@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Security.AccessControl;
+using Microsoft.Win32;
 
 namespace DVLD_Full_Project
 {
@@ -24,14 +25,12 @@ namespace DVLD_Full_Project
         //functions
         private void _Login()
         {
-            
             string Username = txtUserName.Text;
             string Password = txtPassWord.Text;
             _CheckIfsUserExists(Username, Password);
         }
         private void _CloseLoginScreen()
         {
-            
             this.Close();
             this.Dispose();
         }
@@ -62,27 +61,82 @@ namespace DVLD_Full_Project
         }
         private void _RememberMe(string Username, string Password)
         {
-            string path = @"E:\Programming_Development\Programming advices\Programming advices Courses\Course 19 - Full Project in C#\DVLD Full Project\RegisterFile\LoginRegistered.txt";
-            string Contents = $"{Username}/{Password}";
+            string keyName = @"HKEY_CURRENT_USER\Software\Login_Informations";
             
-            if (checkBoxRememberMe.Checked && File.Exists(path))
+            string UserNameValueName = "Username";
+            string UserNameValueData = Username.ToString();
+
+            string PasswordValueName = "Password";
+            string PasswordValueData = Password.ToString();
+
+            if (checkBoxRememberMe.Checked)
             {
-                File.WriteAllText(path, Contents);
+                try
+                {
+                    Registry.SetValue(keyName, UserNameValueName, UserNameValueData, RegistryValueKind.String);
+                    Registry.SetValue(keyName, PasswordValueName, PasswordValueData, RegistryValueKind.String);
+                }
+                catch (Exception error)
+                {
+                    clsGlobalSettings.CreateEventLog(error);
+                    throw;
+                }
             }
-            else
-            {
-                File.WriteAllText(path, "");
-            }
+
+            //string path = @"E:\Programming_Development\Programming advices\Programming advices Courses\Course 19 - Full Project in C#\DVLD Full Project\RegisterFile\LoginRegistered.txt";
+            //string Contents = $"{Username}/{Password}";
+
+            //if (checkBoxRememberMe.Checked && File.Exists(path))
+            //{
+            //    File.WriteAllText(path, Contents);
+            //}
+            //else
+            //{
+            //    File.WriteAllText(path, "");
+            //}
         }
+        
         private void _LoadLoginScreen()
         {
-            string path = @"E:\Programming_Development\Programming advices\Programming advices Courses\Course 19 - Full Project in C#\DVLD Full Project\RegisterFile\LoginRegistered.txt";
-            string FileContent = File.ReadAllText(path);
+            string keyName = @"HKEY_CURRENT_USER\Software\Login_Informations";
 
-            if (File.Exists(path))
+            string UserNameValueName = "Username";
+            string PasswordValueName = "Password";
+
+            try
             {
-                _isLoginRegisterFileEmpty(FileContent);
+                string username = (string)Registry.GetValue(keyName, UserNameValueName, null);
+                string password = (string)Registry.GetValue(keyName, PasswordValueName, null);
+
+                if (username == null && password == null)
+                {
+                    txtUserName.Text = string.Empty;
+                    txtPassWord.Text = string.Empty;
+                }
+                else
+                {
+                    txtUserName.Text = username;
+                    txtPassWord.Text = password;
+                    checkBoxRememberMe.Checked = true;
+                }
             }
+            catch (Exception Error)
+            {
+                clsGlobalSettings.CreateEventLog(Error);
+                throw;
+            }
+
+            /// old code using file
+            /// now we use registry save
+            /// 
+
+            //string path = @"E:\Programming_Development\Programming advices\Programming advices Courses\Course 19 - Full Project in C#\DVLD Full Project\RegisterFile\LoginRegistered.txt";
+            //string FileContent = File.ReadAllText(path);
+
+            //if (File.Exists(path))
+            //{
+            //    _isLoginRegisterFileEmpty(FileContent);
+            //}
 
         }
         private bool _isLoginRegisterFileEmpty(string FileContent)

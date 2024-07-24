@@ -40,6 +40,11 @@ namespace clsDataLayer
                     detainedLicenseTable.Load(reader);
                 }
             }
+            catch(Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -81,6 +86,11 @@ namespace clsDataLayer
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -101,6 +111,11 @@ namespace clsDataLayer
             {
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -162,6 +177,11 @@ namespace clsDataLayer
                     }
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -184,6 +204,11 @@ namespace clsDataLayer
                 isDetained = reader.Read();
 
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -205,6 +230,11 @@ namespace clsDataLayer
                 SqlDataReader reader = command.ExecuteReader();
                 isDetained = reader.Read();
 
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -276,6 +306,11 @@ namespace clsDataLayer
                 {
                     detainID = insertedID;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {

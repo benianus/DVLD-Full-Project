@@ -37,6 +37,11 @@ namespace clsDataLayer
                     return null;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -61,6 +66,11 @@ namespace clsDataLayer
                 {
                     isFound = reader.Read();
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -87,6 +97,11 @@ namespace clsDataLayer
                     isFound = reader.Read();
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -112,6 +127,11 @@ namespace clsDataLayer
                     isFound = reader.Read();
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -131,6 +151,11 @@ namespace clsDataLayer
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -149,6 +174,11 @@ namespace clsDataLayer
             {
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -176,6 +206,11 @@ namespace clsDataLayer
                     licenseClassID = Value;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -199,6 +234,11 @@ namespace clsDataLayer
                 {
                     ApplicationFees = Value;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -225,6 +265,11 @@ namespace clsDataLayer
                 {
                     applicationID = Value;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -254,6 +299,11 @@ namespace clsDataLayer
                     LDLApplicationID = insertedID;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -282,8 +332,9 @@ namespace clsDataLayer
                     isFound = reader.Read();
                 }
             }
-            catch
+            catch(Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isFound;
                 throw;
             }
@@ -317,6 +368,11 @@ namespace clsDataLayer
                     return null;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -347,6 +403,11 @@ namespace clsDataLayer
                     return null;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -376,6 +437,11 @@ namespace clsDataLayer
                 {
                     return null;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -408,6 +474,11 @@ namespace clsDataLayer
                     LocalLicensesHistoryTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -434,9 +505,12 @@ namespace clsDataLayer
                     isApplicationHasDriverLicense = reader.Read();
                 }
             }
-            catch {
+            catch (Exception e) 
+            {
+                clsDataSettings.CreateEventLog(e);
                 return isApplicationHasDriverLicense;
-                throw; }
+                throw; 
+            }
             finally
             {
                 connection.Close();
@@ -481,7 +555,11 @@ namespace clsDataLayer
                     LicenseID = insertedID;
                 }
             }
-            catch { throw; }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();

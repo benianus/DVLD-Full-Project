@@ -32,6 +32,11 @@ namespace clsDataLayer
                     isUserNameExists = true;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -57,6 +62,11 @@ namespace clsDataLayer
                     userID = (int)reader["UserID"];
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -81,6 +91,11 @@ namespace clsDataLayer
                 {
                     username = (string)reader["UserName"];
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -109,9 +124,9 @@ namespace clsDataLayer
                     UsersTable.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -154,8 +169,9 @@ namespace clsDataLayer
                     dt.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -182,12 +198,12 @@ namespace clsDataLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
-
+            finally {  Connection.Close(); }
             return PersonID;             
         }
         private static string _IsActiveFilters(string Filter, string Condition)
@@ -225,8 +241,9 @@ namespace clsDataLayer
 
                 isFound = reader.Read();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -253,8 +270,9 @@ namespace clsDataLayer
 
                 isActive = reader.Read();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isActive;
                 throw;
             }
@@ -288,8 +306,9 @@ namespace clsDataLayer
                 }
                 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog (e);
                 return isFound;
                 throw;
             }finally { connection.Close(); }
@@ -320,8 +339,9 @@ namespace clsDataLayer
                 }
                 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -345,8 +365,9 @@ namespace clsDataLayer
 
                 isFound = reader.HasRows;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog (e);
                 return isFound;
                 throw;
             }
@@ -377,7 +398,7 @@ namespace clsDataLayer
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -405,8 +426,9 @@ namespace clsDataLayer
 
                 RowsAffected = command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return RowsAffected > 0;
                 throw;
             }
@@ -429,9 +451,9 @@ namespace clsDataLayer
                 RowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }

@@ -30,6 +30,11 @@ namespace clsDataLayer
 
                 reader.Close();
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -53,6 +58,11 @@ namespace clsDataLayer
                 {
                     driverID = (int)result;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -84,6 +94,11 @@ namespace clsDataLayer
                     driversTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -106,6 +121,11 @@ namespace clsDataLayer
                     driversTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -127,6 +147,11 @@ namespace clsDataLayer
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 isFound = reader.Read();
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -157,6 +182,11 @@ namespace clsDataLayer
                     DriverID = insertedID;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -182,7 +212,11 @@ namespace clsDataLayer
                     DriverLicenseInfosTable.Load(reader);
                 }
             }
-            catch { throw; }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -208,7 +242,11 @@ namespace clsDataLayer
                     DriverLicenseInfosTable.Load(reader);
                 }
             }
-            catch { throw; }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -239,8 +277,9 @@ namespace clsDataLayer
                     CreatedDate = (DateTime)reader["CreatedDate"];
                 }
             }
-            catch
+            catch(Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isFound;
                 throw;
             }
