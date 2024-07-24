@@ -26,6 +26,11 @@ namespace clsDataLayer
                     minimumAge = Value;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -54,9 +59,9 @@ namespace clsDataLayer
                     LicenseClassID = (int)reader["LicenseClassID"];
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -81,6 +86,11 @@ namespace clsDataLayer
                 {
                     defaultValidityLength = Years;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {

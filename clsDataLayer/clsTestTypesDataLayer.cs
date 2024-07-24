@@ -30,9 +30,9 @@ namespace clsDataLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -60,7 +60,7 @@ namespace clsDataLayer
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -89,9 +89,9 @@ namespace clsDataLayer
                     TestTypeFees = (decimal)reader["TestTypeFees"];
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                return isFound;
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -115,9 +115,9 @@ namespace clsDataLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }

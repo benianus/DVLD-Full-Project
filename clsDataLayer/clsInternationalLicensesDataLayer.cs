@@ -29,6 +29,11 @@ namespace clsDataLayer
                     ILApplicationsTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -64,6 +69,11 @@ namespace clsDataLayer
                     ILApplicationsTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -98,8 +108,9 @@ namespace clsDataLayer
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isFound;
                 throw;
             }finally { connection.Close(); }
@@ -134,6 +145,11 @@ namespace clsDataLayer
                     internationalLicenseInfos.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -161,6 +177,11 @@ namespace clsDataLayer
                     InternationalLicensesTable.Load(reader);
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -182,6 +203,11 @@ namespace clsDataLayer
                 SqlDataReader reader = command.ExecuteReader();
 
                 isFound = reader.Read();
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -216,6 +242,11 @@ namespace clsDataLayer
                 {
                     internationalLicenseID = insertedID;
                 }
+            }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {

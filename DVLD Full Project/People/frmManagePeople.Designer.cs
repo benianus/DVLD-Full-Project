@@ -83,12 +83,14 @@
             this.dgvLocalLicenseApplications.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLocalLicenseApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLocalLicenseApplications.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLocalLicenseApplications.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvLocalLicenseApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLocalLicenseApplications.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLocalLicenseApplications.Location = new System.Drawing.Point(0, 152);
             this.dgvLocalLicenseApplications.Name = "dgvLocalLicenseApplications";
             this.dgvLocalLicenseApplications.ReadOnly = true;
-            this.dgvLocalLicenseApplications.Size = new System.Drawing.Size(1242, 306);
+            this.dgvLocalLicenseApplications.Size = new System.Drawing.Size(1154, 306);
             this.dgvLocalLicenseApplications.TabIndex = 2;
             // 
             // contextMenuStrip1
@@ -169,7 +171,7 @@
             // btnAddNewLocalLicenseApplication
             // 
             this.btnAddNewLocalLicenseApplication.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAddNewLocalLicenseApplication.Location = new System.Drawing.Point(1155, 109);
+            this.btnAddNewLocalLicenseApplication.Location = new System.Drawing.Point(993, 109);
             this.btnAddNewLocalLicenseApplication.Name = "btnAddNewLocalLicenseApplication";
             this.btnAddNewLocalLicenseApplication.Size = new System.Drawing.Size(75, 37);
             this.btnAddNewLocalLicenseApplication.TabIndex = 6;
@@ -224,7 +226,7 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(1155, 464);
+            this.btnClose.Location = new System.Drawing.Point(1074, 464);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 37);
             this.btnClose.TabIndex = 11;
@@ -237,7 +239,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(1242, 507);
+            this.ClientSize = new System.Drawing.Size(1154, 507);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.txtFilterBy);

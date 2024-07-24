@@ -44,8 +44,9 @@ namespace clsDataLayer
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -83,9 +84,9 @@ namespace clsDataLayer
                     TestID = InsertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                clsDataSettings.CreateEventLog(e);
                 throw;
             }
             finally { connection.Close(); }

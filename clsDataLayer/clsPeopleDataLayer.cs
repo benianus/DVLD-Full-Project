@@ -29,6 +29,11 @@ namespace clsDataLayer
                     personId = ID;
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -57,9 +62,9 @@ namespace clsDataLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                
+                clsDataSettings.CreateEventLog(e);
                 throw;
             }
             finally { connection.Close(); }
@@ -87,9 +92,9 @@ namespace clsDataLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -117,9 +122,9 @@ namespace clsDataLayer
                     dt.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -143,8 +148,9 @@ namespace clsDataLayer
 
                 isFound = reader.Read();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -197,6 +203,7 @@ namespace clsDataLayer
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
                 return isFound;
                 throw;
             }
@@ -243,8 +250,9 @@ namespace clsDataLayer
                     ImagePath = System.DBNull.Value.ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -292,8 +300,9 @@ namespace clsDataLayer
                     ImagePath = System.DBNull.Value.ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isFound;
                 throw;
             }
@@ -331,9 +340,9 @@ namespace clsDataLayer
                     dt.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -370,9 +379,9 @@ namespace clsDataLayer
                     dt.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -419,9 +428,9 @@ namespace clsDataLayer
                     PersonID = insertedID;
                 }
             }
-            catch (Exception)
+            catch(Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -467,8 +476,9 @@ namespace clsDataLayer
                 RowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return false;
                 throw;
             }
@@ -492,9 +502,9 @@ namespace clsDataLayer
 
                 RowsAffected = command.ExecuteNonQuery();
             }
-            catch (Exception )
+            catch (Exception e)
             {
-                
+                clsDataSettings.CreateEventLog(e);
                 return false;
                 throw;
             }

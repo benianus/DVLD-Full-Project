@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,16 @@ namespace clsBusinessLayer
             return regex.IsMatch(number.ToString());
         }
 
+        public static void CreateEventLog(Exception error)
+        {
+            string Source = error.Source;
+            
+            if (!EventLog.SourceExists(Source))
+            {
+                EventLog.CreateEventSource(Source, "Application");
+            }
 
+            EventLog.WriteEntry(Source, error.Message, EventLogEntryType.Error);
+        }
     }
 }

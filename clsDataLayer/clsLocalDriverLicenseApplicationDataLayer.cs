@@ -31,6 +31,11 @@ namespace clsDataLayer
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -61,6 +66,11 @@ namespace clsDataLayer
                     LicenseClassID = (int)reader["LicenseClassID"];
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -87,9 +97,9 @@ namespace clsDataLayer
                     LicenseClasseID = insertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -109,9 +119,10 @@ namespace clsDataLayer
                 connection.Open();
                 RowsAffected = command.ExecuteNonQuery();
             }
-            catch(Exception error)
+            catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
+                throw;
             }
             finally
             {
@@ -138,6 +149,11 @@ namespace clsDataLayer
                     isApplicationCancelled = reader.Read();
                 }
             }
+            catch (Exception error)
+            {
+                clsDataSettings.CreateEventLog(error);
+                throw;
+            }
             finally
             {
                 connection.Close();
@@ -163,9 +179,9 @@ namespace clsDataLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); } 
@@ -191,9 +207,9 @@ namespace clsDataLayer
                     PassedTestCount = valueRetrieved;
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { connection.Close(); }
@@ -220,7 +236,7 @@ namespace clsDataLayer
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { Connection.Close(); }
@@ -247,8 +263,9 @@ namespace clsDataLayer
                     LocalDrivingLicenseApplicationTable.Load(reader);
                 }
             }
-            catch(Exception)
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally
@@ -285,7 +302,7 @@ namespace clsDataLayer
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                clsDataSettings.CreateEventLog(error);
                 throw;
             }
             finally { Connection.Close(); }
@@ -311,8 +328,9 @@ namespace clsDataLayer
 
                 isExists = reader.Read();
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                clsDataSettings.CreateEventLog(error);
                 return isExists;
                 throw;
             }
@@ -338,8 +356,9 @@ namespace clsDataLayer
 
                 isExists = reader.Read();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataSettings.CreateEventLog(e);
                 return isExists;
                 throw;
             }
@@ -367,9 +386,9 @@ namespace clsDataLayer
                     LocalDrivingLicenseApplication = insertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                clsDataSettings.CreateEventLog(e);
                 throw;
             }
             finally { connection.Close(); }
