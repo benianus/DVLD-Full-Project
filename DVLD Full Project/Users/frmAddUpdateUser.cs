@@ -68,9 +68,9 @@ namespace DVLD_Full_Project
         {
             clsGlobalSettings.User.PersonID = clsGlobalSettings.Person.PersonId;
             clsGlobalSettings.User.UserName = txtUserName.Text;
-            clsGlobalSettings.User.Password = txtPassword.Text;
+            clsGlobalSettings.User.Password = clsGlobalSettings.ComputeHash(txtPassword.Text);
             clsGlobalSettings.User.IsActive = CBoxIsActive.Checked;
-
+    
             if (clsGlobalSettings.User.Save())
             {
                 MessageBox.Show("User Saved");
@@ -136,6 +136,7 @@ namespace DVLD_Full_Project
             else
             {
                 e.Cancel = false;
+                epAddUpdateUser.SetError(txtUserName, string.Empty);
             }
         }
         private void _ValidatePassword(CancelEventArgs e)

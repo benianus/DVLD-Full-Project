@@ -26,7 +26,7 @@ namespace DVLD_Full_Project
         private void _Login()
         {
             string Username = txtUserName.Text;
-            string Password = txtPassWord.Text;
+            string Password = clsGlobalSettings.ComputeHash(txtPassWord.Text);
             _CheckIfsUserExists(Username, Password);
         }
         private void _CloseLoginScreen()
@@ -67,7 +67,7 @@ namespace DVLD_Full_Project
             string UserNameValueData = Username.ToString();
 
             string PasswordValueName = "Password";
-            string PasswordValueData = Password.ToString();
+            string PasswordValueData = txtPassWord.Text;
 
             if (checkBoxRememberMe.Checked)
             {

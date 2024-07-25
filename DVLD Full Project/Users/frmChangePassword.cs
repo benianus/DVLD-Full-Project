@@ -51,7 +51,7 @@ namespace DVLD_Full_Project
         }
         private void _SaveNewPassword()
         {
-            clsGlobalSettings.User.Password = txtNewPassword.Text;
+            clsGlobalSettings.User.Password = clsGlobalSettings.ComputeHash(txtNewPassword.Text);
 
             if (clsGlobalSettings.User.Save())
             {
@@ -73,7 +73,7 @@ namespace DVLD_Full_Project
                 epChangePassword.SetError(txtCurrentPassword, "Field Required");
                 txtCurrentPassword.Focus();
             }
-            else if (!(txtCurrentPassword.Text == clsGlobalSettings.User.Password))
+            else if (!(clsGlobalSettings.ComputeHash(txtCurrentPassword.Text) == clsGlobalSettings.User.Password))
             {
                 e.Cancel = true;
                 epChangePassword.SetError(txtCurrentPassword, "PassWord not match");

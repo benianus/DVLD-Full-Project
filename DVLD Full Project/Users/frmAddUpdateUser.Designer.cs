@@ -90,7 +90,7 @@
             // 
             this.ucAddUpdateUser1.Location = new System.Drawing.Point(8, 8);
             this.ucAddUpdateUser1.Name = "ucAddUpdateUser1";
-            this.ucAddUpdateUser1.Size = new System.Drawing.Size(849, 422);
+            this.ucAddUpdateUser1.Size = new System.Drawing.Size(849, 406);
             this.ucAddUpdateUser1.TabIndex = 2;
             // 
             // btnNext
