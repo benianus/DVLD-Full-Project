@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,10 @@ namespace clsDataLayer
 {
     public static class clsDataSettings
     {
-        public static string connectionString = "Server = .; DataBase = DVLD; User id = sa; Password = 123456;";
-
+        public static string connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         public static void CreateEventLog(Exception error)
         {
-            string Source = error.Source;
+            string Source = "DLVL Program";
 
             if (!EventLog.SourceExists(Source))
             {

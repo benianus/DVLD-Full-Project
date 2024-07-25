@@ -65,6 +65,7 @@ namespace DVLD_Full_Project
                 string Filter = cbAddNewUserFilter.SelectedItem.ToString();
                 string Condition = txtSearchUser.Text;
                 clsGlobalSettings.Person = clsPeopleBusinessLayer.FindPersonByCondition(Filter, Condition);
+                clsGlobalSettings.Mode = clsGlobalSettings.enMode.AddNew;
                 return false;
             }
             return false;
